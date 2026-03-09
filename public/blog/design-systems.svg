@@ -1,0 +1,11 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#0B1929"/>
+  <rect x="70" y="70" width="1060" height="535" rx="28" fill="#111F2E" stroke="rgba(0,201,167,0.25)"/>
+  <rect x="760" y="140" width="300" height="180" rx="20" fill="rgba(0,201,167,0.18)"/>
+  <rect x="800" y="180" width="220" height="26" rx="13" fill="#00C9A7"/>
+  <rect x="800" y="222" width="160" height="20" rx="10" fill="#8899AA"/>
+  <text x="140" y="250" fill="#FFFFFF" font-size="62" font-family="Arial, sans-serif" font-weight="700">Design Systems</text>
+  <text x="140" y="318" fill="#8899AA" font-size="34" font-family="Arial, sans-serif">For Product Teams</text>
+  <rect x="140" y="380" width="260" height="54" rx="27" fill="rgba(0,201,167,0.18)"/>
+  <text x="230" y="416" fill="#00C9A7" font-size="24" font-family="Arial, sans-serif">Design</text>
+</svg>

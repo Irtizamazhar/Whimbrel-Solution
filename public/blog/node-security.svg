@@ -1,0 +1,11 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#0B1929"/>
+  <rect x="70" y="70" width="1060" height="535" rx="28" fill="#111F2E" stroke="rgba(0,201,167,0.25)"/>
+  <rect x="790" y="170" width="220" height="280" rx="26" fill="rgba(0,201,167,0.14)" stroke="#00C9A7"/>
+  <path d="M860 280C860 246.863 886.863 220 920 220C953.137 220 980 246.863 980 280V320H860V280Z" stroke="#00C9A7" stroke-width="10"/>
+  <circle cx="920" cy="360" r="16" fill="#00C9A7"/>
+  <text x="140" y="250" fill="#FFFFFF" font-size="62" font-family="Arial, sans-serif" font-weight="700">Node.js API</text>
+  <text x="140" y="318" fill="#8899AA" font-size="34" font-family="Arial, sans-serif">Security Checklist</text>
+  <rect x="140" y="380" width="300" height="54" rx="27" fill="rgba(0,201,167,0.18)"/>
+  <text x="200" y="416" fill="#00C9A7" font-size="24" font-family="Arial, sans-serif">Technology</text>
+</svg>
