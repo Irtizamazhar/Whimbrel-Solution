@@ -64,9 +64,9 @@ export default function Navbar() {
             <img
               src="/whimbrel-logo.png"
               alt="Whimbrel Solution"
-              width={180}
-              height={90}
-              className="h-[4.25rem] w-auto max-h-[4.25rem] object-contain object-center brightness-110 contrast-110 sm:h-24 sm:max-h-24 lg:object-left"
+              width={210}
+              height={105}
+              className="h-[4.75rem] w-auto max-h-[4.75rem] object-contain object-center brightness-110 contrast-110 sm:h-[6.25rem] sm:max-h-[6.25rem] lg:object-left"
               fetchPriority="high"
             />
           </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="absolute right-5 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-teal/60 text-teal md:right-8 lg:hidden"
+          className="absolute left-5 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-teal/60 text-teal md:left-8 lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-magnetic="true"
