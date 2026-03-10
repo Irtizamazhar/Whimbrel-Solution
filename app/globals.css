@@ -45,6 +45,10 @@
   color: rgba(11, 25, 41, 0.82) !important;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--navy);
   color: var(--text);
@@ -53,6 +57,7 @@ body {
   text-rendering: optimizeLegibility;
   cursor: none;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Navbar brand: default state – more visible text */
@@ -129,6 +134,10 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(59, 191, 176, 0.45) transparent;
+}
+
+img, video, iframe {
+  max-width: 100%;
 }
 
 *::-webkit-scrollbar {

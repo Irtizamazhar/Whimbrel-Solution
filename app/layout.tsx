@@ -68,7 +68,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${cormorant.variable} ${nunito.variable} antialiased`}>
+      <body className={`${cormorant.variable} ${nunito.variable} antialiased min-w-0`}>
         <ClientEffects />
         {children}
       </body>

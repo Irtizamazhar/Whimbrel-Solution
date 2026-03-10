@@ -85,7 +85,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailProps) 
   if (!service) notFound();
 
   return (
-    <div className="bg-navy text-text">
+    <div className="bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
       <main className="pt-28">
         <section className="section-spacing">

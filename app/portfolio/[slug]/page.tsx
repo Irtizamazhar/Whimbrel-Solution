@@ -36,7 +36,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   if (!project) notFound();
 
   return (
-    <div className="min-h-screen bg-navy text-text">
+    <div className="min-h-screen bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
       <main className="pt-28">
         <section className="section-spacing">

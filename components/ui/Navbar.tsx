@@ -48,26 +48,29 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 overflow-x-hidden",
         scrolled && "nav-scrolled border-navy-4/90 backdrop-blur-xl",
       )}
     >
-      <nav className="relative mx-auto flex h-20 w-full max-w-[1260px] items-center justify-center px-5 md:px-8 lg:justify-between">
-        <Link
-          href="/"
-          className="group flex items-center gap-3"
-          aria-label="Whimbrel Solution home"
-          data-magnetic="true"
-        >
-          <img
-            src="/whimbrel-logo.png"
-            alt="Whimbrel Solution"
-            width={180}
-            height={90}
-            className="h-[4.25rem] w-auto max-h-[4.25rem] object-contain object-left brightness-110 contrast-110 sm:h-24 sm:max-h-24"
-            fetchPriority="high"
-          />
-        </Link>
+      <nav className="relative mx-auto flex h-20 w-full max-w-[1260px] items-center px-5 md:px-8">
+        {/* Mobile: logo center | Desktop: logo left */}
+        <div className="flex flex-1 items-center justify-center lg:justify-start">
+          <Link
+            href="/"
+            className="group flex items-center gap-3"
+            aria-label="Whimbrel Solution home"
+            data-magnetic="true"
+          >
+            <img
+              src="/whimbrel-logo.png"
+              alt="Whimbrel Solution"
+              width={180}
+              height={90}
+              className="h-[4.25rem] w-auto max-h-[4.25rem] object-contain object-center brightness-110 contrast-110 sm:h-24 sm:max-h-24 lg:object-left"
+              fetchPriority="high"
+            />
+          </Link>
+        </div>
 
         <div className="hidden items-center gap-10 lg:flex">
           {navItems.map((item) => (
@@ -97,7 +100,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="absolute left-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-teal/60 text-teal md:left-8 lg:hidden"
+          className="absolute right-5 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-teal/60 text-teal md:right-8 lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-magnetic="true"

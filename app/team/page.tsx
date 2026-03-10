@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function TeamPage() {
   return (
-    <div className="bg-navy text-text">
+    <div className="bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
       <main className="pt-24">
         <TeamSection />

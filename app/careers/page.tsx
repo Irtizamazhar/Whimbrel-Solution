@@ -119,7 +119,7 @@ const internshipPerks = [
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-navy text-text">
+    <div className="min-h-screen bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
 
       <main className="mx-auto w-full max-w-[1260px] px-5 pb-16 pt-28 md:px-8">

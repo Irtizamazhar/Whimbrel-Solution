@@ -86,7 +86,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <div className="bg-navy text-text">
+      <div className="bg-navy text-text min-w-0 overflow-x-hidden">
         <Navbar />
         <main>
           <Hero />
