@@ -54,6 +54,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Navbar brand: default state – more visible text */
+.nav-brand-title {
+  color: var(--text) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.nav-brand-subtitle {
+  color: var(--teal) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 .nav-scrolled {
   background: rgba(10, 22, 40, 0.78);
 }
@@ -68,10 +79,12 @@ body {
 
 .nav-scrolled .nav-brand-title {
   color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .nav-scrolled .nav-brand-subtitle {
   color: #7ff0e1 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .nav-scrolled {
@@ -89,6 +102,7 @@ body {
 
 [data-theme="light"] .nav-scrolled .nav-brand-title {
   color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {

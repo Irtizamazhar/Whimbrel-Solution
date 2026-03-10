@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-type CursorMode = "default" | "link" | "view";
+type CursorMode = "default" | "link";
 
 const LERP_FACTOR = 0.14;
 
@@ -54,14 +54,7 @@ export default function Cursor() {
     const updateModeFromTarget = (target: EventTarget | null) => {
       const element = target as HTMLElement | null;
       if (!element) return;
-      const cardTarget = element.closest("[data-cursor='view']");
       const linkTarget = element.closest("a, button, [data-cursor='link']");
-
-      if (cardTarget) {
-        setMode("view");
-        setDotVisible(false);
-        return;
-      }
 
       if (linkTarget) {
         setMode("link");
@@ -152,15 +145,6 @@ export default function Cursor() {
       scale: isPressed ? 0.76 : 1,
       transition: springTransition,
     },
-    view: {
-      width: 132,
-      height: 58,
-      borderRadius: 18,
-      borderColor: "rgba(59,191,176,0.95)",
-      backgroundColor: "rgba(59,191,176,0.18)",
-      scale: isPressed ? 0.84 : 1,
-      transition: { type: "spring" as const, stiffness: 320, damping: 22 },
-    },
   };
 
   return (
@@ -196,21 +180,7 @@ export default function Cursor() {
           variants={ringVariants}
           animate={mode}
           initial="default"
-        >
-          <AnimatePresence>
-            {mode === "view" && (
-              <motion.span
-                key="view"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.18 }}
-              >
-                VIEW
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        />
       </motion.div>
     </div>
   );

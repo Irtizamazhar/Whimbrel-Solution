@@ -8,24 +8,94 @@ type Payload = {
 };
 
 const SYSTEM_PROMPT = `
-You are the official AI assistant for Whimbrel Solution (Pakistan software house).
-Reply style:
-- Roman Urdu + simple English
-- Professional, clear, and helpful
-- Avoid robotic one-liners; give practical next steps
-- Keep answers concise (2-6 lines) unless user asks detail
+You are Whimbrel AI — the official smart sales assistant of Whimbrel Solution, a Premium Software House in Islamabad, Pakistan. Founded by Mr. Kaptan (CEO & AI Engineer).
 
-Business context:
-- Services: Custom Software, Mobile Apps, Web Development, AI/ML, Cloud & DevOps, UI/UX
-- Typical timeline: MVP 4-8 weeks, mid-size product 8-16 weeks
-- Process: discovery -> proposal -> sprint delivery -> QA -> launch/support
-- Contact priority: WhatsApp +92 334 0007247
+=======================================================
+LANGUAGE RULE — STRICT:
+=======================================================
+- User writes English → reply ONLY in English
+- User writes Urdu or Roman Urdu → reply ONLY in Roman Urdu
+- Auto-detect language on EVERY single message
+- NEVER mix languages unless user does first
 
-When user asks pricing:
-- Explain cost depends on scope/features/timeline
-- Ask 3 quick qualifiers: product type, must-have features, target deadline
+=======================================================
+GOLDEN RULE — MOST IMPORTANT — NEVER BREAK:
+=======================================================
+When user mentions ANY project, service, or need:
+→ NEVER ask "tell me more"
+→ NEVER ask "share your use case"
+→ NEVER ask "what kind of project"
+→ NEVER give a vague or generic answer
+→ ALWAYS give INSTANT full answer with:
+   ✅ 5 specific features
+   ✅ Realistic timeline
+   ✅ PKR price range
+→ Think like a CONFIDENT SENIOR SALES CONSULTANT
+→ Every answer must feel COMPLETE and PROFESSIONAL
 
-If user asks unrelated unsafe content, politely refuse and bring back to business help.
+=======================================================
+RESPONSE FORMAT — USE THIS EVERY TIME:
+=======================================================
+"Bilkul! Whimbrel Solution aapke liye [PROJECT] banayega
+
+✅ [Feature 1 — specific to their project]
+✅ [Feature 2 — specific to their project]
+✅ [Feature 3 — specific to their project]
+✅ [Feature 4 — specific to their project]
+✅ [Feature 5 — specific to their project]
+
+📅 Timeline: [X–X weeks]
+💰 Cost: PKR [X,000 – X,000]
+
+Apni zaroorat ke mutabiq customize bhi kar sakte hain!
+Kya aap is par aage baat karna chahte hain?"
+
+=======================================================
+READY-MADE INSTANT ANSWERS (use these exact structures):
+=======================================================
+- AI AGENT / CHATBOT: 5 features (business data trained, 24/7 Urdu+English, lead collection, appointment booking, website/WhatsApp/app integration), Timeline 2–4 weeks, PKR 80,000 – 200,000
+- E-COMMERCE: 5 features (product listings & filters, cart & checkout, JazzCash/EasyPaisa/Stripe/COD, admin dashboard, mobile+SEO), Timeline 3–6 weeks, PKR 80,000 – 200,000
+- BUSINESS/CORPORATE WEBSITE: 5 features (responsive design, Services/About/Contact, WhatsApp & social, Google SEO, CMS), Timeline 1–3 weeks, PKR 30,000 – 100,000
+- MOBILE APP: 5 features (iOS+Android, custom UI/UX, login/notifications/payments, backend API, App Store deployment), Timeline 6–14 weeks, PKR 120,000 – 600,000
+- HOSPITAL/CLINIC SYSTEM: 5 features (patient registration, appointment scheduling, billing, pharmacy/inventory, multi-role access), Timeline 8–14 weeks, PKR 200,000 – 500,000
+- SCHOOL/LMS: 5 features (student/teacher management, attendance/timetable, online classes, exam/result, fee/parent portal), Timeline 6–12 weeks, PKR 150,000 – 400,000
+- RESTAURANT/POS: 5 features (digital menu, POS billing, kitchen display, inventory, sales reports), Timeline 3–6 weeks, PKR 80,000 – 180,000
+- LOGISTICS/FLEET: 5 features (GPS tracking, driver/vehicle management, route optimization, delivery status, reports), Timeline 6–10 weeks, PKR 150,000 – 350,000
+- CRM/ERP: 5 features (lead/customer management, sales pipeline, HR module, inventory/finance, reports/dashboards), Timeline 8–16 weeks, PKR 200,000 – 700,000+
+- PORTFOLIO WEBSITE: 5 features (modern design, About/Skills/Projects, contact form, responsive, hosting), Timeline 3–7 days, PKR 15,000 – 40,000
+- UI/UX DESIGN: 5 features (wireframes, Figma designs, responsive, brand colors/typography, developer-ready files), Timeline 1–2 weeks, PKR 20,000 – 80,000
+
+For ANY other/unknown project → still answer immediately with 5 logical features, timeline, PKR range. NEVER say "I don't understand" or ask questions first.
+
+=======================================================
+APPOINTMENT BOOKING:
+=======================================================
+Collect: Full Name, Email, Phone, Project/Service needed, Preferred date & time.
+Reply: "✅ Shukriya [Name]! Hamari team 24 ghante mein aapse contact karegi. Hum aapke project par kaam karne ke liye excited hain!"
+
+=======================================================
+PORTFOLIO IF ASKED:
+=======================================================
+PayEase (Fintech), ShopLux (Retail), MedCore (Healthcare), DataVault (BI), LearnFlow (EdTech), FleetTrack (Transport)
+
+=======================================================
+GREETING (First message only):
+=======================================================
+"Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?"
+
+=======================================================
+HARD RESTRICTIONS — NEVER BREAK:
+=======================================================
+✗ NEVER ask follow-up question before giving answer
+✗ NEVER say "tell me more" or "share use case"
+✗ NEVER give vague or incomplete reply
+✗ NEVER say "I don't know"
+✗ NEVER mention competitors
+✗ NEVER discuss politics, religion, personal opinions
+✗ NEVER share internal company data
+✓ ALWAYS be confident, direct, complete
+✓ ALWAYS match user's language
+✓ ALWAYS end with "Aage baat karein?" or "Kya aap is par aage baat karna chahte hain?"
 `;
 
 function intentFirstReply(message: string, language: "roman-urdu" | "english") {
@@ -75,13 +145,80 @@ function isLowValueReply(text: string) {
     normalized.includes("i understand your question") ||
     normalized.includes("main aapka sawal samajh gaya") ||
     normalized.includes("share your project idea in 2-3 lines") ||
-    normalized.includes("tell me your goal in one line")
+    normalized.includes("tell me your goal in one line") ||
+    normalized.includes("i don't know") ||
+    normalized.includes("i do not know") ||
+    normalized.includes("tell me more about") ||
+    normalized.includes("what do you want to build") ||
+    normalized.includes("describe your project") ||
+    normalized.includes("can you describe more") ||
+    normalized.includes("share your use case") ||
+    normalized.includes("what kind of project") ||
+    normalized.includes("could you tell me more") ||
+    normalized.includes("can you elaborate")
   );
 }
 
 function smartLocalReply(message: string, language: "roman-urdu" | "english") {
   const text = message.toLowerCase().trim();
   const hasAny = (words: string[]) => words.some((word) => text.includes(word));
+
+  // ----- READY-MADE INSTANT ANSWERS (exact format, no follow-up) -----
+  if (hasAny(["ai agent", "ai chatbot", "chatbot", "ai bot", "ai assistant"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a custom AI Agent for you.\n\n✅ Trained on your business data (website, FAQs, services)\n✅ 24/7 auto-reply in Urdu + English\n✅ Lead collection (name, email, phone)\n✅ Built-in appointment booking\n✅ Integrates on website, WhatsApp, or app\n\n📅 Timeline: 2–4 weeks\n💰 Cost: PKR 80,000 – 200,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye custom AI Agent banayega\n\n✅ Aapke business data par trained (website, FAQs, services)\n✅ 24/7 auto-reply in Urdu + English\n✅ Lead collection (name, email, phone)\n✅ Appointment booking system built-in\n✅ Website, WhatsApp, ya App par integrate hoga\n\n📅 Timeline: 2–4 weeks\n💰 Cost: PKR 80,000 – 200,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["e-commerce", "ecommerce", "online store", "shop", "store website"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build an E-Commerce platform for you.\n\n✅ Product listings, categories & smart filters\n✅ Cart & secure checkout\n✅ JazzCash, EasyPaisa, Stripe, COD payments\n✅ Admin dashboard — orders, inventory, sales\n✅ Mobile responsive + SEO optimized\n\n📅 Timeline: 3–6 weeks\n💰 Cost: PKR 80,000 – 200,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye E-Commerce platform banayega\n\n✅ Product listings, categories & smart filters\n✅ Cart & secure checkout system\n✅ JazzCash, EasyPaisa, Stripe, COD payments\n✅ Admin dashboard — orders, inventory, sales\n✅ Mobile responsive + SEO optimized\n\n📅 Timeline: 3–6 weeks\n💰 Cost: PKR 80,000 – 200,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["business website", "corporate website", "company website", "professional website"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a professional website for you.\n\n✅ Modern responsive design\n✅ Services, About, Contact pages\n✅ WhatsApp & social media integration\n✅ Google SEO setup\n✅ Fast speed + CMS for easy updates\n\n📅 Timeline: 1–3 weeks\n💰 Cost: PKR 30,000 – 100,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye professional website banayega\n\n✅ Modern responsive design\n✅ Services, About, Contact pages\n✅ WhatsApp & social media integration\n✅ Google SEO setup\n✅ Fast speed + CMS for easy updates\n\n📅 Timeline: 1–3 weeks\n💰 Cost: PKR 30,000 – 100,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["mobile app", "android app", "ios app", "app banwana"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a mobile app for you.\n\n✅ iOS + Android both platforms\n✅ Custom UI/UX design\n✅ Login, notifications, payments\n✅ Backend API + database\n✅ App Store & Play Store deployment\n\n📅 Timeline: 6–14 weeks\n💰 Cost: PKR 120,000 – 600,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye mobile app banayega\n\n✅ iOS + Android dono platforms\n✅ Custom UI/UX design\n✅ Login, notifications, payments\n✅ Backend API + database\n✅ App Store & Play Store deployment\n\n📅 Timeline: 6–14 weeks\n💰 Cost: PKR 120,000 – 600,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["hospital", "clinic system", "hospital system", "clinic software"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a Hospital System for you.\n\n✅ Patient registration & medical records\n✅ Doctor appointment scheduling\n✅ Billing & invoicing system\n✅ Pharmacy & inventory module\n✅ Multi-role access (admin, doctor, receptionist)\n\n📅 Timeline: 8–14 weeks\n💰 Cost: PKR 200,000 – 500,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye Hospital System banayega\n\n✅ Patient registration & medical records\n✅ Doctor appointment scheduling\n✅ Billing & invoicing system\n✅ Pharmacy & inventory module\n✅ Multi-role access (admin, doctor, receptionist)\n\n📅 Timeline: 8–14 weeks\n💰 Cost: PKR 200,000 – 500,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["school system", "lms", "school management", "education system"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a School Management System for you.\n\n✅ Student & teacher management\n✅ Attendance & timetable system\n✅ Online classes & course material\n✅ Exam & result management\n✅ Fee collection & parent portal\n\n📅 Timeline: 6–12 weeks\n💰 Cost: PKR 150,000 – 400,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye School Management System banayega\n\n✅ Student & teacher management\n✅ Attendance & timetable system\n✅ Online classes & course material\n✅ Exam & result management\n✅ Fee collection & parent portal\n\n📅 Timeline: 6–12 weeks\n💰 Cost: PKR 150,000 – 400,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["restaurant", "pos system", "pos", "restaurant system"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a Restaurant System for you.\n\n✅ Digital menu & table ordering\n✅ POS billing system\n✅ Kitchen order display screen\n✅ Inventory & stock tracking\n✅ Daily sales reports & analytics\n\n📅 Timeline: 3–6 weeks\n💰 Cost: PKR 80,000 – 180,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye Restaurant System banayega\n\n✅ Digital menu & table ordering\n✅ POS billing system\n✅ Kitchen order display screen\n✅ Inventory & stock tracking\n✅ Daily sales reports & analytics\n\n📅 Timeline: 3–6 weeks\n💰 Cost: PKR 80,000 – 180,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["logistics", "fleet", "fleet system", "delivery system", "tracking system"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a Fleet System for you.\n\n✅ Live GPS tracking\n✅ Driver & vehicle management\n✅ Route optimization\n✅ Real-time delivery status updates\n✅ Reports & analytics dashboard\n\n📅 Timeline: 6–10 weeks\n💰 Cost: PKR 150,000 – 350,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye Fleet System banayega\n\n✅ Live GPS tracking\n✅ Driver & vehicle management\n✅ Route optimization\n✅ Real-time delivery status updates\n✅ Reports & analytics dashboard\n\n📅 Timeline: 6–10 weeks\n💰 Cost: PKR 150,000 – 350,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["crm", "erp", "crm system", "erp system"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a CRM/ERP for you.\n\n✅ Customer & lead management\n✅ Sales pipeline tracking\n✅ Employee & HR module\n✅ Inventory & finance tracking\n✅ Custom reports & KPI dashboards\n\n📅 Timeline: 8–16 weeks\n💰 Cost: PKR 200,000 – 700,000+\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye CRM/ERP banayega\n\n✅ Customer & lead management\n✅ Sales pipeline tracking\n✅ Employee & HR module\n✅ Inventory & finance tracking\n✅ Custom reports & KPI dashboards\n\n📅 Timeline: 8–16 weeks\n💰 Cost: PKR 200,000 – 700,000+\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["portfolio website", "portfolio site", "portfolio banwana"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will build a portfolio website for you.\n\n✅ Clean modern design\n✅ About, Skills, Projects sections\n✅ Contact form integration\n✅ Mobile responsive\n✅ Fast loading + hosting setup\n\n📅 Timeline: 3–7 days\n💰 Cost: PKR 15,000 – 40,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye portfolio website banayega\n\n✅ Clean modern design\n✅ About, Skills, Projects sections\n✅ Contact form integration\n✅ Mobile responsive\n✅ Fast loading + hosting setup\n\n📅 Timeline: 3–7 days\n💰 Cost: PKR 15,000 – 40,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
+  if (hasAny(["ui ux", "ui/ux", "design", "figma design", "ux design"])) {
+    return language === "english"
+      ? "Absolutely! Whimbrel Solution will do UI/UX design for you.\n\n✅ Wireframes & user flow\n✅ High-fidelity Figma designs\n✅ Mobile + desktop responsive\n✅ Brand colors, typography, icons\n✅ Developer-ready design files\n\n📅 Timeline: 1–2 weeks\n💰 Cost: PKR 20,000 – 80,000\n\nWe can customize to your needs! Want to discuss further?"
+      : "Bilkul! Whimbrel Solution aapke liye UI/UX design karega\n\n✅ Wireframes & user flow\n✅ High-fidelity Figma designs\n✅ Mobile + desktop responsive\n✅ Brand colors, typography, icons\n✅ Developer-ready design files\n\n📅 Timeline: 1–2 weeks\n💰 Cost: PKR 20,000 – 80,000\n\nApni zaroorat ke mutabiq customize bhi kar sakte hain! Kya aap is par aage baat karna chahte hain?";
+  }
 
   const asksCanBuild =
     hasAny([
@@ -111,20 +248,20 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (asksCanBuild) {
     return language === "english"
-      ? "Yes, absolutely — we can build this for you. We regularly deliver CRM, dashboards, web apps, and custom software systems. Share these 4 details for a precise plan: key features, user roles, target timeline, and budget range."
-      : "Ji bilkul — hum ye aap ke liye build kar sakte hain. Hum CRM, dashboards, web apps aur custom software systems regular basis par deliver karte hain. Accurate plan ke liye 4 cheezen share karein: key features, user roles, target timeline aur budget range.";
+      ? "Yes — we can build this. Typical scope: core features, admin panel, secure auth, and mobile-responsive UI. Estimated timeline: 4–12 weeks depending on complexity. Estimated cost: PKR 80,000 – 400,000+ (we’ll refine after details). Want a precise quote? Share: key features, user roles, and deadline."
+      : "Ji bilkul — hum ye bana sakte hain. Typical scope: core features, admin panel, secure auth, mobile-responsive UI. Estimated timeline: 4–12 weeks. Estimated cost: PKR 80,000 – 400,000+ (details ke baad refine karenge). Precise quote chahiye? Key features, user roles aur deadline batao.";
   }
 
   if (hasAny(["crm"])) {
     return language === "english"
-      ? "Yes, we build custom CRM platforms. Typical CRM modules include leads, pipeline, follow-ups, tasks, reports, team roles, and WhatsApp/email integration."
-      : "Ji, hum custom CRM platforms banate hain. Typical CRM modules me leads, pipeline, follow-ups, tasks, reports, team roles aur WhatsApp/email integration shamil hoti hain.";
+      ? "Great idea! Whimbrel can build a custom CRM for you. ✅ Leads & pipeline ✅ Tasks & follow-ups ✅ Reports & dashboards ✅ Team roles & permissions ✅ WhatsApp/Email integration. 📅 Estimated Timeline: 8–16 weeks. 💰 Estimated Cost: PKR 200,000 – 700,000+. Tell me your industry and we can refine the scope."
+      : "Great idea! Whimbrel aap ke liye custom CRM bana sakta hai. ✅ Leads & pipeline ✅ Tasks & follow-ups ✅ Reports & dashboards ✅ Team roles & permissions ✅ WhatsApp/Email integration. 📅 Timeline: 8–16 weeks. 💰 Cost: PKR 200,000 – 700,000+. Apna industry batao, scope refine kar dete hain.";
   }
 
-  if (hasAny(["hello", "hi", "assalam", "salam", "aoa"])) {
+  if (hasAny(["hello", "hi", "assalam", "salam", "aoa", "hey"])) {
     return language === "english"
-      ? "Hi! Welcome to Whimbrel Solution. Tell me your project idea, and I will guide you on the best service, timeline, and budget direction."
-      : "Assalam o Alaikum! Whimbrel Solution me khush aamdeed. Aap project idea share karein, main best service, timeline aur budget direction suggest karta hoon.";
+      ? "Assalam o Alaikum! Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant. Share your project idea — Website, App, AI Agent, System, or Store. I'll give you right away: complete features list, exact timeline, and budget estimate. What do you want to build?"
+      : "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
   }
 
   if (hasAny(["thank", "jazak", "shukria", "shukriya"])) {
@@ -149,6 +286,12 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
     return language === "english"
       ? "Our blog covers technology, design, and company updates. If you want, I can suggest which article to start with based on your interest."
       : "Hamare blog me technology, design aur company updates hain. Aap batayein kis topic me interest hai, main best article recommend kar deta hoon.";
+  }
+
+  if (hasAny(["portfolio", "project", "payease", "shoplux", "medcore", "datavault", "learnflow", "fleettrack", "work", "projects"])) {
+    return language === "english"
+      ? "Our portfolio includes projects like PayEase, ShopLux, MedCore, DataVault, LearnFlow, FleetTrack and more. You can view case studies on our website or I can tell you about a specific project — which one interests you?"
+      : "Hamare portfolio me PayEase, ShopLux, MedCore, DataVault, LearnFlow, FleetTrack jaisi projects hain. Aap website par case studies dekh sakte hain ya main kisi specific project ke baare me bata sakta hun — kis me interest hai?";
   }
 
   if (hasAny(["frontend", "react", "next", "next.js", "web app"])) {
@@ -189,8 +332,8 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["price", "pricing", "cost", "budget", "quote", "estimate"])) {
     return language === "english"
-      ? "To give an accurate estimate, please share: (1) product type, (2) must-have features, (3) target deadline, and (4) expected user scale."
-      : "Accurate estimate ke liye ye 4 cheezen share karein: (1) product type, (2) must-have features, (3) target deadline, aur (4) expected user scale.";
+      ? "Here’s a quick guide: Simple website PKR 25K–60K (1–2 weeks), Business site PKR 40K–100K (2–3 weeks), E-commerce PKR 80K–200K (3–6 weeks), Mobile app basic PKR 120K–250K (4–8 weeks), CRM/ERP PKR 200K–700K+ (8–16 weeks), Portfolio site PKR 15K–40K (1 week). Tell me your project type and I’ll give you a specific range."
+      : "Quick guide: Simple website PKR 25K–60K (1–2 weeks), Business site PKR 40K–100K (2–3 weeks), E-commerce PKR 80K–200K (3–6 weeks), Mobile app basic PKR 120K–250K (4–8 weeks), CRM/ERP PKR 200K–700K+ (8–16 weeks), Portfolio PKR 15K–40K (1 week). Apna project type batao, main specific range de dunga.";
   }
 
   if (hasAny(["timeline", "time", "duration", "kitna time", "kab tak"])) {
@@ -201,8 +344,8 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["contact", "whatsapp", "call", "email", "team se bat"])) {
     return language === "english"
-      ? "You can contact our team directly on WhatsApp: +92 334 0007247, or email: hello@whimbrelsolution.com"
-      : "Aap hamari team se direct WhatsApp par contact karein: +92 334 0007247, ya email karein: hello@whimbrelsolution.com";
+      ? "You can contact our team directly on WhatsApp: +92 334 0007247, or email: hello@whimbrelsolution.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT)."
+      : "Aap hamari team se direct WhatsApp par contact karein: +92 334 0007247, ya email karein: hello@whimbrelsolution.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT).";
   }
 
   const asksWhat = hasAny(["kya", "what", "konsi", "kon sa", "which"]);
@@ -237,13 +380,13 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (asksWhat) {
     return language === "english"
-      ? "We provide end-to-end software services: planning, UI/UX, development, testing, deployment, and support for web, mobile, AI, and cloud products."
-      : "Hum end-to-end software services dete hain: planning, UI/UX, development, testing, deployment aur support — web, mobile, AI aur cloud products ke liye.";
+      ? "We provide end-to-end software services: planning, UI/UX, development, testing, deployment, and support for web, mobile, AI, and cloud products. I'm Whimbrel AI — how can I help you today?"
+      : "Hum end-to-end software services dete hain: planning, UI/UX, development, testing, deployment aur support — web, mobile, AI aur cloud products ke liye. Main Whimbrel AI hun — aaj main aapki kya madad kar sakta hun?";
   }
 
   return language === "english"
-    ? "I can help with service selection, scope planning, timeline, budget, and implementation. Tell me what you want to build, and I will give you a direct actionable answer."
-    : "Main service selection, scope planning, timeline, budget aur implementation me help kar sakta hoon. Aap batayein kya build karna hai, main aap ko direct actionable jawab deta hoon.";
+    ? "I can help with services, scope, timeline, budget, and bookings. Tell me what you need, or we can connect you with our team: WhatsApp +92 334 0007247."
+    : "Main services, scope, timeline, budget aur bookings me help kar sakta hun. Batayein aapko kya chahiye, ya hamari team se connect karein: WhatsApp +92 334 0007247.";
 }
 
 function fallbackReply(message: string, language: "roman-urdu" | "english") {
@@ -262,20 +405,20 @@ function fallbackReply(message: string, language: "roman-urdu" | "english") {
     ])
   ) {
     return language === "english"
-      ? "Whimbrel Solution is a Pakistan-based software house. We build custom software, mobile apps, web platforms, AI solutions, and cloud systems for startups and businesses."
-      : "Whimbrel Solution Pakistan based software house hai. Hum custom software, mobile apps, web platforms, AI solutions, aur cloud systems build karte hain.";
+      ? "Whimbrel Solution is a Premium Software House based in Islamabad, Pakistan. Our CEO/Founder isMr. junaid  (AI Engineer). We build custom software, mobile apps, web platforms, AI solutions, and cloud systems for startups and businesses. Website: https://whimbrelsolution.netlify.app"
+      : "Whimbrel Solution Islamabad, Pakistan ki ek Premium Software House hai. CEO/FounderMr. junaid  (AI Engineer) hain. Hum custom software, mobile apps, web platforms, AI solutions aur cloud systems build karte hain. Website: https://whimbrelsolution.netlify.app";
   }
 
   if (hasAny(["service", "services", "what do you do", "kya karte ho"])) {
     return language === "english"
-      ? "Our core services are: Custom Software, Mobile Apps, Web Development, AI/ML, Cloud & DevOps, and UI/UX Design."
-      : "Hamari core services hain: Custom Software, Mobile Apps, Web Development, AI/ML, Cloud & DevOps, aur UI/UX Design.";
+      ? "Our services: (1) Custom Software Development – scalable apps for startups & enterprises. (2) Mobile App Development – iOS & Android with premium UX. (3) Web Development – fast, secure, conversion-focused sites. (4) AI & Machine Learning – automation & predictive systems. (5) Cloud & DevOps – CI/CD, infrastructure, monitoring. (6) UI/UX Design – elegant interfaces for retention and trust. Which one interests you?"
+      : "Hamari services: (1) Custom Software Development – startups aur enterprises ke liye scalable apps. (2) Mobile App Development – iOS & Android premium UX ke sath. (3) Web Development – fast, secure, conversion-focused sites. (4) AI & Machine Learning – automation aur predictive systems. (5) Cloud & DevOps – CI/CD, infrastructure, monitoring. (6) UI/UX Design – elegant interfaces. Kis me interest hai?";
   }
 
   if (hasAny(["price", "pricing", "cost", "budget", "quote", "estimate"])) {
     return language === "english"
-      ? "Pricing depends on scope. Share these 3 things and I will suggest a realistic estimate: (1) product type, (2) must-have features, (3) target deadline."
-      : "Pricing scope par depend karti hai. Ye 3 cheezen share karein to main realistic estimate de sakta hoon: (1) product type, (2) must-have features, (3) target deadline.";
+      ? "Quick pricing guide: Simple website PKR 25K–60K, Business site PKR 40K–100K, E-commerce PKR 80K–200K, Mobile app PKR 120K–600K+, CRM/ERP PKR 200K–700K+, Portfolio PKR 15K–40K. Tell me your project type for a specific estimate."
+      : "Quick guide: Simple website PKR 25K–60K, Business site PKR 40K–100K, E-commerce PKR 80K–200K, Mobile app PKR 120K–600K+, CRM/ERP PKR 200K–700K+, Portfolio PKR 15K–40K. Apna project type batao, main specific estimate de dunga.";
   }
 
   if (hasAny(["timeline", "time", "duration", "kitna time", "kitna waqt"])) {
@@ -292,8 +435,8 @@ function fallbackReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["contact", "whatsapp", "call", "email"])) {
     return language === "english"
-      ? "You can contact us directly on WhatsApp: +92 334 0007247"
-      : "Aap humein WhatsApp par directly contact kar sakte hain: +92 334 0007247";
+      ? "You can contact us directly on WhatsApp: +92 334 0007247, or email: hello@whimbrelsolution.com. We're here Monday–Friday, 9 AM–6 PM (PKT)."
+      : "Aap humein WhatsApp par directly contact kar sakte hain: +92 334 0007247, ya email: hello@whimbrelsolution.com. Hum Monday–Friday, 9 AM–6 PM (PKT) available hain.";
   }
 
   return smartLocalReply(message, language);
@@ -403,7 +546,7 @@ export async function POST(request: Request) {
       `LANGUAGE: ${language}`,
       leadContext,
       quoteRequested
-        ? "If user asks for quote, give a compact estimate template with: scope assumptions, timeline range, budget range bands, and next step CTA."
+        ? "Give a direct estimate: use the PRICING GUIDE in your instructions. Reply with project type, timeline range, and PKR range. Do NOT ask user to describe more first — give an initial estimate immediately."
         : "",
       formatHistory(body.history),
       `USER: ${message}`,

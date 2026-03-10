@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -59,21 +58,14 @@ export default function Navbar() {
           aria-label="Whimbrel Solution home"
           data-magnetic="true"
         >
-          <Image
-            src="/whimbrel-logo.svg"
-            alt="Whimbrel Solution logo"
-            width={44}
-            height={44}
-            priority
+          <img
+            src="/whimbrel-logo.png"
+            alt="Whimbrel Solution"
+            width={180}
+            height={90}
+            className="h-[4.25rem] w-auto max-h-[4.25rem] object-contain object-left brightness-110 contrast-110 sm:h-24 sm:max-h-24"
+            fetchPriority="high"
           />
-          <span className="hidden leading-none sm:block">
-            <span className="nav-brand-title block font-cormorant text-2xl uppercase tracking-[0.08em] text-text">
-              Whimbrel
-            </span>
-            <span className="nav-brand-subtitle block text-[10px] font-semibold uppercase tracking-[0.24em] text-teal">
-              Solution
-            </span>
-          </span>
         </Link>
 
         <div className="hidden items-center gap-10 lg:flex">

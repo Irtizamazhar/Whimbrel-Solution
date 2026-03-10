@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Globe, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { ShieldCheck, Sparkles, Users } from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { slideFromLeft, slideFromRight } from "@/lib/animations";
 
@@ -12,11 +12,6 @@ const features = [
     title: "Expert Team",
     description: "Led by senior engineers and product specialists building reliable systems.",
     Icon: Users,
-  },
-  {
-    title: "Global Reach",
-    description: "Serving clients across regions with localized execution and support.",
-    Icon: Globe,
   },
   {
     title: "Proven Delivery",
@@ -93,7 +88,7 @@ export default function About() {
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,22,40,0.1),rgba(10,22,40,0.45))]" />
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.02),transparent)]" />
               <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-teal/30 bg-navy/60 px-3 py-1 text-xs text-teal">
-                <Image src="/whimbrel-logo.svg" alt="Whimbrel mark" width={16} height={16} />
+                <Image src="/whimbrel-logo.png" alt="Whimbrel mark" width={16} height={16} />
                 WHIMBREL SOLUTION
               </div>
               <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-teal/20 bg-navy/70 p-4 backdrop-blur">

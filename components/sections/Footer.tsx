@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="mb-10 border-b border-navy-4 pb-10">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-teal/50 to-transparent" />
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Image src="/whimbrel-logo.svg" alt="Whimbrel logo" width={46} height={46} />
+            <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={46} height={46} />
             <div>
               <p className="font-cormorant text-3xl text-text">Whimbrel Solution</p>
               <p className="text-sm text-text-muted">

@@ -5,7 +5,7 @@ export default function Loading() {
     <div className="fixed inset-0 z-[120] flex items-center justify-center bg-navy">
       <div className="text-center">
         <Image
-          src="/whimbrel-logo.svg"
+          src="/whimbrel-logo.png"
           alt="Whimbrel Solution logo"
           width={84}
           height={84}

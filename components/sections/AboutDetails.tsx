@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CircleCheckBig, Eye, Globe2, Lightbulb } from "lucide-react";
+import { CircleCheckBig, Eye, Lightbulb } from "lucide-react";
 
 const values = ["Innovation", "Collaboration", "Excellence", "Transparency"];
 
@@ -8,21 +8,6 @@ const journey = [
   { year: "2023", title: "First Major Project", note: "Delivered enterprise platform with measurable business impact." },
   { year: "2024", title: "Global Expansion", note: "Scaled delivery support for international clients and teams." },
   { year: "2025", title: "AI Capability Boost", note: "Introduced practical AI solutions into product delivery." },
-];
-
-const countries = [
-  "Pakistan",
-  "UAE",
-  "USA",
-  "UK",
-  "Canada",
-  "Australia",
-  "Germany",
-  "Saudi Arabia",
-  "Qatar",
-  "Turkey",
-  "Malaysia",
-  "Netherlands",
 ];
 
 export default function AboutDetails() {
@@ -131,23 +116,6 @@ export default function AboutDetails() {
           </div>
         </div>
 
-        <div className="mt-12">
-          <h2 className="text-center font-cormorant text-5xl text-text">Global Presence</h2>
-          <p className="mt-2 text-center text-text-muted">
-            Serving clients across continents with localized support and global standards.
-          </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            {countries.map((country) => (
-              <article
-                key={country}
-                className="flex items-center gap-2 rounded-lg border border-teal/20 bg-navy-2 px-3 py-2 text-sm text-text"
-              >
-                <Globe2 size={14} className="text-teal" />
-                {country}
-              </article>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

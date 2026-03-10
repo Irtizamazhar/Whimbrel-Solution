@@ -17,7 +17,7 @@ type Lead = {
 type ChatLanguage = "roman-urdu" | "english";
 
 const starterMessage =
-  "Assalam o Alaikum! Main Whimbrel AI assistant hoon. Aap services, pricing, timeline, ya project estimate ke baray me pooch sakte hain.";
+  "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
 
 export default function AIAgent() {
   const [open, setOpen] = useState(false);
@@ -53,7 +53,7 @@ export default function AIAgent() {
       ...prev,
       {
         role: "assistant",
-        content: `Shukriya ${lead.name}! Ab aap apna sawaal pooch sakte hain. Main aapko detailed guidance dunga.`,
+        content: `✅ Shukriya ${lead.name}! Hamari team 24 ghante mein aapse contact karegi. Hum aapke project par kaam karne ke liye excited hain! Ab aap apna project idea bata sakte hain — main aapko timeline aur budget estimate de dunga.`,
       },
     ]);
   };
