@@ -16,10 +16,14 @@ export default function ContactMap() {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    let mounted = true;
+
     const init = async () => {
       const L = await import("leaflet");
 
-      const map = L.map(containerRef.current!).setView(ISLAMABAD, 14);
+      if (!containerRef.current || !mounted) return;
+
+      const map = L.map(containerRef.current).setView(ISLAMABAD, 14);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
@@ -69,9 +73,12 @@ export default function ContactMap() {
         { className: "whimbrel-popup" }
       );
 
+      if (!mounted) {
+        map.remove();
+        return;
+      }
       mapRef.current = { map, marker: officeMarker };
 
-      // Jab #location-map par aaye (e.g. Whimbrel Solution click) to map pin par focus + popup
       if (typeof window !== "undefined" && window.location.hash === "#location-map") {
         map.panTo(ISLAMABAD);
         officeMarker.openPopup();
@@ -79,6 +86,14 @@ export default function ContactMap() {
     };
 
     init();
+
+    return () => {
+      mounted = false;
+      if (mapRef.current?.map) {
+        mapRef.current.map.remove();
+        mapRef.current = null;
+      }
+    };
   }, []);
 
   // Hash change ya "Whimbrel Solution" click par map pin par focus + popup
@@ -103,9 +118,23 @@ export default function ContactMap() {
 
   return (
     <div className="space-y-3">
-      {/* Info card — address + Open in map + Directions (turn-by-turn) */}
+      {/* Click "Whimbrel Solution" → scroll to map + open pin popup */}
       <div className="rounded-lg border border-navy-4 bg-navy-2/80 p-4 shadow-sm">
-        <p className="font-cormorant text-lg font-semibold text-text">Whimbrel Solution</p>
+        <button
+          type="button"
+          onClick={() => {
+            document.getElementById("location-map")?.scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => {
+              if (mapRef.current) {
+                mapRef.current.map.panTo(ISLAMABAD);
+                mapRef.current.marker.openPopup();
+              }
+            }, 400);
+          }}
+          className="text-left font-cormorant text-lg font-semibold text-text transition hover:text-teal focus:outline-none focus:ring-2 focus:ring-teal/50 rounded"
+        >
+          Whimbrel Solution
+        </button>
         <p className="mt-1 text-sm text-text-muted">{OFFICE_ADDRESS}</p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <Link
