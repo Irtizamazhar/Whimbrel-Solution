@@ -77,7 +77,10 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="nav-link group relative text-sm tracking-wide text-text-muted transition hover:text-text"
+              className={cn(
+                "nav-link group relative inline-flex items-center gap-1.5 text-sm tracking-wide text-text-muted transition hover:text-text",
+                isActive(item) && "text-teal",
+              )}
               data-cursor="link"
               data-magnetic="true"
             >
@@ -92,7 +95,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-5 lg:flex lg:ml-12">
           <ThemeToggle />
           <Button href="/contact" variant="outline">
             Get a Quote
