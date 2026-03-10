@@ -16,8 +16,11 @@ type Lead = {
 
 type ChatLanguage = "roman-urdu" | "english";
 
-const starterMessage =
+const GREETING_URDU =
   "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
+
+const GREETING_EN =
+  "Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant! Tell me your project idea — Website, App, AI Agent, System, or Store. I'll instantly provide: Complete features list, Exact timeline, Budget estimate. What would you like to build?";
 
 export default function AIAgent() {
   const [open, setOpen] = useState(false);
@@ -27,7 +30,7 @@ export default function AIAgent() {
   const [lead, setLead] = useState<Lead>({ name: "", phone: "", email: "" });
   const [leadSaved, setLeadSaved] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: starterMessage },
+    { role: "assistant", content: GREETING_URDU },
   ]);
 
   useEffect(() => {
@@ -120,12 +123,20 @@ export default function AIAgent() {
             </span>
             <div className="flex-1">
               <p className="text-sm font-semibold text-text">Whimbrel AI Agent</p>
-              <p className="text-xs text-text-muted">Online</p>
+              <span className="inline-flex items-center gap-1.5 text-xs">
+                <span className="h-2 w-2 rounded-full bg-teal" aria-hidden />
+                <span className="text-teal font-medium">Online</span>
+              </span>
             </div>
             <div className="inline-flex rounded-lg border border-navy-4 bg-navy p-1 text-xs">
               <button
                 type="button"
-                onClick={() => setLanguage("roman-urdu")}
+                onClick={() => {
+                  setLanguage("roman-urdu");
+                  if (messages.length === 1 && messages[0].role === "assistant") {
+                    setMessages([{ role: "assistant", content: GREETING_URDU }]);
+                  }
+                }}
                 className={`rounded px-2 py-1 ${
                   language === "roman-urdu" ? "bg-teal text-navy" : "text-text-muted"
                 }`}
@@ -134,7 +145,12 @@ export default function AIAgent() {
               </button>
               <button
                 type="button"
-                onClick={() => setLanguage("english")}
+                onClick={() => {
+                  setLanguage("english");
+                  if (messages.length === 1 && messages[0].role === "assistant") {
+                    setMessages([{ role: "assistant", content: GREETING_EN }]);
+                  }
+                }}
                 className={`rounded px-2 py-1 ${
                   language === "english" ? "bg-teal text-navy" : "text-text-muted"
                 }`}

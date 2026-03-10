@@ -12,6 +12,7 @@ import ThemeToggle from "./ThemeToggle";
 const navItems = [
   { label: "Home", href: "/", path: "/" },
   { label: "About", href: "/about", path: "/about" },
+  { label: "Team", href: "/team", path: "/team" },
   { label: "Services", href: "/services", path: "/services" },
   { label: "Portfolio", href: "/portfolio", path: "/portfolio" },
   { label: "Contact", href: "/contact", path: "/contact" },

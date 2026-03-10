@@ -94,7 +94,7 @@ export default function AboutDetails() {
             <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full bg-teal/15 text-2xl font-bold text-teal">
               HK
             </div>
-            <h3 className="mt-4 text-2xl font-semibold text-text">Mr. Kaptan</h3>
+            <h3 className="mt-4 text-2xl font-semibold text-text">Mr. Junaid</h3>
             <p className="text-sm text-text-muted">Founder & CEO, AI Engineer</p>
             <p className="mt-3 text-text-muted">
               Leading innovation in software delivery, AI implementation, and digital

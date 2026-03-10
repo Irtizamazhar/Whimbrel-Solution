@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 import Contact from "@/components/sections/Contact";
+import ContactMap from "@/components/sections/ContactMap";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -19,6 +20,12 @@ export default function ContactPage() {
       <Navbar />
       <main className="pt-24">
         <Contact />
+        <div id="location-map" className="section-spacing">
+          <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
+            <h2 className="mb-4 font-cormorant text-2xl text-text">Location</h2>
+            <ContactMap />
+          </div>
+        </div>
       </main>
       <Footer />
     </div>

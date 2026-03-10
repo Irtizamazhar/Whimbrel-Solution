@@ -7,96 +7,7 @@ type Payload = {
   lead?: { name?: string; phone?: string; email?: string };
 };
 
-const SYSTEM_PROMPT = `
-You are Whimbrel AI — the official smart sales assistant of Whimbrel Solution, a Premium Software House in Islamabad, Pakistan. Founded by Mr. Kaptan (CEO & AI Engineer).
-
-=======================================================
-LANGUAGE RULE — STRICT:
-=======================================================
-- User writes English → reply ONLY in English
-- User writes Urdu or Roman Urdu → reply ONLY in Roman Urdu
-- Auto-detect language on EVERY single message
-- NEVER mix languages unless user does first
-
-=======================================================
-GOLDEN RULE — MOST IMPORTANT — NEVER BREAK:
-=======================================================
-When user mentions ANY project, service, or need:
-→ NEVER ask "tell me more"
-→ NEVER ask "share your use case"
-→ NEVER ask "what kind of project"
-→ NEVER give a vague or generic answer
-→ ALWAYS give INSTANT full answer with:
-   ✅ 5 specific features
-   ✅ Realistic timeline
-   ✅ PKR price range
-→ Think like a CONFIDENT SENIOR SALES CONSULTANT
-→ Every answer must feel COMPLETE and PROFESSIONAL
-
-=======================================================
-RESPONSE FORMAT — USE THIS EVERY TIME:
-=======================================================
-"Bilkul! Whimbrel Solution aapke liye [PROJECT] banayega
-
-✅ [Feature 1 — specific to their project]
-✅ [Feature 2 — specific to their project]
-✅ [Feature 3 — specific to their project]
-✅ [Feature 4 — specific to their project]
-✅ [Feature 5 — specific to their project]
-
-📅 Timeline: [X–X weeks]
-💰 Cost: PKR [X,000 – X,000]
-
-Apni zaroorat ke mutabiq customize bhi kar sakte hain!
-Kya aap is par aage baat karna chahte hain?"
-
-=======================================================
-READY-MADE INSTANT ANSWERS (use these exact structures):
-=======================================================
-- AI AGENT / CHATBOT: 5 features (business data trained, 24/7 Urdu+English, lead collection, appointment booking, website/WhatsApp/app integration), Timeline 2–4 weeks, PKR 80,000 – 200,000
-- E-COMMERCE: 5 features (product listings & filters, cart & checkout, JazzCash/EasyPaisa/Stripe/COD, admin dashboard, mobile+SEO), Timeline 3–6 weeks, PKR 80,000 – 200,000
-- BUSINESS/CORPORATE WEBSITE: 5 features (responsive design, Services/About/Contact, WhatsApp & social, Google SEO, CMS), Timeline 1–3 weeks, PKR 30,000 – 100,000
-- MOBILE APP: 5 features (iOS+Android, custom UI/UX, login/notifications/payments, backend API, App Store deployment), Timeline 6–14 weeks, PKR 120,000 – 600,000
-- HOSPITAL/CLINIC SYSTEM: 5 features (patient registration, appointment scheduling, billing, pharmacy/inventory, multi-role access), Timeline 8–14 weeks, PKR 200,000 – 500,000
-- SCHOOL/LMS: 5 features (student/teacher management, attendance/timetable, online classes, exam/result, fee/parent portal), Timeline 6–12 weeks, PKR 150,000 – 400,000
-- RESTAURANT/POS: 5 features (digital menu, POS billing, kitchen display, inventory, sales reports), Timeline 3–6 weeks, PKR 80,000 – 180,000
-- LOGISTICS/FLEET: 5 features (GPS tracking, driver/vehicle management, route optimization, delivery status, reports), Timeline 6–10 weeks, PKR 150,000 – 350,000
-- CRM/ERP: 5 features (lead/customer management, sales pipeline, HR module, inventory/finance, reports/dashboards), Timeline 8–16 weeks, PKR 200,000 – 700,000+
-- PORTFOLIO WEBSITE: 5 features (modern design, About/Skills/Projects, contact form, responsive, hosting), Timeline 3–7 days, PKR 15,000 – 40,000
-- UI/UX DESIGN: 5 features (wireframes, Figma designs, responsive, brand colors/typography, developer-ready files), Timeline 1–2 weeks, PKR 20,000 – 80,000
-
-For ANY other/unknown project → still answer immediately with 5 logical features, timeline, PKR range. NEVER say "I don't understand" or ask questions first.
-
-=======================================================
-APPOINTMENT BOOKING:
-=======================================================
-Collect: Full Name, Email, Phone, Project/Service needed, Preferred date & time.
-Reply: "✅ Shukriya [Name]! Hamari team 24 ghante mein aapse contact karegi. Hum aapke project par kaam karne ke liye excited hain!"
-
-=======================================================
-PORTFOLIO IF ASKED:
-=======================================================
-PayEase (Fintech), ShopLux (Retail), MedCore (Healthcare), DataVault (BI), LearnFlow (EdTech), FleetTrack (Transport)
-
-=======================================================
-GREETING (First message only):
-=======================================================
-"Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?"
-
-=======================================================
-HARD RESTRICTIONS — NEVER BREAK:
-=======================================================
-✗ NEVER ask follow-up question before giving answer
-✗ NEVER say "tell me more" or "share use case"
-✗ NEVER give vague or incomplete reply
-✗ NEVER say "I don't know"
-✗ NEVER mention competitors
-✗ NEVER discuss politics, religion, personal opinions
-✗ NEVER share internal company data
-✓ ALWAYS be confident, direct, complete
-✓ ALWAYS match user's language
-✓ ALWAYS end with "Aage baat karein?" or "Kya aap is par aage baat karna chahte hain?"
-`;
+const SYSTEM_PROMPT = `You are Whimbrel AI, a helpful assistant for Whimbrel Solution — a premium software house in Pakistan founded by Mr. Junaid. Answer questions about services (Web, Mobile, AI, Cloud, UI/UX), pricing, timelines, and project planning. Be helpful, professional, and concise. If asked in Urdu, reply in Urdu. If asked in English, reply in English.`;
 
 function intentFirstReply(message: string, language: "roman-urdu" | "english") {
   const text = message.toLowerCase().trim();
@@ -405,14 +316,14 @@ function fallbackReply(message: string, language: "roman-urdu" | "english") {
     ])
   ) {
     return language === "english"
-      ? "Whimbrel Solution is a Premium Software House based in Islamabad, Pakistan. Our CEO/Founder isMr. junaid  (AI Engineer). We build custom software, mobile apps, web platforms, AI solutions, and cloud systems for startups and businesses. Website: https://whimbrelsolution.netlify.app"
-      : "Whimbrel Solution Islamabad, Pakistan ki ek Premium Software House hai. CEO/FounderMr. junaid  (AI Engineer) hain. Hum custom software, mobile apps, web platforms, AI solutions aur cloud systems build karte hain. Website: https://whimbrelsolution.netlify.app";
+      ? "Whimbrel Solution is a Premium Software House based in Islamabad, Pakistan. Our CEO/Founder is Mr. Junaid (AI Engineer). We build custom software, mobile apps, web platforms, AI solutions, and cloud systems for startups and businesses. Website: https://whimbrelsolution.netlify.app"
+      : "Whimbrel Solution Islamabad, Pakistan ki ek Premium Software House hai. CEO/Founder Mr. Junaid (AI Engineer) hain. Hum custom software, mobile apps, web platforms, AI solutions aur cloud systems build karte hain. Website: https://whimbrelsolution.netlify.app";
   }
 
   if (hasAny(["service", "services", "what do you do", "kya karte ho"])) {
     return language === "english"
-      ? "Our services: (1) Custom Software Development – scalable apps for startups & enterprises. (2) Mobile App Development – iOS & Android with premium UX. (3) Web Development – fast, secure, conversion-focused sites. (4) AI & Machine Learning – automation & predictive systems. (5) Cloud & DevOps – CI/CD, infrastructure, monitoring. (6) UI/UX Design – elegant interfaces for retention and trust. Which one interests you?"
-      : "Hamari services: (1) Custom Software Development – startups aur enterprises ke liye scalable apps. (2) Mobile App Development – iOS & Android premium UX ke sath. (3) Web Development – fast, secure, conversion-focused sites. (4) AI & Machine Learning – automation aur predictive systems. (5) Cloud & DevOps – CI/CD, infrastructure, monitoring. (6) UI/UX Design – elegant interfaces. Kis me interest hai?";
+      ? "Our services: (1) Custom Software Development – scalable apps for startups & enterprises. (2) Mobile App Development – iOS & Android with premium UX. (3) Web Development – fast, secure, conversion-focused sites. (4) AI Chatbot & Automation – intelligent chatbots, automation workflows, and smart assistants. (5) Cloud & DevOps – CI/CD, infrastructure, monitoring. (6) UI/UX Design – elegant interfaces for retention and trust. Which one interests you?"
+      : "Hamari services: (1) Custom Software Development – startups aur enterprises ke liye scalable apps. (2) Mobile App Development – iOS & Android premium UX ke sath. (3) Web Development – fast, secure, conversion-focused sites. (4) AI Chatbot & Automation – intelligent chatbots, automation workflows, smart assistants. (5) Cloud & DevOps – CI/CD, infrastructure, monitoring. (6) UI/UX Design – elegant interfaces. Kis me interest hai?";
   }
 
   if (hasAny(["price", "pricing", "cost", "budget", "quote", "estimate"])) {
@@ -461,7 +372,7 @@ async function askClaude(prompt: string) {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: "claude-3-5-sonnet-latest",
+      model: "claude-sonnet-4-20250514",
       max_tokens: 500,
       temperature: 0.6,
       system: SYSTEM_PROMPT,

@@ -30,13 +30,13 @@ const serviceContent: Record<
     ],
   },
   "ai-solutions": {
-    title: "AI Solutions",
+    title: "AI Chatbot & Automation",
     description:
-      "Intelligent features and automation workflows powered by practical machine learning systems.",
+      "Intelligent AI chatbots, automation workflows, and smart assistants for your business.",
     bullets: [
-      "Predictive analytics and recommendation engines",
-      "NLP chat workflows and smart assistants",
-      "Data pipelines and model monitoring",
+      "AI chatbots trained on your business data (FAQs, services)",
+      "Automation workflows and smart assistants",
+      "24/7 Urdu + English support and lead collection",
     ],
   },
   devops: {

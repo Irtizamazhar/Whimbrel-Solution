@@ -109,7 +109,7 @@ export default function Contact() {
               <option>Custom Software Development</option>
               <option>Mobile App Development</option>
               <option>Web Development</option>
-              <option>AI & Machine Learning</option>
+              <option>AI Chatbot & Automation</option>
               <option>Cloud & DevOps</option>
               <option>UI/UX Design</option>
             </select>

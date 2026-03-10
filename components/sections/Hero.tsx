@@ -95,7 +95,7 @@ export default function Hero() {
             <div className="mt-4 rounded-xl border border-teal/25 bg-navy/55 p-3">
               <div className="mb-2 flex items-center gap-2">
                 <Image src="/whimbrel-logo.png" alt="Whimbrel mark" width={22} height={22} />
-                <span className="text-xs text-text">Whimbrel Cloud Stack</span>
+                <span className="text-xs text-text">Whimbrel Solution</span>
               </div>
               <div className="space-y-2">
                 <div className="h-2 rounded-full bg-teal/20">

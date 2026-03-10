@@ -6,9 +6,9 @@ export const navLinks = [
 ];
 
 export const stats = [
-  { value: 150, suffix: "+", label: "Projects Delivered" },
-  { value: 8, suffix: "+", label: "Years Experience" },
-  { value: 40, suffix: "+", label: "Expert Developers" },
+  { value: 50, suffix: "+", label: "Projects Delivered" },
+  { value: 5, suffix: "+", label: "Years Experience" },
+  { value: 20, suffix: "+", label: "Expert Developers" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
 ];
 
@@ -36,10 +36,10 @@ export const services = [
   },
   {
     number: "04",
-    icon: "🤖",
-    title: "AI & Machine Learning",
+    icon: "🧠",
+    title: "AI Chatbot & Automation",
     description:
-      "Data-driven intelligence, automation, and predictive experiences.",
+      "Intelligent AI chatbots, automation workflows, and smart assistants for your business.",
   },
   {
     number: "05",

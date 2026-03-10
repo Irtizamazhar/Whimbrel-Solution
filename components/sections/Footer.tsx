@@ -1,9 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FormEvent, useState } from "react";
+import { toast } from "sonner";
 
 const footerColumns = {
   company: [
     { label: "About", href: "/about" },
+    { label: "Team", href: "/team" },
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Blog", href: "/blog" },
@@ -13,7 +19,7 @@ const footerColumns = {
   services: [
     { label: "Custom Software", href: "/services/custom-software" },
     { label: "Mobile Apps", href: "/services/mobile-apps" },
-    { label: "AI Solutions", href: "/services/ai-solutions" },
+    { label: "AI Chatbot & Automation", href: "/services/ai-solutions" },
     { label: "DevOps", href: "/services/devops" },
   ],
   social: [
@@ -22,20 +28,87 @@ const footerColumns = {
   ],
 };
 
+function NewsletterForm() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(trimmed)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        toast.error(data.error || "Subscription failed.");
+        return;
+      }
+      toast.success("Subscribed successfully!");
+      setEmail("");
+    } catch {
+      toast.error("Subscription failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email address"
+        className="w-full border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
+        required
+        disabled={loading}
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        className="rounded-full border border-teal/50 px-4 py-2 text-sm text-teal transition hover:bg-teal/10 disabled:opacity-60"
+      >
+        {loading ? "Subscribing..." : "Subscribe"}
+      </button>
+    </form>
+  );
+}
+
 export default function Footer() {
+  const pathname = usePathname();
+  const isContactPage = pathname === "/contact";
+
   return (
     <footer className="border-t border-navy-4 bg-navy-2/60 pb-8 pt-14">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
         <div className="mb-10 border-b border-navy-4 pb-10">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-teal/50 to-transparent" />
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={46} height={46} />
-            <div>
-              <p className="font-cormorant text-3xl text-text">Whimbrel Solution</p>
-              <p className="text-sm text-text-muted">
-                Premium digital engineering for world-class products.
-              </p>
-            </div>
+            <Link
+              href={isContactPage ? "#location-map" : "/"}
+              className="flex flex-wrap items-center gap-4 transition opacity-90 hover:opacity-100"
+              scroll={isContactPage}
+              onClick={() => {
+                if (isContactPage) window.dispatchEvent(new CustomEvent("focusMap"));
+              }}
+            >
+              <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={46} height={46} />
+              <div>
+                <p className="font-cormorant text-3xl text-text">Whimbrel Solution</p>
+                <p className="text-sm text-text-muted">
+                  Premium digital engineering for world-class products.
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
 
@@ -83,25 +156,13 @@ export default function Footer() {
           </div>
           <div>
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Newsletter</p>
-            <form className="space-y-3">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="w-full border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
-              />
-              <button
-                type="button"
-                className="rounded-full border border-teal/50 px-4 py-2 text-sm text-teal transition hover:bg-teal/10"
-              >
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
 
         <div className="mt-7 flex flex-wrap items-center justify-between gap-3 text-sm text-text-muted">
           <p>© {new Date().getFullYear()} Whimbrel Solution. All rights reserved.</p>
-          <p>Made in Pakistan 🇵🇰</p>
+          <p>Made in Pakistan</p>
         </div>
       </div>
     </footer>

@@ -1,35 +1,29 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import CountUp from "react-countup";
 import { stats } from "@/lib/constants";
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
+function Counter({
+  value,
+  suffix,
+  decimals = 0,
+}: {
+  value: number;
+  suffix: string;
+  decimals?: number;
+}) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const inView = useInView(ref, { once: true, margin: "-120px" });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-
-    const duration = 2000;
-    const start = performance.now();
-    let frame = 0;
-
-    const tick = (time: number) => {
-      const progress = Math.min((time - start) / duration, 1);
-      setCount(Math.floor(progress * value));
-      if (progress < 1) frame = requestAnimationFrame(tick);
-    };
-
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [inView, value]);
 
   return (
     <span ref={ref}>
-      {count}
-      {suffix}
+      {inView ? (
+        <CountUp end={value} suffix={suffix} duration={2} decimals={decimals} />
+      ) : (
+        <>0{suffix}</>
+      )}
     </span>
   );
 }
@@ -49,7 +43,11 @@ export default function Stats() {
             data-cursor="view"
           >
             <p className="font-cormorant text-5xl leading-none text-text">
-              <Counter value={item.value} suffix={item.suffix} />
+              <Counter
+                value={item.value}
+                suffix={item.suffix}
+                decimals={item.suffix === "%" ? 0 : 0}
+              />
             </p>
             <p className="mt-2 text-sm tracking-wide text-text-muted">{item.label}</p>
           </motion.article>
