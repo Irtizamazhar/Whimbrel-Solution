@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import Button from "./Button";
 import ThemeToggle from "./ThemeToggle";
@@ -24,6 +25,9 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -112,57 +116,63 @@ export default function Navbar() {
         </button>
       </nav>
 
-      <motion.div
-        initial={false}
-        animate={{ opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none" }}
-        transition={{ duration: 0.25 }}
-        className="fixed inset-0 z-30 bg-black/45 lg:hidden"
-        onClick={() => setOpen(false)}
-      />
-
-      <motion.div
-        initial={false}
-        animate={{ x: open ? "0%" : "-100%" }}
-        transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed left-0 top-0 z-40 h-screen w-80 max-w-[86vw] border-r border-navy-4 bg-navy p-7 lg:hidden"
-      >
-        <button
-          type="button"
-          onClick={() => setOpen(false)}
-          className="absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/60 text-teal transition hover:bg-teal/10"
-          aria-label="Close menu"
-          data-magnetic="true"
-        >
-          <X size={18} />
-        </button>
-        <div className="mt-24 flex flex-col gap-5">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
+      {mounted &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <>
+            <motion.div
+              initial={false}
+              animate={{ opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none" }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-[9999] bg-black/45 lg:hidden"
               onClick={() => setOpen(false)}
-              className={cn(
-                "text-lg text-text-muted transition hover:text-text",
-                isActive(item) && "text-teal",
-              )}
-              data-cursor="link"
+            />
+            <motion.div
+              initial={false}
+              animate={{ x: open ? "0%" : "-100%" }}
+              transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed left-0 top-0 z-[9999] h-screen w-80 max-w-[86vw] border-r border-navy-4 bg-navy p-7 lg:hidden"
             >
-              {item.label}
-            </Link>
-          ))}
-          <div className="pt-2">
-            <ThemeToggle />
-          </div>
-          <Button
-            href="/contact"
-            variant="primary"
-            className="mt-4"
-            magnetic={false}
-          >
-            Get a Quote
-          </Button>
-        </div>
-      </motion.div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/60 text-teal transition hover:bg-teal/10"
+                aria-label="Close menu"
+                data-magnetic="true"
+              >
+                <X size={18} />
+              </button>
+              <div className="mt-24 flex flex-col gap-5">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "text-lg text-text-muted transition hover:text-text",
+                      isActive(item) && "text-teal",
+                    )}
+                    data-cursor="link"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <div className="pt-2">
+                  <ThemeToggle />
+                </div>
+                <Button
+                  href="/contact"
+                  variant="primary"
+                  className="mt-4"
+                  magnetic={false}
+                >
+                  Get a Quote
+                </Button>
+              </div>
+            </motion.div>
+          </>,
+          document.body,
+        )}
     </header>
   );
 }
