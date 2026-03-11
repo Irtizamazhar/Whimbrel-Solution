@@ -86,7 +86,7 @@ export default function AIAgent() {
       const data = (await response.json()) as { reply?: string };
       const reply =
         data.reply ??
-        "Sorry, AI assistant iss waqt available nahi hai. Aap WhatsApp par contact kar lein: +92 344 3807020";
+        "Sorry, AI assistant iss waqt available nahi hai. Aap WhatsApp par contact kar lein: +923363893891";
 
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch {
@@ -95,7 +95,7 @@ export default function AIAgent() {
         {
           role: "assistant",
           content:
-            "Connection issue aa gaya. Please dobara try karein ya WhatsApp par message karein: +92 344 3807020",
+            "Connection issue aa gaya. Please dobara try karein ya WhatsApp par message karein: +923363893891",
         },
       ]);
     } finally {

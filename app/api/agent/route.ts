@@ -16,7 +16,7 @@ Your job: Answer every user question clearly and helpfully. Do not give generic 
 
 - Services: Custom software, web & mobile apps, AI chatbots & automation, UI/UX, cloud & DevOps. Give specific info (features, timelines, ballpark PKR ranges) when asked.
 - For pricing/timeline: Simple site PKR 25K–100K, E-commerce PKR 80K–200K, Mobile app PKR 120K–600K+, CRM/ERP PKR 200K–700K+, Portfolio PKR 15K–40K. MVP often 4–8 weeks, larger products 8–16 weeks.
-- Contact: WhatsApp +92 344 3807020, email info@whimbrelsolutions.com.
+- Contact: WhatsApp +923363893891, email info@whimbrelsolutions.com.
 - If the user writes in Urdu/Roman Urdu, reply in Urdu. If in English, reply in English. Keep replies concise but Completed.`;
 
 function intentFirstReply(message: string, language: "roman-urdu" | "english") {
@@ -40,8 +40,8 @@ function intentFirstReply(message: string, language: "roman-urdu" | "english") {
 
   if (asksHumanTeam) {
     return language === "english"
-      ? "Absolutely. You can speak to our team directly on WhatsApp: +92 344 3807020. You can also email us at info@whimbrelsolutions.com. If you share your project type and timeline, our team will respond quickly."
-      : "Bilkul. Aap hamari team se direct WhatsApp par baat kar sakte hain: +92 344 3807020. Ya email karein: info@whimbrelsolutions.com. Aap project type aur timeline bhej dein, team jaldi response degi.";
+      ? "Absolutely. You can speak to our team directly on WhatsApp: +923363893891. You can also email us at info@whimbrelsolutions.com. If you share your project type and timeline, our team will respond quickly."
+      : "Bilkul. Aap hamari team se direct WhatsApp par baat kar sakte hain: +923363893891. Ya email karein: info@whimbrelsolutions.com. Aap project type aur timeline bhej dein, team jaldi response degi.";
   }
 
   const asksNumber = hasAny([
@@ -53,8 +53,8 @@ function intentFirstReply(message: string, language: "roman-urdu" | "english") {
   ]);
   if (asksNumber) {
     return language === "english"
-      ? "Our WhatsApp number is +92 344 3807020. You can message us there for quick support."
-      : "Hamara WhatsApp number +92 344 3807020 hai. Aap wahan direct message kar sakte hain.";
+      ? "Our WhatsApp number is +923363893891. You can message us there for quick support."
+      : "Hamara WhatsApp number +923363893891 hai. Aap wahan direct message kar sakte hain.";
   }
 
   return null;
@@ -245,8 +245,8 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["contact", "whatsapp", "call", "email", "team se bat"])) {
     return language === "english"
-      ? "You can contact our team directly on WhatsApp: +92 344 3807020, or email: info@whimbrelsolutions.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT)."
-      : "Aap hamari team se direct WhatsApp par contact karein: +92 344 3807020, ya email karein: info@whimbrelsolutions.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT).";
+      ? "You can contact our team directly on WhatsApp: +923363893891, or email: info@whimbrelsolutions.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT)."
+      : "Aap hamari team se direct WhatsApp par contact karein: +923363893891, ya email karein: info@whimbrelsolutions.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT).";
   }
 
   const asksWhat = hasAny(["kya", "what", "konsi", "kon sa", "which"]);
@@ -286,8 +286,8 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
   }
 
   return language === "english"
-    ? "I can help with services, scope, timeline, budget, and bookings. Tell me what you need, or we can connect you with our team: WhatsApp +92 344 3807020."
-    : "Main services, scope, timeline, budget aur bookings me help kar sakta hun. Batayein aapko kya chahiye, ya hamari team se connect karein: WhatsApp +92 344 3807020.";
+    ? "I can help with services, scope, timeline, budget, and bookings. Tell me what you need, or we can connect you with our team: WhatsApp +923363893891."
+    : "Main services, scope, timeline, budget aur bookings me help kar sakta hun. Batayein aapko kya chahiye, ya hamari team se connect karein: WhatsApp +923363893891.";
 }
 
 function fallbackReply(message: string, language: "roman-urdu" | "english") {
@@ -336,8 +336,8 @@ function fallbackReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["contact", "whatsapp", "call", "email"])) {
     return language === "english"
-      ? "You can contact us directly on WhatsApp: +92 344 3807020, or email: info@whimbrelsolutions.com. We're here Monday–Friday, 9 AM–6 PM (PKT)."
-      : "Aap humein WhatsApp par directly contact kar sakte hain: +92 344 3807020, ya email: info@whimbrelsolutions.com. Hum Monday–Friday, 9 AM–6 PM (PKT) available hain.";
+      ? "You can contact us directly on WhatsApp: +923363893891, or email: info@whimbrelsolutions.com. We're here Monday–Friday, 9 AM–6 PM (PKT)."
+      : "Aap humein WhatsApp par directly contact kar sakte hain: +923363893891, ya email: info@whimbrelsolutions.com. Hum Monday–Friday, 9 AM–6 PM (PKT) available hain.";
   }
 
   return smartLocalReply(message, language);

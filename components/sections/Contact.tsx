@@ -9,8 +9,8 @@ import SectionTag from "@/components/ui/SectionTag";
 
 const contactMeta = [
   { label: "Location", value: "Islamabad, Pakistan" },
-  { label: "WhatsApp", value: "+92 344 3807020" },
-  { label: "Email", value: "hello@whimbrelsolution.com" },
+  { label: "WhatsApp", value: "+923363893891" },
+  { label: "Email", value: "info@whimbrelsolutions.com" },
   { label: "Hours", value: "Mon - Fri · 9:00 AM to 6:00 PM" },
 ];
 
