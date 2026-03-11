@@ -10,19 +10,40 @@ import {
   Palette,
   Clock,
   Users,
-  HeadphonesIcon,
-  CheckCircle2,
-  Search,
-  LayoutDashboard,
-  Rocket,
+  Shield,
   ChevronRight,
+  ChevronLeft,
+  Zap,
+  Lock,
+  Database,
+  GitBranch,
+  HeadphonesIcon,
+  WifiOff,
+  Bell,
+  Store,
+  BarChart2,
+  Search,
+  FileText,
+  ShoppingCart,
+  Link as LinkIcon,
+  MessageSquare,
+  Workflow,
+  UserCheck,
+  Box,
+  Activity,
+  TrendingDown,
+  LayoutDashboard,
+  Monitor,
+  Play,
+  Package,
+  Send,
   type LucideIcon,
 } from "lucide-react";
 import type { ServicePageData } from "@/data/servicesData";
 
 const TEAL = "59, 191, 176";
 
-const iconMap: Record<string, LucideIcon> = {
+const serviceIconMap: Record<string, LucideIcon> = {
   code: Code2,
   smartphone: Smartphone,
   globe: Globe,
@@ -31,17 +52,51 @@ const iconMap: Record<string, LucideIcon> = {
   palette: Palette,
 };
 
-const processSteps = [
-  { title: "Discovery & Planning", description: "We align on goals, scope, and success metrics.", icon: Search },
-  { title: "Design & Architecture", description: "Wireframes, UX flows, and technical design.", icon: LayoutDashboard },
-  { title: "Development & Testing", description: "Sprints, code reviews, and quality assurance.", icon: Code2 },
-  { title: "Launch & Support", description: "Deployment, monitoring, and ongoing improvements.", icon: Rocket },
+const featureIconMap: Record<string, LucideIcon> = {
+  code: Code2,
+  zap: Zap,
+  lock: Lock,
+  database: Database,
+  gitBranch: GitBranch,
+  headphones: HeadphonesIcon,
+  smartphone: Smartphone,
+  wifiOff: WifiOff,
+  bell: Bell,
+  store: Store,
+  barChart: BarChart2,
+  search: Search,
+  fileText: FileText,
+  shoppingCart: ShoppingCart,
+  bot: Bot,
+  link: LinkIcon,
+  messageSquare: MessageSquare,
+  workflow: Workflow,
+  userCheck: UserCheck,
+  clock: Clock,
+  cloud: Cloud,
+  box: Box,
+  activity: Activity,
+  shield: Shield,
+  trendingDown: TrendingDown,
+  users: Users,
+  layout: LayoutDashboard,
+  monitor: Monitor,
+  play: Play,
+  package: Package,
+  send: Send,
+};
+
+const statCards = [
+  { icon: Clock, label: "Timeline", value: "2–8 Weeks" },
+  { icon: Users, label: "Team Size", value: "2–5 Experts" },
+  { icon: Shield, label: "Support", value: "Post-Launch Care" },
 ];
 
-const overviewCards = [
-  { icon: Clock, label: "Fast Delivery", sub: "2-8 weeks timeline" },
-  { icon: Users, label: "Expert Team", sub: "5+ years experience" },
-  { icon: HeadphonesIcon, label: "Full Support", sub: "Post-launch maintenance" },
+const processSteps = [
+  { title: "Discovery", description: "We understand your goals and requirements" },
+  { title: "Design", description: "Architecture, UI planning, and prototyping" },
+  { title: "Build", description: "Agile development with weekly updates" },
+  { title: "Launch", description: "Deployment, testing, and ongoing support" },
 ];
 
 type ServiceDetailContentProps = {
@@ -49,21 +104,21 @@ type ServiceDetailContentProps = {
 };
 
 export default function ServiceDetailContent({ service }: ServiceDetailContentProps) {
-  const Icon = iconMap[service.iconKey] ?? Code2;
+  const Icon = serviceIconMap[service.iconKey] ?? Code2;
 
   return (
-    <main className="pt-28">
-      {/* SECTION 1 — Hero Banner */}
+    <main className="min-h-screen overflow-x-hidden pt-24 sm:pt-28">
+      {/* SECTION 1 — Hero */}
       <section
-        className="relative overflow-hidden px-5 py-16 md:px-8 md:py-20"
+        className="relative overflow-hidden px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20"
         style={{
-          background: `linear-gradient(135deg, rgba(${TEAL}, 0.12) 0%, transparent 60%)`,
+          background: `linear-gradient(135deg, rgba(${TEAL}, 0.1) 0%, transparent 70%)`,
         }}
       >
         <div className="mx-auto max-w-[1260px]">
           <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
-              <nav className="mb-6">
+              <nav className="mb-4">
                 <Link
                   href="/services"
                   className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--teal)]"
@@ -71,11 +126,8 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                   Services <ChevronRight className="inline h-4 w-4" /> {service.title}
                 </Link>
               </nav>
-              <span className="mb-4 flex h-16 w-16 items-center justify-center text-[var(--teal)] [&>svg]:h-16 [&>svg]:w-16">
-                <Icon />
-              </span>
               <span
-                className="inline-block rounded-full px-4 py-1.5 text-sm font-semibold tracking-wider text-[var(--teal)]"
+                className="inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wider text-[var(--teal)] sm:px-4 sm:py-1.5 sm:text-sm"
                 style={{
                   background: `rgba(${TEAL}, 0.15)`,
                   border: `1px solid rgba(${TEAL}, 0.4)`,
@@ -84,33 +136,36 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
               >
                 {service.number}
               </span>
-              <h1 className="mt-4 font-cormorant text-[clamp(2.2rem,5vw,3.5rem)] font-bold leading-tight text-[var(--text)]">
+              <span className="ml-2 inline-flex h-10 w-10 items-center justify-center text-[var(--teal)] [&>svg]:h-10 [&>svg]:w-10 sm:ml-4 sm:h-12 sm:w-12 sm:[&>svg]:h-12 sm:[&>svg]:w-12">
+                <Icon />
+              </span>
+              <h1 className="mt-4 font-cormorant text-[clamp(2rem,5vw,3.25rem)] font-bold leading-tight text-[var(--text)]">
                 {service.title}
               </h1>
-              <p className="mt-3 text-lg text-[var(--teal)]">{service.tagline}</p>
-              <p className="mt-4 text-[var(--text)] opacity-90">{service.description}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <p className="mt-3 text-lg italic text-[var(--teal)]">{service.tagline}</p>
+              <p className="mt-4 text-[var(--text-muted)]">{service.description}</p>
+              <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold text-[var(--navy)] transition-all duration-300 hover:brightness-110 hover:scale-[1.02]"
+                  className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold text-[var(--navy)] transition-all duration-300 hover:brightness-110 hover:scale-[1.02]"
                   style={{
                     background: "linear-gradient(135deg, var(--teal), var(--teal-dark))",
-                    boxShadow: "0 4px 20px rgba(59, 191, 176, 0.3)",
+                    boxShadow: `0 4px 20px rgba(${TEAL}, 0.3)`,
                   }}
                 >
                   Start This Project <ChevronRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/#portfolio"
-                  className="inline-flex items-center gap-2 rounded-xl border-2 border-[var(--teal)] bg-transparent px-6 py-3.5 text-sm font-bold text-[var(--teal)] transition-all duration-300 hover:bg-[var(--teal)] hover:bg-opacity-10"
+                  href="/services"
+                  className="inline-flex items-center gap-1.5 rounded-xl border-2 border-[var(--teal)] bg-transparent px-4 py-2.5 text-sm font-bold text-[var(--teal)] transition-all duration-300 hover:bg-[var(--teal)]/10"
                 >
-                  View Portfolio <ChevronRight className="h-4 w-4" />
+                  <ChevronLeft className="h-4 w-4" /> Back to Services
                 </Link>
               </div>
             </div>
             <div className="hidden lg:block">
               <span
-                className="flex h-[180px] w-[180px] items-center justify-center text-[var(--teal)] opacity-[0.06] [&>svg]:h-[180px] [&>svg]:w-[180px]"
+                className="flex h-[200px] w-[200px] items-center justify-center text-[var(--teal)] opacity-[0.05] [&>svg]:h-[200px] [&>svg]:w-[200px]"
                 aria-hidden
               >
                 <Icon />
@@ -124,16 +179,16 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
         />
       </section>
 
-      {/* SECTION 2 — Overview Cards */}
-      <section className="px-5 py-16 md:px-8 md:py-20">
+      {/* SECTION 2 — Three stat cards */}
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1260px]">
-          <div className="grid gap-6 sm:grid-cols-3">
-            {overviewCards.map((card) => {
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+            {statCards.map((card) => {
               const CardIcon = card.icon;
               return (
                 <div
                   key={card.label}
-                  className="group rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--teal)]/50"
+                  className="rounded-[14px] border p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--teal)]/50"
                   style={{
                     background: "var(--navy-2)",
                     borderColor: `rgba(${TEAL}, 0.2)`,
@@ -142,11 +197,11 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                   <span className="flex h-12 w-12 items-center justify-center text-[var(--teal)] [&>svg]:h-8 [&>svg]:w-8">
                     <CardIcon />
                   </span>
-                <h3 className="mt-4 font-cormorant text-xl font-bold text-[var(--text)]">
-                  {card.label}
-                </h3>
-                <p className="mt-1 text-sm text-[var(--text-muted)]">{card.sub}</p>
-              </div>
+                  <h3 className="mt-4 font-cormorant text-xl font-bold text-[var(--text)]">
+                    {card.label}
+                  </h3>
+                  <p className="mt-1 text-sm text-[var(--text-muted)]">{card.value}</p>
+                </div>
               );
             })}
           </div>
@@ -154,97 +209,94 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 3 — What We Offer */}
-      <section className="px-5 py-16 md:px-8 md:py-20">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1260px]">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:gap-12">
             <div>
               <p
-                className="text-xs font-semibold uppercase tracking-[0.2em]"
-                style={{ color: "var(--teal)" }}
+                className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--teal)]"
               >
                 What We Offer
               </p>
               <h2 className="mt-3 font-cormorant text-[clamp(1.75rem,3vw,2.25rem)] font-bold leading-tight text-[var(--text)]">
-                Everything you need, nothing you don&apos;t.
+                Everything you need, built right.
               </h2>
               <p className="mt-4 text-[var(--text)] opacity-90">
                 We focus on deliverables that move the needle: clear scope, modern stack, and ongoing support so your product keeps improving after launch.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-              {service.features.map((f) => (
-                <div
-                  key={f.title}
-                  className="group rounded-xl border-l-4 border-[var(--teal)] bg-[var(--navy-2)] p-5 transition-all duration-300 hover:shadow-[0_0_24px_rgba(59,191,176,0.12)]"
-                  style={{ borderLeftColor: "var(--teal)" }}
-                >
-                  <CheckCircle2 className="h-6 w-6 text-[var(--teal)]" />
-                  <h3 className="mt-3 font-cormorant text-lg font-bold text-[var(--text)]">
-                    {f.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-[var(--text-muted)]">{f.description}</p>
-                </div>
-              ))}
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-5">
+              {service.features.map((f) => {
+                const FeatureIcon = featureIconMap[f.iconKey] ?? Code2;
+                return (
+                  <div
+                    key={f.title}
+                    className="rounded-xl border-l-[3px] border-[var(--teal)] bg-[var(--navy-2)] p-4 transition-all duration-300 hover:translate-x-1 hover:bg-[var(--navy-3)] hover:shadow-[0_0_24px_rgba(59,191,176,0.12)] sm:p-5"
+                  >
+                    <FeatureIcon className="h-5 w-5 text-[var(--teal)] sm:h-6 sm:w-6" />
+                    <h3 className="mt-2 font-cormorant text-base font-bold text-[var(--text)] sm:mt-3 sm:text-lg">
+                      {f.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">{f.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
       {/* SECTION 4 — Our Process */}
-      <section className="px-5 py-16 md:px-8 md:py-20">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1260px]">
-          <h2 className="font-cormorant text-[clamp(1.75rem,3vw,2.25rem)] font-bold text-[var(--text)]">
+          <h2 className="text-center font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-[var(--text)]">
             How We Work
           </h2>
-          <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-start md:gap-4">
-            {processSteps.map((step, i) => {
-              const StepIcon = step.icon;
-              return (
-              <div key={step.title} className="relative flex flex-1 flex-col items-center text-center md:items-start md:text-left">
+          <div className="mt-8 flex flex-col gap-6 sm:gap-8 md:mt-10 md:flex-row md:items-start md:justify-between md:gap-4">
+            {processSteps.map((step, i) => (
+              <div
+                key={step.title}
+                className="relative flex flex-1 flex-col items-center text-center md:items-start md:text-left"
+              >
                 {i < processSteps.length - 1 && (
                   <div
-                    className="absolute left-1/2 top-6 hidden h-0.5 w-full border-b-2 border-dashed border-[var(--teal)] opacity-40 md:left-[calc(50%+28px)] md:block md:w-[calc(100%-56px)]"
+                    className="absolute left-1/2 top-7 hidden h-0.5 w-full border-b-2 border-dashed border-[var(--teal)] opacity-40 md:left-[calc(50%+28px)] md:block md:w-[calc(100%-56px)]"
                     aria-hidden
                   />
                 )}
                 <span
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-[var(--teal)]"
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold text-[var(--teal)]"
                   style={{
                     background: `rgba(${TEAL}, 0.15)`,
                     border: `2px solid rgba(${TEAL}, 0.4)`,
                   }}
                 >
-                  <StepIcon className="h-6 w-6" />
+                  {i + 1}
                 </span>
-                <span className="mt-4 block text-sm font-bold text-[var(--teal)]">
-                  Step {i + 1}
-                </span>
-                <h3 className="mt-1 font-cormorant text-lg font-bold text-[var(--text)]">
+                <h3 className="mt-4 font-cormorant text-lg font-bold text-[var(--text)]">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-sm text-[var(--text-muted)]">{step.description}</p>
               </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
 
       {/* SECTION 5 — Tech Stack */}
-      <section className="px-5 py-16 md:px-8 md:py-20">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-[1260px]">
-          <h2 className="font-cormorant text-[clamp(1.75rem,3vw,2.25rem)] font-bold text-[var(--text)]">
+          <h2 className="font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-[var(--text)]">
             Technologies We Use
           </h2>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
             {service.tech.map((t) => (
               <span
                 key={t}
-                className="rounded-full px-5 py-2 text-sm font-semibold tracking-wide text-[var(--teal)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_16px_rgba(59,191,176,0.25)]"
+                className="rounded-full px-3 py-1.5 text-xs font-semibold text-[var(--teal)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_16px_rgba(59,191,176,0.25)] sm:px-[18px] sm:py-2 sm:text-sm"
                 style={{
                   background: `rgba(${TEAL}, 0.08)`,
-                  border: `1px solid rgba(${TEAL}, 0.35)`,
-                  boxShadow: "none",
+                  border: `1px solid rgba(${TEAL}, 0.3)`,
                 }}
               >
                 {t}
@@ -255,30 +307,30 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 6 — CTA Banner */}
-      <section className="px-5 pb-20 md:px-8 md:pb-28">
+      <section className="px-4 pb-16 md:px-8 md:pb-28">
         <div className="mx-auto max-w-[1260px]">
           <div
-            className="flex flex-col items-center justify-center rounded-2xl border px-8 py-16 text-center md:py-20"
+            className="flex flex-col items-center justify-center rounded-2xl border px-4 py-12 text-center sm:px-6 sm:py-16 md:rounded-[20px] md:px-8 md:py-20"
             style={{
-              background: `linear-gradient(135deg, rgba(${TEAL}, 0.15), rgba(0,0,0,0))`,
+              background: `linear-gradient(135deg, rgba(${TEAL}, 0.12), transparent)`,
               borderColor: `rgba(${TEAL}, 0.2)`,
             }}
           >
             <h2 className="font-cormorant text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[var(--text)]">
-              Ready to Build Something Great?
+              Ready to Start?
             </h2>
             <p className="mt-4 max-w-xl text-[var(--text-muted)]">
-              Let&apos;s discuss your project and find the best approach.
+              Tell us about your project and we will get back within 24 hours.
             </p>
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-[var(--navy)] transition-all duration-300 hover:brightness-110 hover:scale-[1.02]"
+              className="mt-8 inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-[var(--navy)] transition-all duration-300 hover:brightness-110 hover:scale-[1.02] hover:shadow-[0_8px_32px_rgba(59,191,176,0.35)]"
               style={{
                 background: "linear-gradient(135deg, var(--teal), var(--teal-dark))",
                 boxShadow: "0 8px 32px rgba(59, 191, 176, 0.35)",
               }}
             >
-              Get a Free Consultation <ChevronRight className="h-5 w-5" />
+              Get a Free Quote <ChevronRight className="h-5 w-5" />
             </Link>
           </div>
         </div>

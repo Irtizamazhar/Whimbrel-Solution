@@ -8,7 +8,7 @@ import SectionTag from "@/components/ui/SectionTag";
 
 const contactMeta = [
   { label: "Location", value: "Islamabad, Pakistan" },
-  { label: "WhatsApp", value: "+92 334 0007247" },
+  { label: "WhatsApp", value: "+92 344 3807020" },
   { label: "Email", value: "info@whimbrelsolutions.com" },
   { label: "Hours", value: "Mon - Fri · 9:00 AM to 6:00 PM" },
 ];
@@ -50,7 +50,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-spacing">
-      <div className="mx-auto grid w-full max-w-[1260px] gap-12 px-5 md:px-8 lg:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-[1260px] gap-8 px-4 sm:gap-12 sm:px-5 md:px-8 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -82,7 +82,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           onSubmit={onSubmit}
-          className="rounded-3xl border border-navy-4 bg-navy-2/75 p-6 md:p-8"
+          className="rounded-2xl border border-navy-4 bg-navy-2/75 p-4 sm:rounded-3xl sm:p-6 md:p-8"
         >
           <div className="grid gap-6 md:grid-cols-2">
             <label className="form-field">

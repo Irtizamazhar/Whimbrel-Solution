@@ -28,7 +28,7 @@ const features = [
 export default function About() {
   return (
     <section id="about" className="section-spacing">
-      <div className="mx-auto grid w-full max-w-[1260px] items-center gap-14 px-5 md:px-8 lg:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-[1260px] items-center gap-10 px-4 sm:gap-14 sm:px-5 md:px-8 lg:grid-cols-2">
         <motion.div
           variants={slideFromLeft}
           initial="hidden"

@@ -76,7 +76,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased min-w-0`}>
+      <body className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased min-w-0 overflow-x-hidden`}>
         <ClientEffects />
         {children}
       </body>

@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden pb-12 pt-24"
+      className="relative flex min-h-screen items-center overflow-hidden pb-8 pt-20 sm:pb-10 sm:pt-24"
     >
       <div className="hero-noise pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_42%,rgba(59,191,176,0.06),transparent_42%)]" />
@@ -35,7 +35,7 @@ export default function Hero() {
         />
       ))}
 
-      <div className="relative mx-auto grid w-full max-w-[1260px] gap-14 px-5 md:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative mx-auto grid w-full max-w-[1260px] gap-10 px-4 sm:gap-14 sm:px-5 md:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -44,7 +44,7 @@ export default function Hero() {
         >
           <motion.div
             variants={fadeUp}
-            className="inline-flex items-center gap-3 rounded-full border border-teal/25 bg-teal-glow px-4 py-2 text-xs uppercase tracking-[0.2em] text-text-muted"
+            className="inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal-glow px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-text-muted sm:gap-3 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.2em]"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-teal" />
             Premium Software House · Pakistan
@@ -70,7 +70,7 @@ export default function Hero() {
             accelerate growth and create lasting competitive advantage.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mb-6 flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="mb-4 flex flex-wrap gap-3 sm:mb-6 sm:gap-4">
             <Button href="#portfolio">View Our Work</Button>
             <Button href="#contact" variant="outline">
               Start a Project →

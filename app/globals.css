@@ -148,6 +148,16 @@ header::-webkit-scrollbar {
   scrollbar-color: rgba(59, 191, 176, 0.45) transparent;
 }
 
+/* Hide main document scrollbar (user preference) */
+html,
+body {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 img, video, iframe {
   max-width: 100%;
 }

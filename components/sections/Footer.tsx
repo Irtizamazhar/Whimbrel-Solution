@@ -88,23 +88,23 @@ export default function Footer() {
   const isContactPage = pathname === "/contact";
 
   return (
-    <footer className="border-t border-navy-4 bg-navy-2/60 pb-8 pt-14">
-      <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
-        <div className="mb-10 border-b border-navy-4 pb-10">
+    <footer className="border-t border-navy-4 bg-navy-2/60 pb-6 pt-10 sm:pb-8 sm:pt-14">
+      <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-5 md:px-8">
+        <div className="mb-8 border-b border-navy-4 pb-8 sm:mb-10 sm:pb-10">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-teal/50 to-transparent" />
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
             <Link
               href={isContactPage ? "#location-map" : "/"}
-              className="flex flex-wrap items-center gap-4 transition opacity-90 hover:opacity-100"
+              className="flex flex-wrap items-center gap-3 transition opacity-90 hover:opacity-100 sm:gap-4"
               scroll={isContactPage}
               onClick={() => {
                 if (isContactPage) window.dispatchEvent(new CustomEvent("focusMap"));
               }}
             >
-              <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={46} height={46} />
-              <div>
-                <p className="font-cormorant text-3xl text-text">Whimbrel Solution</p>
-                <p className="text-sm text-text-muted">
+              <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={40} height={40} className="h-9 w-9 sm:h-[46px] sm:w-[46px]" />
+              <div className="min-w-0">
+                <p className="font-cormorant text-xl text-text sm:text-3xl">Whimbrel Solution</p>
+                <p className="text-xs text-text-muted sm:text-sm">
                   Premium digital engineering for world-class products.
                 </p>
               </div>
@@ -112,7 +112,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-8 border-b border-navy-4 pb-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 border-b border-navy-4 pb-8 sm:gap-8 sm:pb-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Company</p>
             <ul className="space-y-2">
@@ -160,7 +160,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-7 flex flex-wrap items-center justify-between gap-3 text-sm text-text-muted">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-xs text-text-muted sm:mt-7 sm:gap-3 sm:text-sm">
           <p>© {new Date().getFullYear()} Whimbrel Solution. All rights reserved.</p>
           <p>Made in Pakistan</p>
         </div>
