@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
+import CareersOpenPositions from "@/components/careers/CareersOpenPositions";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -179,35 +180,7 @@ export default function CareersPage() {
           </div>
         </section>
 
-        <section id="positions">
-          <h2 className="mb-6 font-cormorant text-[clamp(2.1rem,5vw,3.2rem)]">Open Positions</h2>
-          <div className="space-y-4">
-            {positions.map((job) => (
-              <article
-                key={job.title}
-                className="rounded-2xl border border-teal/20 bg-navy-2 p-6 transition hover:border-teal/60"
-              >
-                <div className="flex flex-wrap items-center gap-3">
-                  <h3 className="font-cormorant text-4xl leading-none text-text">{job.title}</h3>
-                  <span className="rounded-full bg-teal/15 px-3 py-1 text-xs uppercase tracking-[0.12em] text-teal">
-                    {job.department}
-                  </span>
-                </div>
-                <p className="mt-2 text-sm text-text-muted">
-                  {job.location} · {job.type}
-                </p>
-                <p className="mt-3 max-w-3xl text-text-muted">{job.description}</p>
-                <Link
-                  href={`/contact?position=${encodeURIComponent(job.title)}`}
-                  className="mt-4 inline-flex rounded-full border border-teal/60 px-5 py-2 text-sm font-semibold text-teal transition hover:bg-teal hover:text-navy"
-                  data-magnetic="true"
-                >
-                  Apply Now
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
+        <CareersOpenPositions positions={positions} />
       </main>
 
       <Footer />

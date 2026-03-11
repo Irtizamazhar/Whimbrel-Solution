@@ -1,19 +1,19 @@
 import type { MetadataRoute } from "next";
 import { portfolioProjects } from "@/lib/constants";
+import { getAllServiceSlugs } from "@/data/servicesData";
+import { getAllBlogSlugs } from "@/data/blog";
 import { siteUrl } from "@/lib/seo";
 
 const staticRoutes = [
   "",
   "/about",
+  "/team",
   "/services",
   "/portfolio",
   "/blog",
   "/careers",
   "/contact",
-  "/services/custom-software",
-  "/services/mobile-apps",
-  "/services/ai-solutions",
-  "/services/devops",
+  ...getAllServiceSlugs().map((slug) => `/services/${slug}`),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,5 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...portfolioEntries];
+  const blogEntries = getAllBlogSlugs().map((slug) => ({
+    url: `${siteUrl}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...portfolioEntries, ...blogEntries];
 }

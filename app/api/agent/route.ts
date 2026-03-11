@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { rateLimit } from "@/lib/rateLimit";
+
+const AGENT_RATE_LIMIT = 30;
 
 type Payload = {
   message?: string;
@@ -13,7 +16,7 @@ Your job: Answer every user question clearly and helpfully. Do not give generic 
 
 - Services: Custom software, web & mobile apps, AI chatbots & automation, UI/UX, cloud & DevOps. Give specific info (features, timelines, ballpark PKR ranges) when asked.
 - For pricing/timeline: Simple site PKR 25K–100K, E-commerce PKR 80K–200K, Mobile app PKR 120K–600K+, CRM/ERP PKR 200K–700K+, Portfolio PKR 15K–40K. MVP often 4–8 weeks, larger products 8–16 weeks.
-- Contact: WhatsApp +92 344 3807020, email hello@whimbrelsolution.com.
+- Contact: WhatsApp +92 344 3807020, email info@whimbrelsolutions.com.
 - If the user writes in Urdu/Roman Urdu, reply in Urdu. If in English, reply in English. Keep replies concise but Completed.`;
 
 function intentFirstReply(message: string, language: "roman-urdu" | "english") {
@@ -37,8 +40,8 @@ function intentFirstReply(message: string, language: "roman-urdu" | "english") {
 
   if (asksHumanTeam) {
     return language === "english"
-      ? "Absolutely. You can speak to our team directly on WhatsApp: +92 344 3807020. You can also email us at hello@whimbrelsolution.com. If you share your project type and timeline, our team will respond quickly."
-      : "Bilkul. Aap hamari team se direct WhatsApp par baat kar sakte hain: +92 344 3807020. Ya email karein: hello@whimbrelsolution.com. Aap project type aur timeline bhej dein, team jaldi response degi.";
+      ? "Absolutely. You can speak to our team directly on WhatsApp: +92 344 3807020. You can also email us at info@whimbrelsolutions.com. If you share your project type and timeline, our team will respond quickly."
+      : "Bilkul. Aap hamari team se direct WhatsApp par baat kar sakte hain: +92 344 3807020. Ya email karein: info@whimbrelsolutions.com. Aap project type aur timeline bhej dein, team jaldi response degi.";
   }
 
   const asksNumber = hasAny([
@@ -242,8 +245,8 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["contact", "whatsapp", "call", "email", "team se bat"])) {
     return language === "english"
-      ? "You can contact our team directly on WhatsApp: +92 344 3807020, or email: hello@whimbrelsolution.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT)."
-      : "Aap hamari team se direct WhatsApp par contact karein: +92 344 3807020, ya email karein: hello@whimbrelsolution.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT).";
+      ? "You can contact our team directly on WhatsApp: +92 344 3807020, or email: info@whimbrelsolutions.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT)."
+      : "Aap hamari team se direct WhatsApp par contact karein: +92 344 3807020, ya email karein: info@whimbrelsolutions.com. Working hours: Monday–Friday, 9 AM–6 PM (PKT).";
   }
 
   const asksWhat = hasAny(["kya", "what", "konsi", "kon sa", "which"]);
@@ -333,8 +336,8 @@ function fallbackReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["contact", "whatsapp", "call", "email"])) {
     return language === "english"
-      ? "You can contact us directly on WhatsApp: +92 344 3807020, or email: hello@whimbrelsolution.com. We're here Monday–Friday, 9 AM–6 PM (PKT)."
-      : "Aap humein WhatsApp par directly contact kar sakte hain: +92 344 3807020, ya email: hello@whimbrelsolution.com. Hum Monday–Friday, 9 AM–6 PM (PKT) available hain.";
+      ? "You can contact us directly on WhatsApp: +92 344 3807020, or email: info@whimbrelsolutions.com. We're here Monday–Friday, 9 AM–6 PM (PKT)."
+      : "Aap humein WhatsApp par directly contact kar sakte hain: +92 344 3807020, ya email: info@whimbrelsolutions.com. Hum Monday–Friday, 9 AM–6 PM (PKT) available hain.";
   }
 
   return smartLocalReply(message, language);
@@ -425,6 +428,13 @@ async function askOpenAI(prompt: string) {
 
 export async function POST(request: Request) {
   try {
+    const limit = rateLimit(request, AGENT_RATE_LIMIT);
+    if (!limit.ok) {
+      return NextResponse.json(
+        { reply: "Too many messages. Please wait a moment before sending again." },
+        { status: 429, headers: limit.retryAfter ? { "Retry-After": String(limit.retryAfter) } : undefined }
+      );
+    }
     const body = (await request.json()) as Payload;
     const message = body.message?.trim();
     const language = body.language === "english" ? "english" : "roman-urdu";

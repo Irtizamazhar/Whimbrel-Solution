@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 import Contact from "@/components/sections/Contact";
@@ -19,7 +20,9 @@ export default function ContactPage() {
     <div className="bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
       <main className="pt-24">
-        <Contact />
+        <Suspense fallback={<div className="section-spacing" />}>
+          <Contact />
+        </Suspense>
         <div id="location-map" className="section-spacing">
           <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
             <h2 className="mb-4 font-cormorant text-2xl text-text">Location</h2>

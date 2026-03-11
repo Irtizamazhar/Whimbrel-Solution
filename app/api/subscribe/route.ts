@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { rateLimit } from "@/lib/rateLimit";
 
 const SUBSCRIBERS_FILE = "data/subscribers.json";
+const SUBSCRIBE_RATE_LIMIT = 5;
 
 function isValidEmail(email: string): boolean {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -11,6 +13,13 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: Request) {
   try {
+    const limit = rateLimit(request, SUBSCRIBE_RATE_LIMIT);
+    if (!limit.ok) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: limit.retryAfter ? { "Retry-After": String(limit.retryAfter) } : undefined }
+      );
+    }
     const body = await request.json();
     const email = typeof body.email === "string" ? body.email.trim() : "";
 

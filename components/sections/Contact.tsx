@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -9,12 +10,14 @@ import SectionTag from "@/components/ui/SectionTag";
 const contactMeta = [
   { label: "Location", value: "Islamabad, Pakistan" },
   { label: "WhatsApp", value: "+92 344 3807020" },
-  { label: "Email", value: "info@whimbrelsolutions.com" },
+  { label: "Email", value: "hello@whimbrelsolution.com" },
   { label: "Hours", value: "Mon - Fri · 9:00 AM to 6:00 PM" },
 ];
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
+  const position = searchParams.get("position");
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,11 +39,11 @@ export default function Contact() {
       `Name: ${name}`,
       `Email: ${email}`,
       `Phone: ${phone}`,
-      `Service: ${service}`,
+      position ? `Applying for position: ${position}` : `Service: ${service}`,
       `Project Details: ${details}`,
     ].join("\n");
 
-    const whatsappUrl = `https://wa.me/923340007247?text=${encodeURIComponent(text)}`;
+    const whatsappUrl = `https://wa.me/923443807020?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
     setLoading(false);
@@ -84,6 +87,11 @@ export default function Contact() {
           onSubmit={onSubmit}
           className="rounded-2xl border border-navy-4 bg-navy-2/75 p-4 sm:rounded-3xl sm:p-6 md:p-8"
         >
+          {position && (
+            <p className="mb-4 rounded-lg border border-teal/30 bg-teal-glow px-4 py-2 text-sm text-teal">
+              Applying for: <span className="font-semibold text-text">{position}</span>
+            </p>
+          )}
           <div className="grid gap-6 md:grid-cols-2">
             <label className="form-field">
               Name
@@ -102,7 +110,7 @@ export default function Contact() {
 
           <label className="form-field mt-6">
             Service
-            <select required name="service" defaultValue="">
+            <select required={!position} name="service" defaultValue="">
               <option value="" disabled>
                 Select a service
               </option>
