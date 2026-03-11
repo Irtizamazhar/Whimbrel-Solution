@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="relative flex min-h-screen items-center overflow-hidden pb-12 pt-24"
     >
       <div className="hero-noise pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_42%,rgba(59,191,176,0.06),transparent_42%)]" />
@@ -54,11 +54,11 @@ export default function Hero() {
             variants={fadeUp}
             className="font-cormorant text-[clamp(3.1rem,9vw,5.5rem)] leading-[0.95] text-text"
           >
-            We Engineer
+            Innovating Digital
             <br />
-            <span className="text-teal italic">Digital</span>
+            <span className="text-teal italic">Solutions</span>
             <br />
-            Excellence
+            for a Smarter Future
           </motion.h1>
 
           <motion.p
@@ -70,7 +70,7 @@ export default function Hero() {
             accelerate growth and create lasting competitive advantage.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="mb-6 flex flex-wrap gap-4">
             <Button href="#portfolio">View Our Work</Button>
             <Button href="#contact" variant="outline">
               Start a Project →

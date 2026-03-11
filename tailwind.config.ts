@@ -18,8 +18,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        cormorant: ["Cormorant Garamond", "serif"],
-        nunito: ["Nunito Sans", "sans-serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       animation: {
         float: "float 6s ease-in-out infinite",

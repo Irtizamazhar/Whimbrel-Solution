@@ -12,7 +12,7 @@ const journey = [
 
 export default function AboutDetails() {
   return (
-    <section className="section-spacing">
+    <section className="section-spacing pt-8 md:pt-12">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
         <div className="rounded-3xl border border-teal/20 bg-navy-2 p-8 text-center md:p-12">
           <h1 className="font-cormorant text-[clamp(2.4rem,6vw,4.2rem)] text-text">About Whimbrel Solution</h1>
@@ -94,7 +94,7 @@ export default function AboutDetails() {
             <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full bg-teal/15 text-2xl font-bold text-teal">
               HK
             </div>
-            <h3 className="mt-4 text-2xl font-semibold text-text">Mr. Junaid</h3>
+            <h3 className="mt-4 text-2xl font-semibold text-text">Mr.Irtiza Mazhar</h3>
             <p className="text-sm text-text-muted">Founder & CEO, AI Engineer</p>
             <p className="mt-3 text-text-muted">
               Leading innovation in software delivery, AI implementation, and digital

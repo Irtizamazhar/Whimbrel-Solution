@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { WashingMachine } from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { portfolioProjects } from "@/lib/constants";
 import { fadeUp, stagger } from "@/lib/animations";
@@ -35,9 +36,13 @@ export default function Portfolio() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
-          {portfolioProjects.map((project) => (
+          {portfolioProjects.map((project) => {
+            const projectWithBadge = project as typeof project & { badge?: string; iconLucide?: string };
+            const pillLabel = projectWithBadge.badge ?? project.category;
+            const showWashingIcon = project.slug === "my-laundry-thai" && projectWithBadge.iconLucide === "WashingMachine";
+            return (
             <motion.div
-              key={project.name}
+              key={project.slug}
               variants={fadeUp}
               className="group relative min-h-[260px] overflow-hidden rounded-2xl border border-navy-4 bg-navy-2 p-6"
               data-cursor="view"
@@ -48,10 +53,14 @@ export default function Portfolio() {
                 className="absolute inset-0 z-10"
               />
               <span className="absolute inset-0 flex items-center justify-center text-8xl opacity-[0.08]">
-                {project.icon}
+                {showWashingIcon ? (
+                  <WashingMachine className="h-24 w-24" strokeWidth={1.5} />
+                ) : (
+                  project.icon
+                )}
               </span>
               <span className="relative inline-flex rounded-full border border-teal/30 bg-teal-glow px-3 py-1 text-xs uppercase tracking-[0.16em] text-teal">
-                {project.category}
+                {pillLabel}
               </span>
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="absolute bottom-0 left-0 right-0 translate-y-3 p-6 transition duration-300 group-hover:translate-y-0">
@@ -64,7 +73,8 @@ export default function Portfolio() {
               </div>
               <span className="absolute inset-0 rounded-2xl border border-transparent transition group-hover:border-teal/60 group-hover:shadow-[0_0_30px_rgba(59,191,176,0.2)]" />
             </motion.div>
-          ))}
+          );
+          })}
         </motion.div>
       </div>
     </section>

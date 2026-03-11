@@ -92,7 +92,7 @@ export default function About() {
                 WHIMBREL SOLUTION
               </div>
               <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-teal/20 bg-navy/70 p-4 backdrop-blur">
-                <p className="font-semibold text-text">Mr. Junaid</p>
+                <p className="font-semibold text-text">Mr.Irtiza Mazhar</p>
                 <p className="text-sm text-text-muted">Founder & CEO, AI Engineer</p>
                 <p className="mt-2 text-sm text-text-muted">
                   Leading innovation in digital transformation, software delivery,

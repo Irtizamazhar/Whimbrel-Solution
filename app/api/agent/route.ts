@@ -7,7 +7,14 @@ type Payload = {
   lead?: { name?: string; phone?: string; email?: string };
 };
 
-const SYSTEM_PROMPT = `You are Whimbrel AI, a helpful assistant for Whimbrel Solution — a premium software house in Pakistan founded by Mr. Junaid. Answer questions about services (Web, Mobile, AI, Cloud, UI/UX), pricing, timelines, and project planning. Be helpful, professional, and concise. If asked in Urdu, reply in Urdu. If asked in English, reply in English.`;
+const SYSTEM_PROMPT = `You are Whimbrel AI, the chat assistant for Whimbrel Solution — a premium software house in Islamabad, Pakistan, founded by Mr.Irtiza Mazhar (CEO, AI Engineer).
+
+Your job: Answer every user question clearly and helpfully. Do not give generic replies like "tell me more" or "describe your project" when you can answer directly.
+
+- Services: Custom software, web & mobile apps, AI chatbots & automation, UI/UX, cloud & DevOps. Give specific info (features, timelines, ballpark PKR ranges) when asked.
+- For pricing/timeline: Simple site PKR 25K–100K, E-commerce PKR 80K–200K, Mobile app PKR 120K–600K+, CRM/ERP PKR 200K–700K+, Portfolio PKR 15K–40K. MVP often 4–8 weeks, larger products 8–16 weeks.
+- Contact: WhatsApp +92 334 0007247, email hello@whimbrelsolution.com.
+- If the user writes in Urdu/Roman Urdu, reply in Urdu. If in English, reply in English. Keep replies concise but Completed.`;
 
 function intentFirstReply(message: string, language: "roman-urdu" | "english") {
   const text = message.toLowerCase().trim();
@@ -48,26 +55,6 @@ function intentFirstReply(message: string, language: "roman-urdu" | "english") {
   }
 
   return null;
-}
-
-function isLowValueReply(text: string) {
-  const normalized = text.toLowerCase();
-  return (
-    normalized.includes("i understand your question") ||
-    normalized.includes("main aapka sawal samajh gaya") ||
-    normalized.includes("share your project idea in 2-3 lines") ||
-    normalized.includes("tell me your goal in one line") ||
-    normalized.includes("i don't know") ||
-    normalized.includes("i do not know") ||
-    normalized.includes("tell me more about") ||
-    normalized.includes("what do you want to build") ||
-    normalized.includes("describe your project") ||
-    normalized.includes("can you describe more") ||
-    normalized.includes("share your use case") ||
-    normalized.includes("what kind of project") ||
-    normalized.includes("could you tell me more") ||
-    normalized.includes("can you elaborate")
-  );
 }
 
 function smartLocalReply(message: string, language: "roman-urdu" | "english") {
@@ -171,8 +158,8 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
 
   if (hasAny(["hello", "hi", "assalam", "salam", "aoa", "hey"])) {
     return language === "english"
-      ? "Assalam o Alaikum! Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant. Share your project idea — Website, App, AI Agent, System, or Store. I'll give you right away: complete features list, exact timeline, and budget estimate. What do you want to build?"
-      : "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
+      ? "Assalam o Alaikum! Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant. Share your project idea — Website, App, AI Agent, System, or Store. I'll give you right away: Completed features list, exact timeline, and budget estimate. What do you want to build?"
+      : "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Completed features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
   }
 
   if (hasAny(["thank", "jazak", "shukria", "shukriya"])) {
@@ -199,10 +186,10 @@ function smartLocalReply(message: string, language: "roman-urdu" | "english") {
       : "Hamare blog me technology, design aur company updates hain. Aap batayein kis topic me interest hai, main best article recommend kar deta hoon.";
   }
 
-  if (hasAny(["portfolio", "project", "payease", "shoplux", "medcore", "datavault", "learnflow", "fleettrack", "work", "projects"])) {
+  if (hasAny(["portfolio", "project", "cts", "my laundry", "onmart", "one dollar shop", "work", "projects"])) {
     return language === "english"
-      ? "Our portfolio includes projects like PayEase, ShopLux, MedCore, DataVault, LearnFlow, FleetTrack and more. You can view case studies on our website or I can tell you about a specific project — which one interests you?"
-      : "Hamare portfolio me PayEase, ShopLux, MedCore, DataVault, LearnFlow, FleetTrack jaisi projects hain. Aap website par case studies dekh sakte hain ya main kisi specific project ke baare me bata sakta hun — kis me interest hai?";
+      ? "Our portfolio includes projects like CTS (Candidates Testing Services), My Laundry (Bangkok), OnMart, and One Dollar Shop. You can view case studies on our website or I can tell you about a specific project — which one interests you?"
+      : "Hamare portfolio me CTS, My Laundry, OnMart aur One Dollar Shop jaisi projects hain. Aap website par case studies dekh sakte hain ya main kisi specific project ke baare me bata sakta hun — kis me interest hai?";
   }
 
   if (hasAny(["frontend", "react", "next", "next.js", "web app"])) {
@@ -316,8 +303,8 @@ function fallbackReply(message: string, language: "roman-urdu" | "english") {
     ])
   ) {
     return language === "english"
-      ? "Whimbrel Solution is a Premium Software House based in Islamabad, Pakistan. Our CEO/Founder is Mr. Junaid (AI Engineer). We build custom software, mobile apps, web platforms, AI solutions, and cloud systems for startups and businesses. Website: https://whimbrelsolution.netlify.app"
-      : "Whimbrel Solution Islamabad, Pakistan ki ek Premium Software House hai. CEO/Founder Mr. Junaid (AI Engineer) hain. Hum custom software, mobile apps, web platforms, AI solutions aur cloud systems build karte hain. Website: https://whimbrelsolution.netlify.app";
+      ? "Whimbrel Solution is a Premium Software House based in Islamabad, Pakistan. Our CEO/Founder is Mr.Irtiza Mazhar (AI Engineer). We build custom software, mobile apps, web platforms, AI solutions, and cloud systems for startups and businesses. Website: https://whimbrelsolution.netlify.app"
+      : "Whimbrel Solution Islamabad, Pakistan ki ek Premium Software House hai. CEO/Founder Mr.Irtiza Mazhar (AI Engineer) hain. Hum custom software, mobile apps, web platforms, AI solutions aur cloud systems build karte hain. Website: https://whimbrelsolution.netlify.app";
   }
 
   if (hasAny(["service", "services", "what do you do", "kya karte ho"])) {
@@ -360,7 +347,9 @@ function formatHistory(history: Payload["history"]) {
     .join("\n");
 }
 
-async function askClaude(prompt: string) {
+type ChatMessage = { role: "user" | "assistant"; content: string };
+
+async function askClaude(messages: ChatMessage[]) {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) return null;
 
@@ -373,10 +362,10 @@ async function askClaude(prompt: string) {
     },
     body: JSON.stringify({
       model: "claude-sonnet-4-20250514",
-      max_tokens: 500,
-      temperature: 0.6,
+      max_tokens: 1024,
+      temperature: 0.5,
       system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: prompt }],
+      messages: messages.slice(-12),
     }),
   });
 
@@ -453,6 +442,12 @@ export async function POST(request: Request) {
       : "LEAD: Unknown";
     const quoteRequested = /(quote|estimate|pricing|price|budget|cost)/i.test(message);
 
+    const history = (body.history ?? []).slice(-10);
+    const chatMessages: ChatMessage[] = [
+      ...history,
+      { role: "user", content: message },
+    ];
+
     const prompt = [
       `LANGUAGE: ${language}`,
       leadContext,
@@ -466,14 +461,11 @@ export async function POST(request: Request) {
       .join("\n");
 
     const modelReply =
+      (await askClaude(chatMessages)) ??
       (await askGemini(prompt)) ??
-      (await askClaude(prompt)) ??
       (await askOpenAI(prompt));
 
-    const reply =
-      modelReply && !isLowValueReply(modelReply)
-        ? modelReply
-        : fallbackReply(message, language);
+    const reply = modelReply?.trim() || fallbackReply(message, language);
 
     return NextResponse.json({ reply });
   } catch {

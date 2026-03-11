@@ -1,9 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  Code2,
+  Smartphone,
+  Globe,
+  Bot,
+  Cloud,
+  Palette,
+  type LucideIcon,
+} from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { services } from "@/lib/constants";
 import { fadeUp, stagger } from "@/lib/animations";
+
+const iconMap: Record<string, LucideIcon> = {
+  code: Code2,
+  smartphone: Smartphone,
+  globe: Globe,
+  bot: Bot,
+  cloud: Cloud,
+  palette: Palette,
+};
 
 export default function Services() {
   return (
@@ -42,7 +60,12 @@ export default function Services() {
               data-cursor="view"
             >
               <span className="font-cormorant text-4xl text-teal">{service.number}</span>
-              <span className="mt-4 block text-3xl">{service.icon}</span>
+              <span className="mt-4 flex h-12 w-12 items-center justify-center text-teal [&>svg]:h-8 [&>svg]:w-8">
+                {(() => {
+                  const Icon = iconMap[service.iconKey] ?? Code2;
+                  return <Icon className="h-8 w-8" />;
+                })()}
+              </span>
               <h3 className="mt-3 font-cormorant text-[clamp(1.4rem,2.3vw,1.65rem)] text-text">
                 {service.title}
               </h3>

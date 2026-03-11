@@ -17,10 +17,10 @@ type Lead = {
 type ChatLanguage = "roman-urdu" | "english";
 
 const GREETING_URDU =
-  "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Complete features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
+  "Assalam o Alaikum! Whimbrel Solution mein khushamdeed! Main Whimbrel AI hun — aapka personal tech consultant! Apna project idea batao — Website, App, AI Agent, System, ya Store. Main FORAN dunga: Completed features list, Exact timeline, Budget estimate. Batao — kya banana chahte ho?";
 
 const GREETING_EN =
-  "Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant! Tell me your project idea — Website, App, AI Agent, System, or Store. I'll instantly provide: Complete features list, Exact timeline, Budget estimate. What would you like to build?";
+  "Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant! Tell me your project idea — Website, App, AI Agent, System, or Store. I'll instantly provide: Completed features list, Exact timeline, Budget estimate. What would you like to build?";
 
 export default function AIAgent() {
   const [open, setOpen] = useState(false);

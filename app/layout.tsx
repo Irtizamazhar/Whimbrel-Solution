@@ -1,20 +1,28 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Nunito_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import ClientEffects from "@/components/ui/ClientEffects";
 import { defaultDescription, defaultTitle, siteName, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
-  style: ["normal", "italic"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: ["300", "400", "500", "600"],
 });
 
-const nunito = Nunito_Sans({
-  variable: "--font-nunito",
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  variable: "--font-heading",
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -68,7 +76,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${cormorant.variable} ${nunito.variable} antialiased min-w-0`}>
+      <body className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased min-w-0`}>
         <ClientEffects />
         {children}
       </body>

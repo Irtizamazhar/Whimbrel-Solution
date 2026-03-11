@@ -15,42 +15,42 @@ export const stats = [
 export const services = [
   {
     number: "01",
-    icon: "🧩",
+    iconKey: "code",
     title: "Custom Software Development",
     description:
       "Scalable, domain-driven applications tailored for ambitious businesses.",
   },
   {
     number: "02",
-    icon: "📱",
+    iconKey: "smartphone",
     title: "Mobile App Development",
     description:
       "High-performance iOS and Android apps with polished product experiences.",
   },
   {
     number: "03",
-    icon: "🌐",
+    iconKey: "globe",
     title: "Web Development",
     description:
       "Fast, secure, and conversion-focused web platforms built to scale.",
   },
   {
     number: "04",
-    icon: "🧠",
+    iconKey: "bot",
     title: "AI Chatbot & Automation",
     description:
       "Intelligent AI chatbots, automation workflows, and smart assistants for your business.",
   },
   {
     number: "05",
-    icon: "☁️",
+    iconKey: "cloud",
     title: "Cloud & DevOps",
     description:
       "Reliable cloud infrastructure, CI/CD, observability, and optimization.",
   },
   {
     number: "06",
-    icon: "🎨",
+    iconKey: "palette",
     title: "UI/UX Design",
     description:
       "Elegant user journeys and interfaces that improve retention and trust.",
@@ -59,88 +59,64 @@ export const services = [
 
 export const portfolioProjects = [
   {
-    slug: "payease-banking-platform",
-    name: "PayEase Banking Platform",
-    category: "Fintech",
-    icon: "💳",
-    summary: "Secure digital banking experience with fast onboarding and transaction tracking.",
-    timeline: "14 weeks",
-    stack: "Next.js, Node.js, PostgreSQL, Redis, AWS",
+    slug: "cts",
+    name: "CTS",
+    category: "Testing & Assessment",
+    icon: "📋",
+    summary: "Candidates Testing Services — serving with integrity. Testing, assessment, HR solutions, and examination management for Pakistan.",
+    timeline: "Completed",
+    stack: "Web, CMS, Assessment Platforms",
+    url: "https://cts.org.pk/",
     challenge:
-      "The client needed to replace a legacy internet banking experience with a modern and secure platform.",
+      "CTS needed a reliable, professional platform for test registration, roll number slips, results, and project updates.",
     solution:
-      "We delivered a modular banking dashboard, KYC flow, transaction insights, and role-based controls.",
-    impact: "42% faster onboarding and improved customer retention in first quarter.",
+      "A clear, accessible website with important updates, downloadable results, roll number slips, and structured services for testing and assessment.",
+    impact: "Central hub for candidates and institutions with fair, fast, and accurate testing services.",
   },
   {
-    slug: "shoplux-ecommerce-app",
-    name: "ShopLux E-Commerce App",
+    slug: "my-laundry-thai",
+    name: "My Laundry",
+    badge: "WASH & DELIVER",
+    category: "LAUNDRY & DELIVERY",
+    icon: "🧺",
+    iconLucide: "WashingMachine",
+    summary: "Professional on-demand laundry and shoe cleaning service in Bangkok with transparent pricing and next-day delivery.",
+    timeline: "Completed",
+    stack: "Web, E-commerce, Delivery",
+    url: "https://www.mylaundrythai.com/",
+    challenge:
+      "Customers needed a convenient, contactless laundry and shoe cleaning service with clear pricing and fast turnaround.",
+    solution:
+      "User-friendly online ordering, fixed prices by item, contactless pickup and return, same-day and next-day delivery options.",
+    impact: "Laundry and shoe cleaning made as easy as ordering online with quality and convenience.",
+  },
+  {
+    slug: "onmart",
+    name: "OnMart",
+    category: "E-Commerce",
+    icon: "🛒",
+    summary: "Digital mart and e-commerce platform for a smarter shopping experience.",
+    timeline: "Completed",
+    stack: "Web, Mobile, E-commerce",
+    challenge:
+      "Building a modern, scalable mart experience for diverse product categories and smooth checkout.",
+    solution:
+      "A focused e-commerce platform with clear navigation, secure payments, and reliable delivery integration.",
+    impact: "One-stop mart experience for customers with quality and convenience.",
+  },
+  {
+    slug: "one-dollar-shop",
+    name: "One Dollar Shop",
     category: "Retail",
-    icon: "🛍️",
-    summary: "Mobile-first commerce app with smooth checkout and personalized recommendations.",
-    timeline: "10 weeks",
-    stack: "React, Node.js, MongoDB, Stripe, Cloudflare",
+    icon: "💰",
+    summary: "Affordable retail and value shopping — quality products at one-dollar pricing for everyday needs.",
+    timeline: "Ongoing",
+    stack: "Web, Retail, E-commerce",
     challenge:
-      "Cart abandonment and inconsistent mobile performance were impacting conversion.",
+      "Delivering a simple, trustworthy value-retail experience with clear pricing and wide product range.",
     solution:
-      "We rebuilt checkout, improved product discovery, and added real-time offer personalization.",
-    impact: "28% increase in completed orders and 2.1x faster mobile experience.",
-  },
-  {
-    slug: "medcore-hospital-system",
-    name: "MedCore Hospital System",
-    category: "Healthcare",
-    icon: "🏥",
-    summary: "Centralized hospital operations platform for appointments, records, and billing.",
-    timeline: "16 weeks",
-    stack: "Next.js, NestJS, PostgreSQL, Docker, Azure",
-    challenge:
-      "Hospitals were using disconnected tools for patient records, appointments, and finance.",
-    solution:
-      "We built an integrated HMS with patient workflows, doctor schedules, and billing automation.",
-    impact: "Reduced admin workload by 35% and improved patient handling efficiency.",
-  },
-  {
-    slug: "datavault-analytics",
-    name: "DataVault Analytics",
-    category: "Business Intelligence",
-    icon: "📊",
-    summary: "Executive analytics suite for KPI tracking, forecasting, and reporting automation.",
-    timeline: "12 weeks",
-    stack: "React, Python, FastAPI, BigQuery, Looker",
-    challenge:
-      "Leadership lacked clear, real-time insights due to fragmented reporting across departments.",
-    solution:
-      "We implemented a unified BI layer with pipeline automation and executive-ready dashboards.",
-    impact: "Reporting time reduced from 2 days to 30 minutes.",
-  },
-  {
-    slug: "learnflow-lms",
-    name: "LearnFlow LMS",
-    category: "EdTech",
-    icon: "🎓",
-    summary: "Scalable LMS with course management, assessments, and learner analytics.",
-    timeline: "11 weeks",
-    stack: "Next.js, Node.js, MySQL, S3, RabbitMQ",
-    challenge:
-      "The platform struggled with course delivery, tracking, and engagement at scale.",
-    solution:
-      "We redesigned content delivery, quiz engine, progress analytics, and instructor controls.",
-    impact: "Course completion rates improved by 31% across key cohorts.",
-  },
-  {
-    slug: "fleettrack-logistics",
-    name: "FleetTrack Logistics",
-    category: "Transportation",
-    icon: "🚚",
-    summary: "Fleet operations dashboard for dispatch, route optimization, and live tracking.",
-    timeline: "13 weeks",
-    stack: "React, Node.js, PostgreSQL, Mapbox, WebSockets",
-    challenge:
-      "Manual dispatch workflows and delayed visibility caused route inefficiency and late deliveries.",
-    solution:
-      "We introduced a live fleet console with GPS tracking, alerts, and automated dispatch rules.",
-    impact: "Delivery delays reduced by 24% and route utilization improved significantly.",
+      "Clean storefront, easy browsing by category, and straightforward checkout for one-dollar and value deals.",
+    impact: "Accessible shopping for everyone with fixed low prices and variety.",
   },
 ];
 

@@ -1,6 +1,6 @@
 export const teamMembers = [
   {
-    name: "Mr. Junaid",
+    name: "Mr.Irtiza Mazhar",
     role: "Founder & CEO, AI Engineer",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
     linkedin: "https://www.linkedin.com",

@@ -75,6 +75,16 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
             </article>
 
             <div className="mt-9 flex flex-wrap gap-3">
+              {"url" in project && project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-teal bg-teal px-6 py-3 text-sm font-semibold text-navy transition hover:bg-teal-light"
+                >
+                  Visit live site →
+                </a>
+              )}
               <Link
                 href="/contact"
                 className="rounded-full border border-teal bg-teal px-6 py-3 text-sm font-semibold text-navy transition hover:bg-teal-light"
