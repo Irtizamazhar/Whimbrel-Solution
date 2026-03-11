@@ -18,42 +18,42 @@ export const services = [
     iconKey: "code",
     title: "Custom Software Development",
     description:
-      "Scalable, domain-driven applications tailored for ambitious businesses.",
+      "Scalable applications with React, Next.js, Node.js, TypeScript, and PostgreSQL — tailored for ambitious businesses.",
   },
   {
     number: "02",
     iconKey: "smartphone",
     title: "Mobile App Development",
     description:
-      "High-performance iOS and Android apps with polished product experiences.",
+      "iOS and Android apps with Flutter, React Native, and Kotlin — polished UX, Firebase, and reliable backend integration.",
   },
   {
     number: "03",
     iconKey: "globe",
     title: "Web Development",
     description:
-      "Fast, secure, and conversion-focused web platforms built to scale.",
+      "Fast, secure web platforms with Next.js, React, TypeScript, and Tailwind CSS — built to convert and scale.",
   },
   {
     number: "04",
     iconKey: "bot",
     title: "AI Chatbot & Automation",
     description:
-      "Intelligent AI chatbots, automation workflows, and smart assistants for your business.",
+      "Intelligent chatbots and automation with OpenAI and LLMs — workflows and smart assistants for your business.",
   },
   {
     number: "05",
     iconKey: "cloud",
     title: "Cloud & DevOps",
     description:
-      "Reliable cloud infrastructure, CI/CD, observability, and optimization.",
+      "Cloud infrastructure with AWS, Docker, CI/CD, and observability — reliable deployment and optimization.",
   },
   {
     number: "06",
     iconKey: "palette",
     title: "UI/UX Design",
     description:
-      "Elegant user journeys and interfaces that improve retention and trust.",
+      "User journeys and interfaces designed in Figma — elegant, conversion-focused, and developer-ready handoff.",
   },
 ];
 
@@ -61,9 +61,10 @@ export const portfolioProjects = [
   {
     slug: "cts",
     name: "CTS",
-    category: "Testing & Assessment",
-    icon: "📋",
-    summary: "Candidates Testing Services — serving with integrity. Testing, assessment, HR solutions, and examination management for Pakistan.",
+    badge: "TESTING & ASSESSMENT",
+    category: "TESTING & ASSESSMENT",
+    iconLucide: "ClipboardList",
+    summary: "Digital examination and assessment platform for Pakistan. Test management, HR solutions, result processing, and integrity-based examination systems.",
     timeline: "Completed",
     stack: "Web, CMS, Assessment Platforms",
     url: "https://cts.org.pk/",
@@ -76,11 +77,10 @@ export const portfolioProjects = [
   {
     slug: "my-laundry-thai",
     name: "My Laundry",
-    badge: "WASH & DELIVER",
+    badge: "LAUNDRY & DELIVERY",
     category: "LAUNDRY & DELIVERY",
-    icon: "🧺",
-    iconLucide: "WashingMachine",
-    summary: "Professional on-demand laundry and shoe cleaning service in Bangkok with transparent pricing and next-day delivery.",
+    iconLucide: "Shirt",
+    summary: "On-demand laundry and shoe cleaning in Bangkok. Contactless pickup, next-day delivery, same-day express, and transparent pricing.",
     timeline: "Completed",
     stack: "Web, E-commerce, Delivery",
     url: "https://www.mylaundrythai.com/",
@@ -93,9 +93,10 @@ export const portfolioProjects = [
   {
     slug: "onmart",
     name: "OnMart",
-    category: "E-Commerce",
-    icon: "🛒",
-    summary: "Digital mart and e-commerce platform for a smarter shopping experience.",
+    badge: "E-COMMERCE",
+    category: "E-COMMERCE",
+    iconLucide: "ShoppingCart",
+    summary: "Digital mart and e-commerce platform with catalog, smart search, secure checkout, order tracking, and seller dashboard.",
     timeline: "Completed",
     stack: "Web, Mobile, E-commerce",
     challenge:
@@ -107,9 +108,10 @@ export const portfolioProjects = [
   {
     slug: "one-dollar-shop",
     name: "One Dollar Shop",
-    category: "Retail",
-    icon: "💰",
-    summary: "Affordable retail and value shopping — quality products at one-dollar pricing for everyday needs.",
+    badge: "VALUE RETAIL",
+    category: "VALUE RETAIL",
+    iconLucide: "Tag",
+    summary: "Retail platform for quality everyday products at one-dollar pricing. Fast browsing, bulk ordering, seamless payment.",
     timeline: "Ongoing",
     stack: "Web, Retail, E-commerce",
     challenge:
@@ -117,6 +119,36 @@ export const portfolioProjects = [
     solution:
       "Clean storefront, easy browsing by category, and straightforward checkout for one-dollar and value deals.",
     impact: "Accessible shopping for everyone with fixed low prices and variety.",
+  },
+  {
+    slug: "mycrmsim",
+    name: "myCRMSIM",
+    badge: "MOBILE APP",
+    category: "SMS GATEWAY APP",
+    iconLucide: "MessageSquare",
+    summary: "SMS gateway app connecting SIM to HighLevel CRM for unlimited SMS, iMessage and WhatsApp — no per-message fees or carrier restrictions.",
+    timeline: "Completed",
+    stack: "Mobile, Kotlin Native, HighLevel CRM",
+    challenge:
+      "Users needed a way to send bulk SMS and messages via CRM without per-message costs or carrier restrictions.",
+    solution:
+      "Mobile app that bridges physical SIM to HighLevel CRM for unlimited messaging, iMessage and WhatsApp integration.",
+    impact: "Cost-effective, unrestricted messaging for businesses via their existing SIM and CRM.",
+  },
+  {
+    slug: "surah-yaseen",
+    name: "Surah Yaseen",
+    badge: "QURAN & RELIGION",
+    category: "QURAN & RELIGION",
+    iconLucide: "BookOpen",
+    summary: "Mobile app for reading and listening to Surah Yaseen. Arabic with Urdu/English translation, Qari audio, bookmarks, and offline support.",
+    timeline: "Completed",
+    stack: "Mobile,Kotlin Native, Audio",
+    challenge:
+      "Users wanted an accessible, ad-free way to read and listen to Surah Yaseen with translations and bookmarks.",
+    solution:
+      "Mobile app with Arabic text, Urdu/English translation, multiple Qari recitations, bookmarking, and offline mode.",
+    impact: "Easy access to Surah Yaseen for reading and listening, with full offline support.",
   },
 ];
 

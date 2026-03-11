@@ -12,7 +12,7 @@ const journey = [
 
 export default function AboutDetails() {
   return (
-    <section className="section-spacing pt-8 md:pt-12">
+    <section className="section-spacing">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
         <div className="rounded-3xl border border-teal/20 bg-navy-2 p-8 text-center md:p-12">
           <h1 className="font-cormorant text-[clamp(2.4rem,6vw,4.2rem)] text-text">About Whimbrel Solution</h1>

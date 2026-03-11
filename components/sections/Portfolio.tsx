@@ -2,10 +2,26 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { WashingMachine } from "lucide-react";
+import {
+  ClipboardList,
+  Shirt,
+  ShoppingCart,
+  Tag,
+  MessageSquare,
+  BookOpen,
+} from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { portfolioProjects } from "@/lib/constants";
 import { fadeUp, stagger } from "@/lib/animations";
+
+const iconMap = {
+  ClipboardList,
+  Shirt,
+  ShoppingCart,
+  Tag,
+  MessageSquare,
+  BookOpen,
+} as const;
 
 export default function Portfolio() {
   return (
@@ -25,7 +41,7 @@ export default function Portfolio() {
             variants={fadeUp}
             className="max-w-3xl font-cormorant text-[clamp(2.4rem,6vw,3.65rem)] leading-[1.02] text-text"
           >
-            Selected products crafted for performance and scale.
+            Work That Speaks Louder Than Words.
           </motion.h2>
         </motion.div>
 
@@ -37,9 +53,9 @@ export default function Portfolio() {
           className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           {portfolioProjects.map((project) => {
-            const projectWithBadge = project as typeof project & { badge?: string; iconLucide?: string };
+            const projectWithBadge = project as typeof project & { badge?: string; iconLucide?: keyof typeof iconMap };
             const pillLabel = projectWithBadge.badge ?? project.category;
-            const showWashingIcon = project.slug === "my-laundry-thai" && projectWithBadge.iconLucide === "WashingMachine";
+            const IconComponent = projectWithBadge.iconLucide ? iconMap[projectWithBadge.iconLucide] : null;
             return (
             <motion.div
               key={project.slug}
@@ -52,12 +68,8 @@ export default function Portfolio() {
                 aria-label={`Open ${project.name} case study`}
                 className="absolute inset-0 z-10"
               />
-              <span className="absolute inset-0 flex items-center justify-center text-8xl opacity-[0.08]">
-                {showWashingIcon ? (
-                  <WashingMachine className="h-24 w-24" strokeWidth={1.5} />
-                ) : (
-                  project.icon
-                )}
+              <span className="absolute inset-0 flex items-center justify-center opacity-[0.07]">
+                {IconComponent && <IconComponent className="h-24 w-24" strokeWidth={1.5} />}
               </span>
               <span className="relative inline-flex rounded-full border border-teal/30 bg-teal-glow px-3 py-1 text-xs uppercase tracking-[0.16em] text-teal">
                 {pillLabel}

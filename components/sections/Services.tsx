@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Code2,
@@ -8,10 +9,13 @@ import {
   Bot,
   Cloud,
   Palette,
+  ChevronRight,
   type LucideIcon,
 } from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { services } from "@/lib/constants";
+import { servicesDetail } from "@/data/services";
+import ServiceDetailModal from "@/components/ServiceDetailModal";
 import { fadeUp, stagger } from "@/lib/animations";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -24,6 +28,15 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export default function Services() {
+  const [selectedService, setSelectedService] = useState<
+    (typeof servicesDetail)[number] | null
+  >(null);
+
+  const openDetail = (number: string) => {
+    const detail = servicesDetail.find((s) => s.number === number) ?? null;
+    setSelectedService(detail);
+  };
+
   return (
     <section id="services" className="section-spacing">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
@@ -56,9 +69,19 @@ export default function Services() {
             <motion.article
               variants={fadeUp}
               key={service.number}
-              className="group relative overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/75 p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_36px_rgba(59,191,176,0.12)]"
+              role="button"
+              tabIndex={0}
+              onClick={() => openDetail(service.number)}
+              onKeyDown={(e) =>
+                (e.key === "Enter" || e.key === " ") && openDetail(service.number)
+              }
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/75 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_36px_rgba(59,191,176,0.12)] hover:bg-[rgba(59,191,176,0.06)]"
               data-cursor="view"
             >
+              <span
+                className="absolute left-0 top-0 h-full w-[3px] bg-teal opacity-0 shadow-[0_0_12px_var(--teal)] transition-all duration-300 group-hover:opacity-100"
+                aria-hidden
+              />
               <span className="font-cormorant text-4xl text-teal">{service.number}</span>
               <span className="mt-4 flex h-12 w-12 items-center justify-center text-teal [&>svg]:h-8 [&>svg]:w-8">
                 {(() => {
@@ -73,10 +96,18 @@ export default function Services() {
 
               <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-teal transition-all duration-300 group-hover:w-full" />
               <span className="absolute right-3 top-3 h-16 w-16 rounded-full bg-teal/0 blur-2xl transition group-hover:bg-teal/20" />
+              <span className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center text-teal opacity-70 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                <ChevronRight className="h-6 w-6" />
+              </span>
             </motion.article>
           ))}
         </motion.div>
       </div>
+
+      <ServiceDetailModal
+        service={selectedService}
+        onClose={() => setSelectedService(null)}
+      />
     </section>
   );
 }
