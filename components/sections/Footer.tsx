@@ -62,13 +62,13 @@ function NewsletterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} className="newsletter-form space-y-3">
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email address"
-        className="w-full border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
+        className="newsletter-email-input w-full border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
         required
         disabled={loading}
       />

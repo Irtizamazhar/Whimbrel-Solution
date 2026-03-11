@@ -23,13 +23,19 @@ export default function ContactMap() {
 
       if (!containerRef.current || !mounted) return;
 
-      const map = L.map(containerRef.current).setView(ISLAMABAD, 14);
+      const map = L.map(containerRef.current, {
+        attributionControl: false,
+        scrollWheelZoom: false,
+      }).setView(ISLAMABAD, 14);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19,
       }).addTo(map);
+
+      // Enable scroll zoom only after user clicks on the map
+      map.once("click", () => {
+        map.scrollWheelZoom.enable();
+      });
 
       const officeIcon = L.divIcon({
         className: "whimbrel-map-marker",
@@ -83,6 +89,14 @@ export default function ContactMap() {
         map.panTo(ISLAMABAD);
         officeMarker.openPopup();
       }
+
+      // Fix map size once container is in DOM (handles map below the fold)
+      requestAnimationFrame(() => {
+        if (mapRef.current?.map) {
+          mapRef.current.map.invalidateSize();
+          mapRef.current.map.panTo(ISLAMABAD);
+        }
+      });
     };
 
     init();
@@ -96,10 +110,42 @@ export default function ContactMap() {
     };
   }, []);
 
+  // When map section scrolls into view or window resizes: fix size and keep centered on Islamabad
+  useEffect(() => {
+    const sectionEl = typeof document !== "undefined" ? document.getElementById("location-map") : null;
+    if (!containerRef.current || !sectionEl) return;
+
+    const syncMap = () => {
+      if (!mapRef.current?.map) return;
+      mapRef.current.map.invalidateSize();
+      mapRef.current.map.panTo(ISLAMABAD);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
+          setTimeout(syncMap, 100);
+        }
+      },
+      { root: null, rootMargin: "50px", threshold: 0.1 }
+    );
+    observer.observe(sectionEl);
+
+    const onResize = () => syncMap();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
   // Hash change ya "Whimbrel Solution" click par map pin par focus + popup
   useEffect(() => {
     const focusMap = () => {
       if (!mapRef.current) return;
+      mapRef.current.map.invalidateSize();
       mapRef.current.map.panTo(ISLAMABAD);
       mapRef.current.marker.openPopup();
     };
@@ -162,7 +208,7 @@ export default function ContactMap() {
 
       <div
         ref={containerRef}
-        className="h-[400px] w-full overflow-hidden rounded-lg border border-navy-4 bg-navy-2 shadow-sm"
+        className="contact-map-container h-[400px] w-full overflow-hidden rounded-lg border border-navy-4 bg-navy-2 shadow-sm"
         aria-label="Map: Whimbrel Solution office location"
       />
     </div>

@@ -23,7 +23,7 @@ export default function ContactPage() {
         <Suspense fallback={<div className="section-spacing" />}>
           <Contact />
         </Suspense>
-        <div id="location-map" className="section-spacing">
+        <div id="location-map" className="section-spacing min-h-[480px] scroll-mt-32 relative z-0">
           <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
             <h2 className="mb-4 font-cormorant text-2xl text-text">Location</h2>
             <ContactMap />

@@ -21,7 +21,6 @@ export default function Contact() {
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setLoading(true);
 
     const form = event.currentTarget;
     const data = new FormData(form);
@@ -31,6 +30,13 @@ export default function Contact() {
     const phone = String(data.get("phone") ?? "").trim();
     const service = String(data.get("service") ?? "").trim();
     const details = String(data.get("details") ?? "").trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
 
     const text = [
       "Assalam o Alaikum,",
