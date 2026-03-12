@@ -28,15 +28,15 @@ export default function CareersOpenPositions({ positions }: { positions: Positio
   return (
     <>
       <section id="positions">
-        <h2 className="mb-6 font-cormorant text-[clamp(2.1rem,5vw,3.2rem)]">Open Positions</h2>
-        <div className="space-y-4">
+        <h2 className="mb-6 font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)]">Open Positions</h2>
+        <div className="grid grid-cols-1 gap-4">
           {positions.map((job) => (
             <article
               key={job.title}
-              className="rounded-2xl border border-teal/20 bg-navy-2 p-6 transition hover:border-teal/60"
+              className="rounded-2xl border border-teal/20 bg-navy-2 p-5 transition hover:border-teal/60 sm:p-6"
             >
               <div className="flex flex-wrap items-center gap-3">
-                <h3 className="font-cormorant text-4xl leading-none text-text">{job.title}</h3>
+                <h3 className="font-cormorant text-2xl leading-tight text-text sm:text-4xl">{job.title}</h3>
                 <span className="rounded-full bg-teal/15 px-3 py-1 text-xs uppercase tracking-[0.12em] text-teal">
                   {job.department}
                 </span>
@@ -44,11 +44,11 @@ export default function CareersOpenPositions({ positions }: { positions: Positio
               <p className="mt-2 text-sm text-text-muted">
                 {job.location} · {job.type}
               </p>
-              <p className="mt-3 max-w-3xl text-text-muted">{job.description}</p>
+              <p className="mt-3 max-w-full text-sm text-text-muted sm:text-base">{job.description}</p>
               <button
                 type="button"
                 onClick={() => openModal(job)}
-                className="mt-4 inline-flex rounded-full border border-teal/60 px-5 py-2 text-sm font-semibold text-teal transition hover:bg-teal hover:text-navy"
+                className="mt-4 inline-flex min-h-[44px] min-w-[44px] items-center rounded-full border border-teal/60 px-5 py-2.5 text-sm font-semibold text-teal transition hover:bg-teal hover:text-navy"
                 data-magnetic="true"
               >
                 Apply Now

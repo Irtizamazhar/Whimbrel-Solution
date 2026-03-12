@@ -81,7 +81,8 @@ export default function TeamMemberOverlay({
         right: 0,
         bottom: 0,
         width: "100vw",
-        height: "100vh",
+        height: "100dvh",
+        maxHeight: "100%",
         zIndex: 99999,
         overflow: "hidden",
         backgroundColor: bg,
@@ -102,11 +103,13 @@ export default function TeamMemberOverlay({
         }}
         style={{
           position: "fixed",
-          top: "20px",
-          right: "20px",
+          top: "16px",
+          right: "16px",
           zIndex: 100000,
-          width: "42px",
-          height: "42px",
+          width: "44px",
+          height: "44px",
+          minWidth: "44px",
+          minHeight: "44px",
           borderRadius: "50%",
           cursor: "pointer",
           display: "flex",
@@ -146,20 +149,14 @@ export default function TeamMemberOverlay({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Hero — flex, gap 28px, mb 36px. Mobile: column, center */}
+        {/* Hero — flex, gap 28px, mb 36px. Mobile: column, center. Avatar 90px mobile */}
         <div
-          className="team-overlay-hero flex flex-col items-center gap-7 pb-9 text-left sm:flex-row sm:gap-[28px] sm:text-left"
+          className="team-overlay-hero flex flex-col items-center gap-7 pb-9 text-center sm:flex-row sm:gap-[28px] sm:text-left"
           style={{ marginBottom: "36px", padding: 0 }}
         >
           <div
+            className="h-[90px] w-[90px] flex-shrink-0 rounded-full text-2xl font-extrabold text-white sm:h-[110px] sm:w-[110px] sm:text-[36px]"
             style={{
-              width: "110px",
-              height: "110px",
-              borderRadius: "50%",
-              fontSize: "36px",
-              fontWeight: 800,
-              color: "white",
-              flexShrink: 0,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

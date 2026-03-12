@@ -62,20 +62,20 @@ function NewsletterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="newsletter-form space-y-3">
+    <form onSubmit={handleSubmit} className="newsletter-form flex flex-col gap-3 sm:flex-row sm:items-end">
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email address"
-        className="newsletter-email-input w-full border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
+        className="newsletter-email-input w-full flex-1 border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
         required
         disabled={loading}
       />
       <button
         type="submit"
         disabled={loading}
-        className="rounded-full border border-teal/50 px-4 py-2 text-sm text-teal transition hover:bg-teal/10 disabled:opacity-60"
+        className="rounded-full border border-teal/50 px-4 py-2.5 text-sm text-teal transition hover:bg-teal/10 disabled:opacity-60 min-h-[44px] sm:flex-shrink-0"
       >
         {loading ? "Subscribing..." : "Subscribe"}
       </button>
@@ -89,10 +89,10 @@ export default function Footer() {
 
   return (
     <footer className="site-footer border-t border-navy-4 bg-navy-2/60 pb-6 pt-10 sm:pb-8 sm:pt-14">
-      <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-5 md:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         <div className="mb-8 border-b border-navy-4 pb-8 sm:mb-10 sm:pb-10">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-teal/50 to-transparent" />
-          <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-center sm:mt-8 sm:justify-start sm:gap-4 sm:text-left">
             <Link
               href={isContactPage ? "#location-map" : "/"}
               className="flex flex-wrap items-center gap-3 transition opacity-90 hover:opacity-100 sm:gap-4"
@@ -101,7 +101,7 @@ export default function Footer() {
                 if (isContactPage) window.dispatchEvent(new CustomEvent("focusMap"));
               }}
             >
-              <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={40} height={40} className="h-9 w-9 sm:h-[46px] sm:w-[46px]" />
+              <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={40} height={40} className="h-10 w-10 sm:h-[50px] sm:w-[50px]" />
               <div className="min-w-0">
                 <p className="font-cormorant text-xl text-text sm:text-3xl">Whimbrel Solution</p>
                 <p className="text-xs text-text-muted sm:text-sm">
@@ -113,9 +113,9 @@ export default function Footer() {
         </div>
 
         <div className="grid gap-6 border-b border-navy-4 pb-8 sm:gap-8 sm:pb-10 md:grid-cols-2 lg:grid-cols-4">
-          <div>
+          <div className="w-full">
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Company</p>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
               {footerColumns.company.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-text-muted transition hover:text-text">
@@ -125,9 +125,9 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="w-full">
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Services</p>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
               {footerColumns.services.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-text-muted transition hover:text-text">
@@ -154,7 +154,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="w-full">
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Newsletter</p>
             <NewsletterForm />
           </div>

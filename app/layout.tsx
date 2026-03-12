@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-theme="dark">
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -70,7 +70,9 @@ export default function RootLayout({
                   var theme = (saved === "dark" || saved === "light") ? saved : "dark";
                   document.documentElement.setAttribute("data-theme", theme);
                   document.documentElement.classList.toggle("light", theme === "light");
-                } catch (e) {}
+                } catch (e) {
+                  document.documentElement.setAttribute("data-theme", "dark");
+                }
               })();
             `,
           }}

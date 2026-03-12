@@ -8,6 +8,7 @@ type ButtonProps = {
   variant?: "primary" | "outline";
   magnetic?: boolean;
   type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 const styles = {
@@ -25,20 +26,21 @@ export default function Button({
   variant = "primary",
   magnetic = true,
   type = "button",
+  onClick,
 }: ButtonProps) {
   const dataProps = magnetic ? { "data-magnetic": "true" } : {};
   const classNames = cn(styles.base, styles[variant], className);
 
   if (href) {
     return (
-      <Link href={href} className={classNames} {...dataProps}>
+      <Link href={href} className={classNames} onClick={onClick} {...dataProps}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type={type} className={classNames} {...dataProps}>
+    <button type={type} className={classNames} onClick={onClick} {...dataProps}>
       {children}
     </button>
   );

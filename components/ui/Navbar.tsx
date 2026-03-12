@@ -56,8 +56,8 @@ export default function Navbar() {
         scrolled && "nav-scrolled border-navy-4/90 backdrop-blur-xl",
       )}
     >
-      <nav className="relative mx-auto flex h-20 w-full max-w-[1260px] items-center px-5 md:px-8">
-        {/* Mobile: logo center | Desktop: logo left */}
+      <nav className="relative mx-auto flex h-24 w-full max-w-[1280px] items-center px-4 sm:px-5 md:px-6 xl:px-10">
+        {/* Logo: center on mobile, left from lg */}
         <div className="flex flex-1 items-center justify-center lg:justify-start">
           <Link
             href="/"
@@ -70,19 +70,20 @@ export default function Navbar() {
               alt="Whimbrel Solution"
               width={180}
               height={90}
-              className="h-28 w-auto max-h-32 object-contain object-center brightness-110 contrast-110 sm:h-32 sm:max-h-[9rem] lg:object-left"
+              className="h-32 w-auto max-h-40 object-contain object-center brightness-110 contrast-110 sm:h-40 sm:max-h-[11rem] lg:object-left"
               fetchPriority="high"
             />
           </Link>
         </div>
 
-        <div className="hidden items-center gap-10 lg:flex">
+        {/* Nav links + Theme + Button: single row, only from lg so theme never wraps above Contact */}
+        <div className="hidden flex-nowrap items-center gap-3 lg:flex xl:gap-6">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "nav-link group relative inline-flex items-center gap-1.5 text-[0.95rem] font-medium tracking-[0.01em] transition-colors duration-200",
+                "nav-link group relative inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center gap-1.5 whitespace-nowrap text-[13px] font-medium tracking-[0.01em] transition-colors duration-200 xl:text-[0.95rem]",
                 "text-white/85 hover:text-white",
                 isActive(item) && "nav-link-active !text-[#2dd4bf] !font-semibold [data-theme='light']:!text-[#0d9488]",
               )}
@@ -99,17 +100,17 @@ export default function Navbar() {
               />
             </Link>
           ))}
+          <div className="ml-2 flex shrink-0 items-center gap-3 xl:ml-4 xl:gap-5">
+            <ThemeToggle />
+            <Button href="/contact" variant="outline">
+              Get a Quote
+            </Button>
+          </div>
         </div>
 
-        <div className="hidden items-center gap-5 lg:flex lg:ml-12">
-          <ThemeToggle />
-          <Button href="/contact" variant="outline">
-            Get a Quote
-          </Button>
-        </div>
-
+        {/* Hamburger: below lg, left side */}
         <button
-          className="absolute left-5 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-teal/60 text-teal md:left-8 lg:hidden"
+          className="absolute left-5 top-1/2 inline-flex h-11 min-h-[44px] w-11 min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full border border-teal/60 text-teal lg:left-8 lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Close menu" : "Open menu"}
           data-magnetic="true"
@@ -126,47 +127,51 @@ export default function Navbar() {
               initial={false}
               animate={{ opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none" }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[9999] bg-black/45 lg:hidden"
+              className="fixed inset-0 z-[99998] bg-black/45 lg:hidden"
               onClick={() => setOpen(false)}
             />
             <motion.div
               initial={false}
-              animate={{ x: open ? "0%" : "-100%" }}
-              transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed left-0 top-0 z-[9999] h-screen w-80 max-w-[86vw] border-r border-navy-4 bg-navy p-7 lg:hidden"
+              animate={{ opacity: open ? 1 : 0, y: open ? 0 : "-100%" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="nav-mobile-overlay fixed inset-0 z-[99999] flex flex-col items-center justify-center px-6 py-20 lg:hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile menu"
             >
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/60 text-teal transition hover:bg-teal/10"
+                className="absolute right-5 top-5 z-10 flex h-12 min-h-[44px] w-12 min-w-[44px] items-center justify-center rounded-full border border-teal/60 text-teal transition hover:bg-teal/10"
                 aria-label="Close menu"
                 data-magnetic="true"
               >
-                <X size={18} />
+                <X size={22} />
               </button>
-              <div className="mt-24 flex flex-col gap-5">
+              <nav className="flex flex-1 flex-col items-center justify-center gap-7">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "text-lg text-text-muted transition hover:text-text",
-                      isActive(item) && "text-teal",
+                      "text-[1.4rem] font-bold text-white/90 transition hover:text-white",
+                      isActive(item) && "!text-teal [data-theme='light']:!text-[#0d9488]",
                     )}
                     data-cursor="link"
                   >
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-2">
-                  <ThemeToggle />
-                </div>
+              </nav>
+              <div className="mt-auto pt-8">
+                <ThemeToggle />
                 <Button
                   href="/contact"
                   variant="primary"
-                  className="mt-4"
+                  className="mt-6 min-h-[44px] w-full min-w-[200px]"
                   magnetic={false}
+                  onClick={() => setOpen(false)}
                 >
                   Get a Quote
                 </Button>

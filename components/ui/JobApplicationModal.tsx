@@ -156,13 +156,18 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
         }
         .job-modal-right.right-panel {
           background: var(--navy-2);
-          overflow-y: scroll;
+          overflow-y: auto;
           overflow-x: hidden;
           height: 100%;
           max-height: min(680px, 92vh);
           -webkit-overflow-scrolling: touch;
           scrollbar-width: thin;
           scrollbar-color: rgba(0,201,167,0.5) rgba(0,0,0,0.2);
+        }
+        @media (max-width: 639px) {
+          .job-modal-right.right-panel {
+            max-height: 90dvh;
+          }
         }
         .right-panel::-webkit-scrollbar {
           width: 8px;
@@ -175,11 +180,6 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
         }
         .right-panel::-webkit-scrollbar-thumb:hover {
           background: rgba(0,201,167,0.7);
-        }
-        @media (max-width: 639px) {
-          .job-modal-right.right-panel {
-            max-height: 92vh;
-          }
         }
         .job-modal-input {
           background: rgba(255,255,255,0.04);
@@ -301,7 +301,7 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
         aria-labelledby="job-modal-title"
       >
         <div
-          className="job-modal-container flex h-[92vh] w-full items-stretch overflow-hidden rounded-t-[24px] sm:h-[min(680px,92vh)] sm:max-w-[min(900px,95vw)] sm:rounded-[24px]"
+          className="job-modal-container flex h-[90dvh] max-h-[100dvh] w-full items-stretch overflow-hidden rounded-t-[20px] sm:h-[min(680px,92vh)] sm:max-h-[92vh] sm:max-w-[min(900px,95vw)] sm:rounded-[24px]"
           style={{
             boxShadow:
               "0 0 0 1px rgba(45,212,191,0.25), 0 0 80px rgba(45,212,191,0.12), 0 40px 120px rgba(0,0,0,0.7)",

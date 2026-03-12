@@ -38,7 +38,7 @@ const gradientByNumber: Record<string, string> = {
 export default function Services() {
   return (
     <section id="services" className="section-spacing">
-      <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-5 md:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -51,7 +51,7 @@ export default function Services() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="max-w-3xl font-cormorant text-[clamp(2.4rem,6vw,3.65rem)] leading-[1.02] text-text"
+            className="max-w-3xl font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text"
           >
             We Don&apos;t Just Code. We Build Businesses.
           </motion.h2>
@@ -62,7 +62,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service) => {
             const slug = service.slug;
@@ -74,14 +74,14 @@ export default function Services() {
               <motion.article
                 variants={fadeUp}
                 key={service.number}
-                className="h-full rounded-3xl"
+                className="flex h-full"
               >
                 <Link
                   href={`/services/${slug}`}
-                  className="service-card-premium group relative flex h-full flex-col rounded-3xl border p-7 transition-all duration-300"
+                  className="service-card-premium group relative flex h-full min-h-[44px] w-full flex-col rounded-3xl border p-5 transition-all duration-300 sm:p-6 md:p-7"
                 >
                 {/* Hover arrow + Number — top right */}
-                <div className="absolute right-5 top-5 flex items-center gap-2">
+                <div className="absolute right-4 top-4 flex items-center gap-2 sm:right-5 sm:top-5">
                   <span className="service-card-number text-[13px] font-bold tracking-[0.05em]">
                     {service.number}
                   </span>
@@ -93,24 +93,24 @@ export default function Services() {
                   </span>
                 </div>
                 {/* 1. Top — Icon box (left) */}
-                <div className="mb-5 flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-xl text-white" style={{ background: gradient }}>
+                <div className="mb-4 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl text-white sm:mb-5 sm:h-[52px] sm:w-[52px]" style={{ background: gradient }}>
                   <Icon size={24} />
                 </div>
 
                 {/* 2. Title */}
-                <h3 className="service-card-title mb-2.5 text-[1.2rem] font-bold">
+                <h3 className="service-card-title mb-2 text-base font-bold sm:mb-2.5 sm:text-[1.2rem]">
                   {service.title}
                 </h3>
 
                 {/* 3. Description */}
-                <p className="service-card-desc mb-4 text-[14px] leading-[1.7]">
+                <p className="service-card-desc mb-3 text-[13px] leading-[1.7] sm:mb-4 sm:text-[14px]">
                   {service.description}
                 </p>
 
                 {/* 4. Key Features */}
                 {features.length > 0 && (
                   <>
-                    <p className="service-card-label mb-2.5 text-[12px] font-bold uppercase tracking-[0.06em]">
+                    <p className="service-card-label mb-2 text-[12px] font-bold uppercase tracking-[0.06em]">
                       Key Features:
                     </p>
                     <ul className="space-y-1.5">
@@ -120,7 +120,7 @@ export default function Services() {
                           className="service-card-feature flex items-center gap-2"
                         >
                           <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0 text-teal" />
-                          <span className="text-[13px]">{feature}</span>
+                          <span className="text-[12px] sm:text-[13px]">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -130,7 +130,7 @@ export default function Services() {
                 {/* 5. Technologies */}
                 {technologies.length > 0 && (
                   <>
-                    <p className="service-card-label mt-4 mb-2 text-[12px] font-bold uppercase tracking-[0.06em]">
+                    <p className="service-card-label mt-3 mb-2 text-[12px] font-bold uppercase tracking-[0.06em] sm:mt-4">
                       Technologies:
                     </p>
                     <div className="flex flex-wrap gap-1.5">

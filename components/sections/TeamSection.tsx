@@ -27,24 +27,24 @@ export default function TeamSection() {
 
   return (
     <section className="section-spacing">
-      <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          className="mb-12 space-y-5"
+          className="mb-8 space-y-5 sm:mb-12"
         >
           <SectionTag label="Our Team" />
-          <h1 className="font-cormorant text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight text-text">
+          <h1 className="font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-tight text-text">
             The Minds That Build the Magic.
           </h1>
-          <p className="max-w-2xl text-lg text-text-muted">
+          <p className="max-w-2xl text-base text-text-muted sm:text-lg">
             A dedicated team of engineers, designers, and product specialists
             building premium digital products.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {teamMembers.map((member, index) => {
             const id = AVATAR_IDS[index] ?? "im";
             const initials = member.initials ?? getInitials(member.name);
@@ -72,15 +72,15 @@ export default function TeamSection() {
                   data-avatar={id}
                 >
                   <div
-                    className="team-card-inner-circle flex h-[88px] w-[88px] flex-shrink-0 items-center justify-center rounded-full text-[28px] font-bold tracking-[0.02em] text-white"
+                    className="team-card-inner-circle flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full text-2xl font-bold tracking-[0.02em] text-white sm:h-[88px] sm:w-[88px] sm:text-[28px]"
                     data-avatar={id}
                     style={{ background: member.color }}
                   >
                     {initials}
                   </div>
                 </div>
-                <div className="border-t border-navy-4 p-4">
-                  <h3 className="font-cormorant text-xl font-semibold text-text">
+                <div className="border-t border-navy-4 p-5">
+                  <h3 className="font-cormorant text-lg font-semibold text-text sm:text-xl">
                     {member.name}
                   </h3>
                   <p className="mt-1 text-sm text-text-muted">{member.role}</p>

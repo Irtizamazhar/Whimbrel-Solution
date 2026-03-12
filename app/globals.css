@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+/* Prevent horizontal scroll on all viewports */
+html {
+  overflow-x: hidden;
+}
+
 /* Keep contact map below fixed navbar (z-50) */
 .contact-map-container {
   position: relative;
@@ -671,6 +676,26 @@ header::-webkit-scrollbar {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Mobile fullscreen overlay: dark default */
+.nav-mobile-overlay {
+  background-color: rgba(5, 10, 18, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+[data-theme="light"] .nav-mobile-overlay,
+html.light .nav-mobile-overlay {
+  background-color: rgba(245, 250, 255, 0.98);
+}
+[data-theme="light"] .nav-mobile-overlay a,
+html.light .nav-mobile-overlay a {
+  color: rgba(0, 0, 0, 0.9);
+}
+[data-theme="light"] .nav-mobile-overlay a:hover,
+html.light .nav-mobile-overlay a:hover {
+  color: #111;
+}
+
+/* Tailwind v4 theme – editor may show unknown at-rule warning; safe to ignore */
 @theme inline {
   --font-cormorant: var(--font-cormorant);
   --font-nunito: var(--font-nunito);
@@ -729,7 +754,8 @@ img, video, iframe {
 
 .section-spacing {
   position: relative;
-  padding: clamp(4rem, 10vw, 7rem) 0;
+  padding-top: clamp(3.75rem, 10vw, 7rem);
+  padding-bottom: clamp(3.75rem, 10vw, 7rem);
 }
 
 .section-spacing::before {
@@ -750,6 +776,16 @@ img, video, iframe {
   opacity: 0.055;
   background-image: radial-gradient(rgba(255, 255, 255, 0.65) 0.4px, transparent 0.4px);
   background-size: 3px 3px;
+}
+
+/* Hero background "W" — light mode: faint teal so it shows on light background */
+[data-theme="light"] .hero-bg-w {
+  color: rgba(13, 148, 136, 0.08);
+}
+
+/* Hero code/terminal block — light mode: remove dark glow, use soft shadow */
+[data-theme="light"] .hero-code-block {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .particle {

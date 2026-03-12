@@ -130,13 +130,13 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
     <main className="min-h-screen overflow-x-hidden pt-24 sm:pt-28">
       {/* SECTION 1 — Hero */}
       <section
-        className="relative overflow-hidden px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20"
+        className="relative overflow-hidden px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10"
         style={{
           background: `linear-gradient(135deg, rgba(${TEAL}, 0.1) 0%, transparent 70%)`,
         }}
       >
-        <div className="mx-auto max-w-[1260px]">
-          <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
             <div className="max-w-2xl">
               <nav className="mb-4">
                 <Link
@@ -170,10 +170,10 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
               </h1>
               <p className="mt-3 text-lg italic text-[var(--teal)]">{service.tagline}</p>
               <p className="mt-4 text-[var(--text-muted)]">{service.description}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold text-[var(--navy)] transition-all duration-300 hover:brightness-110 hover:scale-[1.02]"
+                  className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold text-[var(--navy)] transition-all duration-300 hover:brightness-110 hover:scale-[1.02] sm:w-auto"
                   style={{
                     background: "linear-gradient(135deg, var(--teal), var(--teal-dark))",
                     boxShadow: `0 4px 20px rgba(${TEAL}, 0.3)`,
@@ -183,7 +183,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-1.5 rounded-xl border-2 border-[var(--teal)] bg-transparent px-4 py-2.5 text-sm font-bold text-[var(--teal)] transition-all duration-300 hover:bg-[var(--teal)]/10"
+                  className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border-2 border-[var(--teal)] bg-transparent px-4 py-2.5 text-sm font-bold text-[var(--teal)] transition-all duration-300 hover:bg-[var(--teal)]/10 sm:w-auto"
                 >
                   <ChevronLeft className="h-4 w-4" /> Back to Services
                 </Link>
@@ -206,9 +206,9 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 2 — Three stat cards */}
-      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-[1260px]">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
             {statCards.map((card) => {
               const CardIcon = card.icon;
               return (
@@ -235,16 +235,16 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 3 — What We Offer */}
-      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-[1260px]">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 lg:gap-12">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
             <div>
               <p
                 className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--teal)]"
               >
                 What We Offer
               </p>
-              <h2 className="mt-3 font-cormorant text-[clamp(1.75rem,3vw,2.25rem)] font-bold leading-tight text-[var(--text)]">
+              <h2 className="mt-3 font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-tight text-[var(--text)]">
                 Everything you need, built right.
               </h2>
               <p className="mt-4 text-[var(--text)] opacity-90">
@@ -273,8 +273,8 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 4 — Our Process */}
-      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-[1260px]">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <h2 className="text-center font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-[var(--text)]">
             How We Work
           </h2>
@@ -286,23 +286,27 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
               >
                 {i < processSteps.length - 1 && (
                   <div
-                    className="absolute left-1/2 top-7 hidden h-0.5 w-full border-b-2 border-dashed border-[var(--teal)] opacity-40 md:left-[calc(50%+28px)] md:block md:w-[calc(100%-56px)]"
+                    className="absolute left-1/2 top-14 hidden h-0.5 w-full -translate-x-1/2 border-b-2 border-dashed border-[var(--teal)] opacity-40 md:left-[calc(50%+28px)] md:block md:w-[calc(100%-56px)] md:translate-x-0"
                     aria-hidden
                   />
                 )}
-                <span
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold text-[var(--teal)]"
-                  style={{
-                    background: `rgba(${TEAL}, 0.15)`,
-                    border: `2px solid rgba(${TEAL}, 0.4)`,
-                  }}
-                >
-                  {i + 1}
-                </span>
-                <h3 className="mt-4 font-cormorant text-lg font-bold text-[var(--text)]">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm text-[var(--text-muted)]">{step.description}</p>
+                <div className="flex flex-col items-center md:flex-row md:items-start md:gap-4">
+                  <span
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-bold text-[var(--teal)]"
+                    style={{
+                      background: `rgba(${TEAL}, 0.15)`,
+                      border: `2px solid rgba(${TEAL}, 0.4)`,
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                  <div className="mt-4 md:mt-0">
+                    <h3 className="font-cormorant text-lg font-bold text-[var(--text)]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-[var(--text-muted)]">{step.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -310,8 +314,8 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 5 — Tech Stack */}
-      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-[1260px]">
+      <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <h2 className="font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-[var(--text)]">
             Technologies We Use
           </h2>
@@ -333,8 +337,8 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       </section>
 
       {/* SECTION 6 — CTA Banner */}
-      <section className="px-4 pb-16 md:px-8 md:pb-28">
-        <div className="mx-auto max-w-[1260px]">
+      <section className="px-4 pb-16 md:px-6 md:pb-28 xl:px-10">
+        <div className="mx-auto max-w-[1280px]">
           <div
             className="flex flex-col items-center justify-center rounded-2xl border px-4 py-12 text-center sm:px-6 sm:py-16 md:rounded-[20px] md:px-8 md:py-20"
             style={{

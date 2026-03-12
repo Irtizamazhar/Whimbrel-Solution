@@ -53,7 +53,7 @@ function PortfolioCounter({
 export default function Portfolio() {
   return (
     <section id="portfolio" className="section-spacing">
-      <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-5 md:px-8">
+      <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -66,7 +66,7 @@ export default function Portfolio() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="max-w-3xl font-cormorant text-[clamp(2.4rem,6vw,3.65rem)] leading-[1.02] text-text"
+            className="max-w-3xl font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text"
           >
             Work That Speaks Louder Than Words.
           </motion.h2>
@@ -77,7 +77,7 @@ export default function Portfolio() {
           whileInView="visible"
           variants={stagger}
           viewport={{ once: true, margin: "-100px" }}
-          className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           {portfolioProjects.map((project) => {
             const projectWithBadge = project as typeof project & { badge?: string; iconLucide?: keyof typeof iconMap };

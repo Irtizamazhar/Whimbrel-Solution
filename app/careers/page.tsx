@@ -123,24 +123,24 @@ export default function CareersPage() {
     <div className="min-h-screen bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
 
-      <main className="mx-auto w-full max-w-[1260px] px-5 pb-16 pt-28 md:px-8">
-        <section className="mb-16">
-          <h1 className="font-cormorant text-[clamp(2.6rem,7vw,4.8rem)] leading-none">
+      <main className="mx-auto w-full max-w-[1280px] px-4 pb-16 pt-28 sm:px-5 md:px-6 xl:px-10">
+        <section className="mb-12 sm:mb-16">
+          <h1 className="font-cormorant text-[clamp(1.9rem,5vw,4rem)] leading-none">
             Join Our Team
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-text-muted">Build the future with us</p>
+          <p className="mt-5 max-w-2xl text-base text-text-muted sm:text-lg">Build the future with us</p>
           <Link
             href="#positions"
-            className="mt-7 inline-flex rounded-full border border-teal bg-teal px-6 py-3 text-sm font-semibold text-navy transition hover:brightness-110"
+            className="mt-7 inline-flex min-h-[44px] items-center rounded-full border border-teal bg-teal px-6 py-3 text-sm font-semibold text-navy transition hover:brightness-110"
             data-magnetic="true"
           >
             View Open Positions
           </Link>
         </section>
 
-        <section className="mb-16">
-          <h2 className="mb-6 font-cormorant text-[clamp(2.1rem,5vw,3.2rem)]">Why Join Us</h2>
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="mb-6 font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)]">Why Join Us</h2>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {benefits.map((item) => (
               <article
                 key={item.title}
@@ -155,15 +155,15 @@ export default function CareersPage() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-center font-cormorant text-[clamp(2.1rem,5vw,3.2rem)]">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-center font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)]">
             Internship <span className="text-teal">Perks</span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-text-muted">
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-text-muted sm:text-base">
             We value our interns and offer a range of benefits to support their growth and
             experience.
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {internshipPerks.map((perk) => (
               <article
                 key={perk.title}

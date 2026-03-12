@@ -28,13 +28,13 @@ const features = [
 export default function About() {
   return (
     <section id="about" className="section-spacing">
-      <div className="mx-auto grid w-full max-w-[1260px] items-center gap-10 px-4 sm:gap-14 sm:px-5 md:px-8 lg:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-[1280px] items-center gap-10 px-4 sm:gap-14 sm:px-5 md:px-6 md:grid-cols-[40%_1fr] md:gap-12 lg:grid-cols-2 xl:px-10">
         <motion.div
           variants={slideFromLeft}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-6"
+          className="order-2 space-y-6 md:order-none"
         >
           <SectionTag label="About Us" />
           <h2 className="font-cormorant text-[clamp(2.2rem,5.8vw,3.7rem)] leading-[1.05] text-text">
@@ -75,10 +75,10 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="relative mx-auto w-full max-w-[500px]"
+          className="relative order-first mx-auto w-full max-w-full md:order-none md:max-w-[500px]"
         >
-          <div className="overflow-hidden rounded-3xl border border-teal/25 bg-[linear-gradient(140deg,#0f1e2e_0%,#13283f_55%,#0f1e2e_100%)] p-4 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-            <div className="relative h-[360px] overflow-hidden rounded-2xl border border-teal/20 bg-[radial-gradient(circle_at_25%_20%,rgba(59,191,176,0.26),transparent_45%)]">
+          <div className="overflow-hidden rounded-2xl border border-teal/25 bg-[linear-gradient(140deg,#0f1e2e_0%,#13283f_55%,#0f1e2e_100%)] p-4 shadow-[0_20px_60px_rgba(0,0,0,0.45)] md:rounded-3xl">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-teal/20 bg-[radial-gradient(circle_at_25%_20%,rgba(59,191,176,0.26),transparent_45%)] md:aspect-auto md:h-[360px] md:rounded-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
                 alt="Professional founder portrait"
