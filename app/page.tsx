@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/sections/Hero";
-import Stats from "@/components/sections/Stats";
 import Technology from "@/components/sections/Technology";
 import About from "@/components/sections/About";
 import Portfolio from "@/components/sections/Portfolio";
@@ -89,7 +88,6 @@ export default function Home() {
         <Navbar />
         <main>
           <Hero />
-          <Stats />
           <Technology />
           <About />
           <Portfolio />

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote } from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { testimonials } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -71,7 +71,7 @@ export default function Testimonials() {
                 {/* Review text */}
                 <p
                   className={cn(
-                    "testimonial-quote-text mx-auto mb-5 max-w-[580px] text-[15px] italic leading-[1.75] sm:mb-6 sm:text-[clamp(1.05rem,1.8vw,1.25rem)]",
+                    "testimonial-quote-text mx-auto mb-5 max-w-[580px] text-[15px] italic leading-[1.75] sm:mb-6 sm:text-[clamp(1.05rem,1.8vw,1.25rem)] line-clamp-4",
                     "text-[rgba(255,255,255,0.88)] [data-theme='light']:text-[rgba(0,0,0,0.85)]",
                   )}
                 >
@@ -97,32 +97,6 @@ export default function Testimonials() {
                 </div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Arrow buttons — mobile 36px, min 44px touch target */}
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              className={cn(
-                "absolute top-1/2 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full border transition hover:scale-110 sm:left-2 sm:-left-14 sm:-translate-x-full",
-                "border-[rgba(45,212,191,0.25)] bg-[rgba(255,255,255,0.05)] text-[rgba(45,212,191,0.8)] hover:border-[rgba(45,212,191,0.5)] hover:bg-[rgba(45,212,191,0.15)]",
-                "[data-theme='light']:border-[rgba(0,0,0,0.12)] [data-theme='light']:bg-[rgba(0,0,0,0.04)] [data-theme='light']:text-[#0d9488] [data-theme='light']:hover:bg-[rgba(13,148,136,0.1)]",
-              )}
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              className={cn(
-                "absolute top-1/2 z-10 flex h-11 w-11 min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-full border transition hover:scale-110 sm:right-2 sm:-right-14 sm:translate-x-full",
-                "border-[rgba(45,212,191,0.25)] bg-[rgba(255,255,255,0.05)] text-[rgba(45,212,191,0.8)] hover:border-[rgba(45,212,191,0.5)] hover:bg-[rgba(45,212,191,0.15)]",
-                "[data-theme='light']:border-[rgba(0,0,0,0.12)] [data-theme='light']:bg-[rgba(0,0,0,0.04)] [data-theme='light']:text-[#0d9488] [data-theme='light']:hover:bg-[rgba(13,148,136,0.1)]",
-              )}
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
           </div>
 
           {/* Dot indicators — 8px */}

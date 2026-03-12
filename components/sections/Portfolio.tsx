@@ -38,7 +38,7 @@ function PortfolioCounter({
   decimals?: number;
 }) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   return (
     <span ref={ref}>
       {inView ? (
@@ -105,7 +105,7 @@ export default function Portfolio() {
               <div className="absolute bottom-0 left-0 right-0 translate-y-3 p-4 transition duration-300 group-hover:translate-y-0 sm:p-6">
                 <h3 className="font-cormorant text-2xl text-text sm:text-3xl">{project.name}</h3>
                 <p className="text-sm uppercase tracking-[0.14em] text-teal">{project.category}</p>
-                <p className="mt-2 max-w-[95%] text-sm text-text-muted">{project.summary}</p>
+                <p className="mt-2 max-w-[95%] text-sm text-text-muted line-clamp-4">{project.summary}</p>
                 <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-teal">
                   VIEW CASE STUDY →
                 </p>
@@ -143,7 +143,7 @@ export default function Portfolio() {
                     decimals={stat.suffix === "%" ? 0 : 0}
                   />
                 </p>
-                <p className="mt-2 text-sm font-medium text-text [data-theme='light']:text-[#111] sm:text-base">
+                <p className="mt-2 text-sm font-medium text-text line-clamp-4 [data-theme='light']:text-[#111] sm:text-base">
                   {stat.label}
                 </p>
               </motion.div>

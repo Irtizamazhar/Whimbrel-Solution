@@ -15,8 +15,7 @@ function Counter({
   decimals?: number;
 }) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: "-120px" });
-
+  const inView = useInView(ref, { once: true, amount: 0, rootMargin: "40px 0px" });
   return (
     <span ref={ref}>
       {inView ? (
@@ -49,7 +48,7 @@ export default function Stats() {
                 decimals={item.suffix === "%" ? 0 : 0}
               />
             </p>
-            <p className="mt-2 text-sm tracking-wide text-text-muted">{item.label}</p>
+            <p className="mt-2 text-sm tracking-wide text-text-muted line-clamp-4">{item.label}</p>
           </motion.article>
         ))}
       </div>
