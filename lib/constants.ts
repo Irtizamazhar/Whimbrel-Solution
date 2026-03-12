@@ -12,7 +12,17 @@ export const stats = [
   { value: 98, suffix: "%", label: "Client Satisfaction" },
 ];
 
-export const services = [
+export type ServiceItem = {
+  number: string;
+  iconKey: string;
+  title: string;
+  description: string;
+  slug: string;
+  features: string[];
+  technologies: string[];
+};
+
+export const services: ServiceItem[] = [
   {
     number: "01",
     iconKey: "code",

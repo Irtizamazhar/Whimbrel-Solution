@@ -65,9 +65,9 @@ export default function Services() {
           className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           {services.map((service) => {
-            const slug = "slug" in service ? service.slug : service.number;
-            const features = "features" in service ? service.features : [];
-            const technologies = "technologies" in service ? service.technologies : [];
+            const slug = service.slug;
+            const features = service.features;
+            const technologies = service.technologies;
             const Icon = iconMap[service.iconKey] ?? Code2;
             const gradient = gradientByNumber[service.number] ?? gradientByNumber["01"];
             return (
