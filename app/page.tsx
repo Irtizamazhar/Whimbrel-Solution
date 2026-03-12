@@ -10,7 +10,6 @@ import Technology from "@/components/sections/Technology";
 import About from "@/components/sections/About";
 import Portfolio from "@/components/sections/Portfolio";
 import Testimonials from "@/components/sections/Testimonials";
-import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
@@ -95,7 +94,6 @@ export default function Home() {
           <About />
           <Portfolio />
           <Testimonials />
-          <Contact />
         </main>
         <Footer />
         <WhatsAppButton />

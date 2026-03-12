@@ -4,6 +4,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 import Contact from "@/components/sections/Contact";
 import ContactMap from "@/components/sections/ContactMap";
+import ContactFAQ from "@/components/sections/ContactFAQ";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function ContactPage() {
             <ContactMap />
           </div>
         </div>
+        <ContactFAQ />
       </main>
       <Footer />
     </div>

@@ -70,11 +70,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
           <p className="mt-6 text-lg leading-relaxed text-text-muted">{post.excerpt}</p>
           <div className="mt-6 space-y-4 text-text-muted">
-            {post.body.split("\n").map((para, i) => (
-              <p key={i} className="leading-relaxed">
-                {para}
-              </p>
-            ))}
+            {post.body
+              .split(/\n\n+/)
+              .filter((para) => para.trim())
+              .map((para, i) => (
+                <p key={i} className="leading-relaxed">
+                  {para.trim()}
+                </p>
+              ))}
           </div>
         </article>
         <div className="mt-10 border-t border-navy-4 pt-8">

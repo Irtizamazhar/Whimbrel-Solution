@@ -150,35 +150,71 @@ export const portfolioProjects = [
       "Mobile app with Arabic text, Urdu/English translation, multiple Qari recitations, bookmarking, and offline mode.",
     impact: "Easy access to Surah Yaseen for reading and listening, with full offline support.",
   },
+  {
+    slug: "barayas-store",
+    name: "Barayas.store",
+    badge: "FASHION E-COMMERCE",
+    category: "CLOTHING & RETAIL",
+    iconLucide: "ShoppingBag",
+    summary: "Premium Pakistani fashion e-commerce store featuring embroidered lawn, printed lawn collections. Complete online shopping experience with cart, order tracking, and secure payments.",
+    timeline: "Completed",
+    stack: "Web, E-commerce, WooCommerce",
+    url: "https://barayas.store/",
+    challenge:
+      "Baraya's needed a modern, trustworthy e-commerce site for embroidered and printed lawn collections with clear categories and smooth checkout.",
+    solution:
+      "Full-featured store with shop by collection (Summer Muse, Flora Drop, Bloom Edit, Zayara Luxe, Naqsh, Canvas, Zarmina, Petal Drape), cart, secure payments, free shipping, and order tracking.",
+    impact: "A complete online presence for Baraya's fashion collections with a professional, easy-to-shop experience.",
+  },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Whimbrel Solution turned our legacy platform into a modern product in months, not years.",
+      "Whimbrel Solution delivered our CTS examination platform with precision. Testing, HR solutions, and result management — all built perfectly on time.",
+    stars: 5,
+    name: "Tariq Mehmood",
+    role: "Director",
+    company: "CTS Pakistan",
+  },
+  {
+    quote:
+      "They built My Laundry platform from scratch. Contactless pickup, next-day delivery, transparent pricing — everything worked flawlessly on launch day.",
+    stars: 5,
+    name: "James Tran",
+    role: "Founder",
+    company: "My Laundry Thai",
+  },
+  {
+    quote:
+      "OnMart e-commerce platform exceeded our expectations. Fast, beautiful, and our sales grew significantly after launch.",
+    stars: 5,
+    name: "Bilal Akram",
+    role: "CEO",
+    company: "OnMart",
+  },
+  {
+    quote:
+      "Our One Dollar Shop needed a clean retail experience. Whimbrel delivered exactly that — smooth browsing, bulk ordering, and great mobile experience.",
+    stars: 5,
+    name: "Kamran Shah",
+    role: "Founder",
+    company: "One Dollar Shop",
+  },
+  {
+    quote:
+      "Barayas.store is exactly what we envisioned. Beautiful collections, smooth checkout, and our customers love the shopping experience.",
+    stars: 5,
+    name: "Sana Baray",
+    role: "Founder",
+    company: "Barayas.store",
+  },
+  {
+    quote:
+      "Professional team, great communication, and premium delivery quality. From architecture to deployment — everything felt consistent and reliable.",
+    stars: 5,
     name: "Ahmed Raza",
+    role: "CEO",
     company: "PayEase",
-    stars: 5,
-  },
-  {
-    quote:
-      "Their team is proactive, technically deep, and design-aware. Delivery quality stayed consistent.",
-    name: "Sarah Khan",
-    company: "ShopLux",
-    stars: 5,
-  },
-  {
-    quote:
-      "From architecture to deployment, everything felt premium and predictable.",
-    name: "Dr. Haseeb Ali",
-    company: "MedCore",
-    stars: 5,
-  },
-  {
-    quote:
-      "They built an analytics suite that gave us real visibility and better decisions.",
-    name: "Usman Tariq",
-    company: "DataVault",
-    stars: 5,
   },
 ];

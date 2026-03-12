@@ -88,7 +88,7 @@ export default function Footer() {
   const isContactPage = pathname === "/contact";
 
   return (
-    <footer className="border-t border-navy-4 bg-navy-2/60 pb-6 pt-10 sm:pb-8 sm:pt-14">
+    <footer className="site-footer border-t border-navy-4 bg-navy-2/60 pb-6 pt-10 sm:pb-8 sm:pt-14">
       <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-5 md:px-8">
         <div className="mb-8 border-b border-navy-4 pb-8 sm:mb-10 sm:pb-10">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-teal/50 to-transparent" />
@@ -160,9 +160,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-xs text-text-muted sm:mt-7 sm:gap-3 sm:text-sm">
+        <div className="mt-6 flex flex-wrap items-center justify-center text-center gap-2 text-xs text-text-muted sm:mt-7 sm:gap-3 sm:text-sm">
           <p>© {new Date().getFullYear()} Whimbrel Solution. All rights reserved.</p>
-          <p>Made in Pakistan</p>
         </div>
       </div>
     </footer>

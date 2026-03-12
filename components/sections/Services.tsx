@@ -46,13 +46,13 @@ export default function Services() {
           className="mb-8 space-y-5 sm:mb-12"
         >
           <motion.div variants={fadeUp}>
-            <SectionTag label="Services" />
+            <SectionTag label="Our Services" />
           </motion.div>
           <motion.h2
             variants={fadeUp}
             className="max-w-3xl font-cormorant text-[clamp(2.4rem,6vw,3.65rem)] leading-[1.02] text-text"
           >
-            Full-stack capabilities for ambitious digital products.
+            We Don't Just Code. We Build Businesses.
           </motion.h2>
         </motion.div>
 

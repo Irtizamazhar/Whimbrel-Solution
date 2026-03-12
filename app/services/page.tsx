@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 import Services from "@/components/sections/Services";
-import Contact from "@/components/sections/Contact";
+import IndustriesWeServe from "@/components/sections/IndustriesWeServe";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function ServicesPage() {
       <Navbar />
       <main className="pt-24">
         <Services />
-        <Contact />
+        <IndustriesWeServe />
       </main>
       <Footer />
     </div>

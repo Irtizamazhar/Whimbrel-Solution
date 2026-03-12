@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/sections/Footer";
 import AboutDetails from "@/components/sections/AboutDetails";
-import Contact from "@/components/sections/Contact";
 import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -20,7 +19,6 @@ export default function AboutPage() {
       <Navbar />
       <main className="pt-24">
         <AboutDetails />
-        <Contact />
       </main>
       <Footer />
     </div>

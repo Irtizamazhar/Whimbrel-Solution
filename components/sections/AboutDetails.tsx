@@ -36,8 +36,8 @@ export default function AboutDetails() {
           </article>
           <div className="overflow-hidden rounded-2xl border border-teal/20">
             <Image
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80"
-              alt="Whimbrel team office"
+              src="/our-story.png"
+              alt="Our team collaborating at the office"
               width={1200}
               height={700}
               className="h-full w-full object-cover"

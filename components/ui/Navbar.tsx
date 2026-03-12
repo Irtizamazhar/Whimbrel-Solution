@@ -13,12 +13,12 @@ import ThemeToggle from "./ThemeToggle";
 const navItems = [
   { label: "Home", href: "/", path: "/" },
   { label: "About", href: "/about", path: "/about" },
-  { label: "Team", href: "/team", path: "/team" },
   { label: "Services", href: "/services", path: "/services" },
+  { label: "Team", href: "/team", path: "/team" },
   { label: "Portfolio", href: "/portfolio", path: "/portfolio" },
-  { label: "Contact", href: "/contact", path: "/contact" },
   { label: "Blog", href: "/blog", path: "/blog" },
   { label: "Careers", href: "/careers", path: "/careers" },
+  { label: "Contact", href: "/contact", path: "/contact" },
 ];
 
 export default function Navbar() {
@@ -61,16 +61,16 @@ export default function Navbar() {
         <div className="flex flex-1 items-center justify-center lg:justify-start">
           <Link
             href="/"
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-2.5"
             aria-label="Whimbrel Solution home"
             data-magnetic="true"
           >
             <img
               src="/whimbrel-logo.png"
               alt="Whimbrel Solution"
-              width={210}
-              height={105}
-              className="h-[4.75rem] w-auto max-h-[4.75rem] object-contain object-center brightness-110 contrast-110 sm:h-[6.25rem] sm:max-h-[6.25rem] lg:object-left"
+              width={180}
+              height={90}
+              className="h-28 w-auto max-h-32 object-contain object-center brightness-110 contrast-110 sm:h-32 sm:max-h-[9rem] lg:object-left"
               fetchPriority="high"
             />
           </Link>
@@ -82,8 +82,9 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "nav-link group relative inline-flex items-center gap-1.5 text-sm tracking-wide text-text-muted transition hover:text-text",
-                isActive(item) && "text-teal",
+                "nav-link group relative inline-flex items-center gap-1.5 text-[0.95rem] font-medium tracking-[0.01em] transition-colors duration-200",
+                "text-white/85 hover:text-white",
+                isActive(item) && "nav-link-active !text-[#2dd4bf] !font-semibold [data-theme='light']:!text-[#0d9488]",
               )}
               data-cursor="link"
               data-magnetic="true"
@@ -91,7 +92,8 @@ export default function Navbar() {
               {item.label}
               <span
                 className={cn(
-                  "absolute -bottom-1 left-0 h-px bg-teal transition-all duration-300",
+                  "nav-link-underline absolute -bottom-1 left-0 h-px bg-teal transition-all duration-300",
+                  "[data-theme='light']:bg-[#0d9488]",
                   isActive(item) ? "w-full" : "w-0 group-hover:w-full",
                 )}
               />
