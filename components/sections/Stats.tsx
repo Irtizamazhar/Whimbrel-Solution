@@ -15,7 +15,7 @@ function Counter({
   decimals?: number;
 }) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0, rootMargin: "40px 0px" });
+  const inView = useInView(ref, { once: true, amount: 0 });
   return (
     <span ref={ref}>
       {inView ? (
