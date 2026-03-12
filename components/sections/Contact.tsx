@@ -355,6 +355,15 @@ export default function Contact() {
               <div className="mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:mt-10 lg:grid-cols-4">
                 {INFO_CARDS.map((card, index) => {
                   const Icon = card.icon;
+                  const valueEl = card.href ? (
+                    <span className="contact-card-value block text-[15px] font-semibold text-[#2dd4bf] transition hover:underline">
+                      {card.value}
+                    </span>
+                  ) : (
+                    <p className="contact-card-value text-[15px] font-semibold text-[#2dd4bf]">
+                      {card.value}
+                    </p>
+                  );
                   const content = (
                     <>
                       <div
@@ -369,20 +378,7 @@ export default function Contact() {
                       <p className="contact-card-label mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40">
                         {card.label}
                       </p>
-                      {card.href ? (
-                        <a
-                          href={card.href}
-                          target={card.href.startsWith("http") ? "_blank" : undefined}
-                          rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="contact-card-value block text-[15px] font-semibold text-[#2dd4bf] transition hover:underline"
-                        >
-                          {card.value}
-                        </a>
-                      ) : (
-                        <p className="contact-card-value text-[15px] font-semibold text-[#2dd4bf]">
-                          {card.value}
-                        </p>
-                      )}
+                      {valueEl}
                       <p className="contact-card-sub mt-1.5 text-[12px] text-white/40">{card.sub}</p>
                     </>
                   );

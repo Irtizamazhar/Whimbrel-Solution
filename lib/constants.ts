@@ -239,7 +239,7 @@ export const testimonials = [
     quote:
       "They built My Laundry platform from scratch. Contactless pickup, next-day delivery, transparent pricing — everything worked flawlessly on launch day.",
     stars: 5,
-    name: "James Tran",
+    name: "Paul Ang",
     role: "Founder",
     company: "My Laundry Thai",
   },
