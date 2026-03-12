@@ -8,6 +8,7 @@ import {
   Bot,
   Cloud,
   Palette,
+  Figma,
   Clock,
   Users,
   Shield,
@@ -50,6 +51,24 @@ const serviceIconMap: Record<string, LucideIcon> = {
   bot: Bot,
   cloud: Cloud,
   palette: Palette,
+};
+
+const gradientBySlug: Record<string, string> = {
+  "custom-software": "linear-gradient(135deg, #2dd4bf, #0d9488)",
+  "mobile-apps": "linear-gradient(135deg, #818cf8, #4f46e5)",
+  "web-development": "linear-gradient(135deg, #38bdf8, #0284c7)",
+  "ai-solutions": "linear-gradient(135deg, #a78bfa, #7c3aed)",
+  devops: "linear-gradient(135deg, #fb923c, #ea580c)",
+  "ui-ux": "linear-gradient(135deg, #f472b6, #db2777)",
+};
+
+const iconBySlug: Record<string, LucideIcon> = {
+  "custom-software": Code2,
+  "mobile-apps": Smartphone,
+  "web-development": Globe,
+  "ai-solutions": Bot,
+  devops: Cloud,
+  "ui-ux": Figma,
 };
 
 const featureIconMap: Record<string, LucideIcon> = {
@@ -104,7 +123,8 @@ type ServiceDetailContentProps = {
 };
 
 export default function ServiceDetailContent({ service }: ServiceDetailContentProps) {
-  const Icon = serviceIconMap[service.iconKey] ?? Code2;
+  const Icon = iconBySlug[service.slug] ?? serviceIconMap[service.iconKey] ?? Code2;
+  const gradient = gradientBySlug[service.slug] ?? gradientBySlug["custom-software"];
 
   return (
     <main className="min-h-screen overflow-x-hidden pt-24 sm:pt-28">
@@ -126,19 +146,25 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                   Services <ChevronRight className="inline h-4 w-4" /> {service.title}
                 </Link>
               </nav>
-              <span
-                className="inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wider text-[var(--teal)] sm:px-4 sm:py-1.5 sm:text-sm"
-                style={{
-                  background: `rgba(${TEAL}, 0.15)`,
-                  border: `1px solid rgba(${TEAL}, 0.4)`,
-                  boxShadow: `0 0 20px rgba(${TEAL}, 0.2)`,
-                }}
-              >
-                {service.number}
-              </span>
-              <span className="ml-2 inline-flex h-10 w-10 items-center justify-center text-[var(--teal)] [&>svg]:h-10 [&>svg]:w-10 sm:ml-4 sm:h-12 sm:w-12 sm:[&>svg]:h-12 sm:[&>svg]:w-12">
-                <Icon />
-              </span>
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                <span className="service-detail-number-badge">
+                  {service.number}
+                </span>
+                <div
+                  style={{
+                    width: "64px",
+                    height: "64px",
+                    borderRadius: "14px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "20px",
+                    background: gradient,
+                  }}
+                >
+                  <Icon size={28} color="white" />
+                </div>
+              </div>
               <h1 className="mt-4 font-cormorant text-[clamp(2rem,5vw,3.25rem)] font-bold leading-tight text-[var(--text)]">
                 {service.title}
               </h1>

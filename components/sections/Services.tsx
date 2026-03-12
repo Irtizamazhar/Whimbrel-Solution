@@ -9,6 +9,7 @@ import {
   Bot,
   Cloud,
   Palette,
+  CheckCircle2,
   ChevronRight,
   type LucideIcon,
 } from "lucide-react";
@@ -25,13 +26,13 @@ const iconMap: Record<string, LucideIcon> = {
   palette: Palette,
 };
 
-const numberToSlug: Record<string, string> = {
-  "01": "custom-software",
-  "02": "mobile-apps",
-  "03": "web-development",
-  "04": "ai-solutions",
-  "05": "devops",
-  "06": "ui-ux",
+const gradientByNumber: Record<string, string> = {
+  "01": "linear-gradient(135deg, #2dd4bf, #0d9488)",
+  "02": "linear-gradient(135deg, #818cf8, #4f46e5)",
+  "03": "linear-gradient(135deg, #38bdf8, #0284c7)",
+  "04": "linear-gradient(135deg, #a78bfa, #7c3aed)",
+  "05": "linear-gradient(135deg, #fb923c, #ea580c)",
+  "06": "linear-gradient(135deg, #f472b6, #db2777)",
 };
 
 export default function Services() {
@@ -52,7 +53,7 @@ export default function Services() {
             variants={fadeUp}
             className="max-w-3xl font-cormorant text-[clamp(2.4rem,6vw,3.65rem)] leading-[1.02] text-text"
           >
-            We Don't Just Code. We Build Businesses.
+            We Don&apos;t Just Code. We Build Businesses.
           </motion.h2>
         </motion.div>
 
@@ -64,39 +65,88 @@ export default function Services() {
           className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
         >
           {services.map((service) => {
-            const slug = numberToSlug[service.number] ?? service.number;
+            const slug = "slug" in service ? service.slug : service.number;
+            const features = "features" in service ? service.features : [];
+            const technologies = "technologies" in service ? service.technologies : [];
+            const Icon = iconMap[service.iconKey] ?? Code2;
+            const gradient = gradientByNumber[service.number] ?? gradientByNumber["01"];
             return (
               <motion.article
                 variants={fadeUp}
                 key={service.number}
-                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/75 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_36px_rgba(59,191,176,0.12)] hover:bg-[rgba(59,191,176,0.05)] sm:p-6"
+                className="h-full rounded-3xl"
               >
                 <Link
                   href={`/services/${slug}`}
-                  className="absolute inset-0 z-10"
-                  aria-label={`View ${service.title}`}
-                />
-                <span
-                  className="absolute left-0 top-0 h-full w-[3px] bg-teal opacity-0 shadow-[0_0_12px_var(--teal)] transition-all duration-300 group-hover:opacity-100"
-                  aria-hidden
-                />
-                <span className="font-cormorant text-4xl text-teal">{service.number}</span>
-                <span className="mt-4 flex h-12 w-12 items-center justify-center text-teal [&>svg]:h-8 [&>svg]:w-8">
-                  {(() => {
-                    const Icon = iconMap[service.iconKey] ?? Code2;
-                    return <Icon className="h-8 w-8" />;
-                  })()}
-                </span>
-                <h3 className="mt-3 font-cormorant text-[clamp(1.4rem,2.3vw,1.65rem)] text-text">
+                  className="service-card-premium group relative flex h-full flex-col rounded-3xl border p-7 transition-all duration-300"
+                >
+                {/* Hover arrow + Number — top right */}
+                <div className="absolute right-5 top-5 flex items-center gap-2">
+                  <span className="service-card-number text-[13px] font-bold tracking-[0.05em]">
+                    {service.number}
+                  </span>
+                  <span
+                    className="service-card-chevron"
+                    aria-hidden
+                  >
+                    <ChevronRight size={18} />
+                  </span>
+                </div>
+                {/* 1. Top — Icon box (left) */}
+                <div className="mb-5 flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-xl text-white" style={{ background: gradient }}>
+                  <Icon size={24} />
+                </div>
+
+                {/* 2. Title */}
+                <h3 className="service-card-title mb-2.5 text-[1.2rem] font-bold">
                   {service.title}
                 </h3>
-                <p className="mt-2 text-text-muted">{service.description}</p>
 
-                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-teal transition-all duration-300 group-hover:w-full" />
-                <span className="absolute right-3 top-3 h-16 w-16 rounded-full bg-teal/0 blur-2xl transition group-hover:bg-teal/20" />
-                <span className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center text-teal opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                  <ChevronRight className="h-6 w-6" />
-                </span>
+                {/* 3. Description */}
+                <p className="service-card-desc mb-4 text-[14px] leading-[1.7]">
+                  {service.description}
+                </p>
+
+                {/* 4. Key Features */}
+                {features.length > 0 && (
+                  <>
+                    <p className="service-card-label mb-2.5 text-[12px] font-bold uppercase tracking-[0.06em]">
+                      Key Features:
+                    </p>
+                    <ul className="space-y-1.5">
+                      {features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="service-card-feature flex items-center gap-2"
+                        >
+                          <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0 text-teal" />
+                          <span className="text-[13px]">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                {/* 5. Technologies */}
+                {technologies.length > 0 && (
+                  <>
+                    <p className="service-card-label mt-4 mb-2 text-[12px] font-bold uppercase tracking-[0.06em]">
+                      Technologies:
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="service-card-pill rounded-md border px-2.5 py-1 text-[11px] font-semibold"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                </Link>
               </motion.article>
             );
           })}

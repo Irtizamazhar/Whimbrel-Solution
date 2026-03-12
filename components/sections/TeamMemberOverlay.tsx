@@ -2,7 +2,7 @@
 
 import { useEffect, useCallback, useState } from "react";
 import Link from "next/link";
-import { X, Linkedin } from "lucide-react";
+import { X } from "lucide-react";
 import type { TeamMember } from "@/lib/team";
 
 type TeamMemberOverlayProps = {
@@ -190,15 +190,6 @@ export default function TeamMemberOverlay({
                 </span>
               ))}
             </div>
-            <Link
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="team-overlay-linkedin mt-4 inline-flex items-center gap-2 rounded-[10px] border px-[18px] py-2.5 text-[13px] font-semibold transition-colors"
-            >
-              <Linkedin size={15} />
-              LinkedIn
-            </Link>
           </div>
         </div>
 

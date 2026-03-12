@@ -18,42 +18,90 @@ export const services = [
     iconKey: "code",
     title: "Custom Software Development",
     description:
-      "Scalable applications with React, Next.js, Node.js, TypeScript, and PostgreSQL — tailored for ambitious businesses.",
+      "Scalable applications tailored for ambitious businesses — from enterprise systems to APIs and integrations.",
+    slug: "custom-software",
+    features: [
+      "Enterprise Applications",
+      "API Development",
+      "Database Design",
+      "System Integration",
+    ],
+    technologies: ["React", "Next.js", "Node.js", "PostgreSQL", "Docker"],
   },
   {
     number: "02",
     iconKey: "smartphone",
     title: "Mobile App Development",
     description:
-      "iOS and Android apps with Flutter, React Native, and Kotlin — polished UX, Firebase, and reliable backend integration.",
+      "iOS and Android apps with polished UX, push notifications, and reliable backend integration.",
+    slug: "mobile-apps",
+    features: [
+      "iOS & Android Apps",
+      "Cross-platform Development",
+      "Push Notifications",
+      "App Store Deployment",
+    ],
+    technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
   },
   {
     number: "03",
     iconKey: "globe",
     title: "Web Development",
     description:
-      "Fast, secure web platforms with Next.js, React, TypeScript, and Tailwind CSS — built to convert and scale.",
+      "Fast, secure web platforms built to convert and scale — SEO, mobile responsive, and CMS-ready.",
+    slug: "web-development",
+    features: [
+      "SEO Optimized",
+      "Mobile Responsive",
+      "Fast Performance",
+      "CMS Integration",
+    ],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind", "Stripe"],
   },
   {
     number: "04",
     iconKey: "bot",
     title: "AI Chatbot & Automation",
     description:
-      "Intelligent chatbots and automation with OpenAI and LLMs — workflows and smart assistants for your business.",
+      "Intelligent chatbots and automation with GPT-4 and LLMs — workflows and smart assistants for your business.",
+    slug: "ai-solutions",
+    features: [
+      "GPT-4 Integration",
+      "CRM Automation",
+      "WhatsApp & SMS Bots",
+      "Lead Qualification",
+    ],
+    technologies: ["OpenAI", "LangChain", "Python", "n8n", "Zapier"],
   },
   {
     number: "05",
     iconKey: "cloud",
     title: "Cloud & DevOps",
     description:
-      "Cloud infrastructure with AWS, Docker, CI/CD, and observability — reliable deployment and optimization.",
+      "Cloud infrastructure with CI/CD, Docker, and observability — reliable deployment and 99.9% uptime.",
+    slug: "devops",
+    features: [
+      "AWS Infrastructure",
+      "CI/CD Pipelines",
+      "Docker & Kubernetes",
+      "99.9% Uptime",
+    ],
+    technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux"],
   },
   {
     number: "06",
     iconKey: "palette",
     title: "UI/UX Design",
     description:
-      "User journeys and interfaces designed in Figma — elegant, conversion-focused, and developer-ready handoff.",
+      "User journeys and interfaces — elegant, conversion-focused, and developer-ready handoff.",
+    slug: "ui-ux",
+    features: [
+      "User Research",
+      "Wireframing",
+      "High-Fidelity UI",
+      "Design Systems",
+    ],
+    technologies: ["Figma", "Adobe XD", "Framer", "Tailwind", "Lottie"],
   },
 ];
 

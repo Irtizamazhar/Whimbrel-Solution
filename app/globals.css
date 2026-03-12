@@ -234,6 +234,141 @@ select option {
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
 
+/* ========== Services page: premium service cards ========== */
+.service-card-premium {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/* Hover: green on left edge only */
+.service-card-premium:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #2dd4bf;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -4px 0 20px rgba(45, 212, 191, 0.2), 0 6px 20px rgba(45, 212, 191, 0.15), 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+.service-card-premium:focus:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid #2dd4bf;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.service-card-premium:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+[data-theme="light"] .service-card-premium {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .service-card-premium:focus {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .service-card-premium:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 3px solid #0d9488;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: -4px 0 20px rgba(13, 148, 136, 0.18), 0 6px 20px rgba(13, 148, 136, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+[data-theme="light"] .service-card-premium:focus:hover {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 3px solid #0d9488;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.service-card-chevron {
+  color: #2dd4bf;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.service-card-premium:hover .service-card-chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+[data-theme="light"] .service-card-chevron {
+  color: #0d9488;
+}
+.service-card-number {
+  color: #2dd4bf;
+  font-weight: 700;
+}
+[data-theme="light"] .service-card-number {
+  color: #0d9488;
+  font-weight: 700;
+}
+
+.service-card-title {
+  color: white;
+}
+[data-theme="light"] .service-card-title {
+  color: #111111;
+}
+
+.service-card-desc {
+  color: rgba(255, 255, 255, 0.55);
+}
+[data-theme="light"] .service-card-desc {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.service-card-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="light"] .service-card-label {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.service-card-feature span {
+  color: rgba(255, 255, 255, 0.7);
+}
+[data-theme="light"] .service-card-feature span {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.service-card-pill {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+[data-theme="light"] .service-card-pill {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.service-card-link {
+  color: #2dd4bf;
+}
+[data-theme="light"] .service-card-link {
+  color: #0d9488;
+}
+
+/* ========== Service detail page: hero number badge + gradient icon ========== */
+.service-detail-number-badge {
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  color: #2dd4bf;
+}
+[data-theme="light"] .service-detail-number-badge {
+  background: rgba(13, 148, 136, 0.08);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+  color: #0d9488;
+}
+
 /* ========== Team page: Minimal initials avatars (dark + light) ========== */
 
 /* Avatar area: ONE same style for all cards — no per-card colors */

@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { teamMembers } from "@/lib/team";
 import TeamMemberOverlay from "@/components/sections/TeamMemberOverlay";
@@ -80,16 +78,6 @@ export default function TeamSection() {
                   >
                     {initials}
                   </div>
-                  <Link
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="absolute bottom-3 right-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/60 bg-navy/80 text-teal transition hover:bg-teal hover:text-navy"
-                    aria-label={`${member.name} on LinkedIn`}
-                  >
-                    <Linkedin size={18} />
-                  </Link>
                 </div>
                 <div className="border-t border-navy-4 p-4">
                   <h3 className="font-cormorant text-xl font-semibold text-text">
