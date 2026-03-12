@@ -338,8 +338,78 @@ export default function Contact() {
           <div className="contact-section-blob-2" aria-hidden />
 
         <div className="relative mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
-          {/* Two column: form first on mobile, side by side on lg. Contact page: form + left col first, then info cards below */}
-          <div className={`grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-14 ${isContactPage ? "mt-0" : ""}`}>
+          {/* Contact page: Multiple Ways to Connect first, then form below */}
+          {isContactPage && (
+            <>
+              <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 [data-theme='light']:rounded-2xl [data-theme='light']:bg-white [data-theme='light']:py-10 [data-theme='light']:shadow-sm">
+                <h3 className="text-2xl font-bold tracking-tight text-white contact-connect-heading sm:text-3xl [data-theme='light']:text-[#111]">
+                  Multiple Ways to{" "}
+                  <span className="contact-connect-accent text-[#2dd4bf] [data-theme='light']:text-[#0d9488]">
+                    Connect
+                  </span>
+                </h3>
+                <p className="mt-3 text-sm text-white/55 contact-connect-sub [data-theme='light']:text-[rgba(0,0,0,0.6)] sm:text-base">
+                  Choose the most convenient way to reach out to us
+                </p>
+              </div>
+              <div className="mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:mt-10 lg:grid-cols-4">
+                {INFO_CARDS.map((card, index) => {
+                  const Icon = card.icon;
+                  const content = (
+                    <>
+                      <div
+                        className="contact-card-icon-wrap mb-5 flex h-12 w-12 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-[#2dd4bf]"
+                        style={{
+                          background: "rgba(45,212,191,0.1)",
+                          border: "1px solid rgba(45,212,191,0.2)",
+                        }}
+                      >
+                        <Icon size={22} strokeWidth={2} />
+                      </div>
+                      <p className="contact-card-label mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40">
+                        {card.label}
+                      </p>
+                      {card.href ? (
+                        <a
+                          href={card.href}
+                          target={card.href.startsWith("http") ? "_blank" : undefined}
+                          rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="contact-card-value block text-[15px] font-semibold text-[#2dd4bf] transition hover:underline"
+                        >
+                          {card.value}
+                        </a>
+                      ) : (
+                        <p className="contact-card-value text-[15px] font-semibold text-[#2dd4bf]">
+                          {card.value}
+                        </p>
+                      )}
+                      <p className="contact-card-sub mt-1.5 text-[12px] text-white/40">{card.sub}</p>
+                    </>
+                  );
+                  const cardClass =
+                    "contact-info-card relative overflow-hidden rounded-[18px] p-6 transition duration-300 sm:p-7";
+                  return card.href ? (
+                    <a
+                      key={index}
+                      href={card.href}
+                      target={card.href.startsWith("http") ? "_blank" : undefined}
+                      rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className={cardClass}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <article key={index} className={cardClass}>
+                      {content}
+                    </article>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {/* Two column: form first on mobile, side by side on lg. Contact page: info cards above, then form */}
+          <div className={`grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-14 ${isContactPage ? "mt-16" : "mt-0"}`}>
             {/* LEFT COLUMN — order-2 on mobile so form appears first */}
             <div className="order-2 space-y-6 lg:order-1">
               <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white contact-left-heading [data-theme='light']:text-[#111111]">
@@ -534,75 +604,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact page only: Multiple Ways to Connect + info cards below form */}
-          {isContactPage && (
-            <>
-              <div className="mt-16 mx-auto max-w-4xl px-4 text-center sm:px-6 [data-theme='light']:rounded-2xl [data-theme='light']:bg-white [data-theme='light']:py-10 [data-theme='light']:shadow-sm">
-                <h3 className="text-2xl font-bold tracking-tight text-white contact-connect-heading sm:text-3xl [data-theme='light']:text-[#111]">
-                  Multiple Ways to{" "}
-                  <span className="contact-connect-accent text-[#2dd4bf] [data-theme='light']:text-[#0d9488]">
-                    Connect
-                  </span>
-                </h3>
-                <p className="mt-3 text-sm text-white/55 contact-connect-sub [data-theme='light']:text-[rgba(0,0,0,0.6)] sm:text-base">
-                  Choose the most convenient way to reach out to us
-                </p>
-              </div>
-              <div className="mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:mt-10 lg:grid-cols-4">
-                {INFO_CARDS.map((card, index) => {
-                  const Icon = card.icon;
-                  const content = (
-                    <>
-                      <div
-                        className="contact-card-icon-wrap mb-5 flex h-12 w-12 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-[#2dd4bf]"
-                        style={{
-                          background: "rgba(45,212,191,0.1)",
-                          border: "1px solid rgba(45,212,191,0.2)",
-                        }}
-                      >
-                        <Icon size={22} strokeWidth={2} />
-                      </div>
-                      <p className="contact-card-label mb-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-white/40">
-                        {card.label}
-                      </p>
-                      {card.href ? (
-                        <a
-                          href={card.href}
-                          target={card.href.startsWith("http") ? "_blank" : undefined}
-                          rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="contact-card-value block text-[15px] font-semibold text-[#2dd4bf] transition hover:underline"
-                        >
-                          {card.value}
-                        </a>
-                      ) : (
-                        <p className="contact-card-value text-[15px] font-semibold text-[#2dd4bf]">
-                          {card.value}
-                        </p>
-                      )}
-                      <p className="contact-card-sub mt-1.5 text-[12px] text-white/40">{card.sub}</p>
-                    </>
-                  );
-                  const cardClass =
-                    "contact-info-card relative overflow-hidden rounded-[18px] p-6 transition duration-300 sm:p-7";
-                  return card.href ? (
-                    <a
-                      key={index}
-                      href={card.href}
-                      target={card.href.startsWith("http") ? "_blank" : undefined}
-                      rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className={cardClass}
-                    >
-                      {content}
-                    </a>
-                  ) : (
-                    <article key={index} className={cardClass}>
-                      {content}
-                    </article>
-                  );
-                })}
-              </div>
-            </>
-          )}
         </div>
         </div>
       </section>

@@ -44,7 +44,7 @@ export default function Hero() {
         >
           <motion.div
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal-glow px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-text-muted sm:gap-3 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.2em]"
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal-glow px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-text-muted sm:mt-6 sm:gap-3 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.2em]"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-teal" />
             Premium Software House · Pakistan
