@@ -42,12 +42,17 @@ export default function Testimonials() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {/* Slider card container */}
+          {/* Slider card container — click/tap to go to next */}
           <div
+            role="button"
+            tabIndex={0}
+            onClick={() => go(1)}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(1); } }}
             className={cn(
-              "testimonial-slider-card relative mx-auto w-[min(780px,92vw)] max-w-full rounded-2xl px-5 py-5 text-center shadow-[0_8px_40px_rgba(0,0,0,0.3)] sm:rounded-[24px] sm:px-8 sm:py-10 md:px-14 md:py-11",
+              "testimonial-slider-card relative mx-auto w-[min(780px,92vw)] max-w-full cursor-pointer rounded-2xl px-5 py-5 text-center shadow-[0_8px_40px_rgba(0,0,0,0.3)] sm:rounded-[24px] sm:px-8 sm:py-10 md:px-14 md:py-11",
               "border border-[rgba(45,212,191,0.15)] bg-[rgba(255,255,255,0.04)]",
             )}
+            aria-label="Show next testimonial"
           >
             <AnimatePresence mode="wait">
               <motion.div
