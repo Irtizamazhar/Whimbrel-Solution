@@ -4,14 +4,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 function getLoaderLogoSrc(): string {
-  if (typeof document === "undefined") return "/whimbrel-logo-dark.png";
+  if (typeof document === "undefined") return "/whimbrel-logo-3.png";
   return document.documentElement.getAttribute("data-theme") === "light"
     ? "/whimbrel-logo.png"
-    : "/whimbrel-logo-dark.png";
+    : "/whimbrel-logo-3.png";
 }
 
 export default function Loading() {
-  const [logoSrc, setLogoSrc] = useState("/whimbrel-logo-dark.png");
+  const [logoSrc, setLogoSrc] = useState("/whimbrel-logo-3.png");
 
   useEffect(() => {
     setLogoSrc(getLoaderLogoSrc());

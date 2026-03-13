@@ -13,15 +13,15 @@ import Footer from "@/components/sections/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 function getLoaderLogoSrc(): string {
-  if (typeof document === "undefined") return "/whimbrel-logo-dark.png";
+  if (typeof document === "undefined") return "/whimbrel-logo-3.png";
   return document.documentElement.getAttribute("data-theme") === "light"
     ? "/whimbrel-logo.png"
-    : "/whimbrel-logo-dark.png";
+    : "/whimbrel-logo-3.png";
 }
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const [loaderLogo, setLoaderLogo] = useState("/whimbrel-logo-dark.png");
+  const [loaderLogo, setLoaderLogo] = useState("/whimbrel-logo-3.png");
 
   useEffect(() => {
     setLoaderLogo(getLoaderLogoSrc());

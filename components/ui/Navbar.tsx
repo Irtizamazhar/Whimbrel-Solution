@@ -70,7 +70,7 @@ export default function Navbar() {
               {scrolled ? (
                 /* Scroll down: always logo 2 (dark logo) */
                 <img
-                  src="/whimbrel-logo-dark.png"
+                  src="/whimbrel-logo-3.png"
                   alt="Whimbrel Solution"
                   width={180}
                   height={90}
@@ -80,7 +80,7 @@ export default function Navbar() {
               ) : (
                 <>
                   <img
-                    src="/whimbrel-logo-dark.png"
+                    src="/whimbrel-logo-3.png"
                     alt="Whimbrel Solution"
                     width={180}
                     height={90}

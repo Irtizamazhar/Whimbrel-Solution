@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { Linkedin, Instagram, Facebook } from "lucide-react";
 import { toast } from "sonner";
 
 const footerColumns = {
@@ -28,8 +29,9 @@ const footerColumns = {
     { label: "Enroll Now", href: "/enroll" },
   ],
   social: [
-    { label: "LinkedIn", href: "https://www.linkedin.com" },
-    { label: "Instagram", href: "https://www.instagram.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/whimbrel-solution/", icon: Linkedin },
+    { label: "Instagram", href: "https://www.instagram.com/whimbrelsolutions9?igsh=MWFsY21wODRjbGVmNQ==", icon: Instagram },
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100083014608497", icon: Facebook },
   ],
 };
 
@@ -106,7 +108,7 @@ export default function Footer() {
                 if (isContactPage) window.dispatchEvent(new CustomEvent("focusMap"));
               }}
             >
-              <Image src="/whimbrel-logo-dark.png" alt="Whimbrel logo" width={100} height={100} className="h-20 w-20 sm:h-[100px] sm:w-[100px]" />
+              <Image src="/whimbrel-logo-3.png" alt="Whimbrel logo" width={100} height={100} className="h-20 w-20 sm:h-[100px] sm:w-[100px]" />
               <div className="min-w-0">
                 <p className="font-cormorant text-xl text-text sm:text-3xl">Whimbrel Solution</p>
                 <p className="text-xs text-text-muted sm:text-sm">
@@ -156,19 +158,23 @@ export default function Footer() {
           </div>
           <div>
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Social</p>
-            <ul className="space-y-2">
-              {footerColumns.social.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-muted transition hover:text-text"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="flex flex-wrap items-center gap-3">
+              {footerColumns.social.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/30 bg-teal/5 text-teal transition hover:border-teal/60 hover:bg-teal/15 hover:text-teal"
+                      aria-label={item.label}
+                    >
+                      <Icon size={20} />
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="w-full">
