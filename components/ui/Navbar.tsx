@@ -55,6 +55,7 @@ export default function Navbar() {
         "fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 overflow-x-hidden",
         scrolled && "nav-scrolled border-navy-4/90 backdrop-blur-xl",
       )}
+      data-scrolled={scrolled ? "true" : "false"}
     >
       <nav className="relative mx-auto flex h-24 w-full max-w-[1280px] items-center px-4 sm:px-5 md:px-6 xl:px-10">
         {/* Logo: center on mobile, left from lg */}
@@ -65,14 +66,38 @@ export default function Navbar() {
             aria-label="Whimbrel Solution home"
             data-magnetic="true"
           >
-            <img
-              src="/whimbrel-logo.png"
-              alt="Whimbrel Solution"
-              width={180}
-              height={90}
-              className="h-32 w-auto max-h-40 object-contain object-center brightness-110 contrast-110 sm:h-40 sm:max-h-[11rem] lg:object-left"
-              fetchPriority="high"
-            />
+            <span className="relative inline-block h-32 w-[160px] sm:h-40 sm:w-[200px] lg:object-left">
+              {scrolled ? (
+                /* Scroll down: always logo 2 (dark logo) */
+                <img
+                  src="/whimbrel-logo-dark.png"
+                  alt="Whimbrel Solution"
+                  width={180}
+                  height={90}
+                  className="absolute inset-0 h-full w-auto object-contain object-left"
+                  fetchPriority="high"
+                />
+              ) : (
+                <>
+                  <img
+                    src="/whimbrel-logo-dark.png"
+                    alt="Whimbrel Solution"
+                    width={180}
+                    height={90}
+                    className="nav-logo-dark absolute inset-0 h-full w-auto object-contain object-left"
+                    fetchPriority="high"
+                  />
+                  <img
+                    src="/whimbrel-logo.png"
+                    alt="Whimbrel Solution"
+                    width={180}
+                    height={90}
+                    className="nav-logo-light absolute inset-0 h-full w-auto object-contain object-left brightness-110 contrast-110"
+                    fetchPriority="high"
+                  />
+                </>
+              )}
+            </span>
           </Link>
         </div>
 
@@ -102,6 +127,16 @@ export default function Navbar() {
           ))}
           <div className="ml-2 flex shrink-0 items-center gap-3 xl:ml-4 xl:gap-5">
             <ThemeToggle />
+            <Link
+              href="/enroll"
+              className="inline-flex items-center gap-1.5 rounded-lg px-5 py-2 text-[0.85rem] font-bold tracking-[0.03em] text-black shadow-[0_0_15px_rgba(45,212,191,0.3)] transition-all duration-250 ease-out hover:brightness-110 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(45,212,191,0.5)]"
+              style={{
+                background: "linear-gradient(135deg, #2dd4bf, #0d9488)",
+              }}
+              data-cursor="link"
+            >
+              Enroll Now
+            </Link>
             <Button href="/contact" variant="outline">
               Get a Quote
             </Button>
@@ -164,17 +199,27 @@ export default function Navbar() {
                   </Link>
                 ))}
               </nav>
-              <div className="mt-auto pt-8">
-                <ThemeToggle />
+              <div className="mt-auto flex w-full flex-col gap-3 pt-8">
+                <Link
+                  href="/enroll"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex min-h-[44px] w-full min-w-[200px] items-center justify-center gap-1.5 rounded-lg px-5 py-2.5 text-[0.85rem] font-bold tracking-[0.03em] text-black shadow-[0_0_15px_rgba(45,212,191,0.3)] transition-all duration-250"
+                  style={{
+                    background: "linear-gradient(135deg, #2dd4bf, #0d9488)",
+                  }}
+                >
+                  Enroll Now
+                </Link>
                 <Button
                   href="/contact"
                   variant="primary"
-                  className="mt-6 min-h-[44px] w-full min-w-[200px]"
+                  className="min-h-[44px] w-full min-w-[200px]"
                   magnetic={false}
                   onClick={() => setOpen(false)}
                 >
                   Get a Quote
                 </Button>
+                <ThemeToggle />
               </div>
             </motion.div>
           </>,

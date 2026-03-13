@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { CircleCheckBig, Eye, Lightbulb } from "lucide-react";
+import MissionVisionModal from "@/components/ui/MissionVisionModal";
 
 const values = ["Innovation", "Collaboration", "Excellence", "Transparency"];
 
@@ -11,6 +15,14 @@ const journey = [
 ];
 
 export default function AboutDetails() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<"mission" | "vision">("mission");
+
+  const openModal = (type: "mission" | "vision") => {
+    setModalType(type);
+    setModalOpen(true);
+  };
+
   return (
     <section className="section-spacing">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
@@ -48,7 +60,19 @@ export default function AboutDetails() {
         <div className="mt-12">
           <h2 className="text-center font-cormorant text-5xl text-text">Our Mission & Vision</h2>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
-            <article className="rounded-2xl border border-teal/20 bg-navy-2 p-6">
+            <article
+              role="button"
+              tabIndex={0}
+              onClick={() => openModal("mission")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openModal("mission");
+                }
+              }}
+              className="mission-vision-card group relative cursor-pointer rounded-2xl border border-teal/20 bg-navy-2 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[rgba(45,212,191,0.45)] hover:shadow-[0_0_30px_rgba(45,212,191,0.15)]"
+              aria-label="Read more about our mission"
+            >
               <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal/15 text-teal">
                 <CircleCheckBig size={18} />
               </div>
@@ -57,8 +81,23 @@ export default function AboutDetails() {
                 Build dependable and scalable digital products that solve real business
                 problems and accelerate growth.
               </p>
+              <span className="mission-vision-read-more absolute bottom-4 right-4 text-xs font-semibold text-teal opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                Read More →
+              </span>
             </article>
-            <article className="rounded-2xl border border-teal/20 bg-navy-2 p-6">
+            <article
+              role="button"
+              tabIndex={0}
+              onClick={() => openModal("vision")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openModal("vision");
+                }
+              }}
+              className="mission-vision-card group relative cursor-pointer rounded-2xl border border-teal/20 bg-navy-2 p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[rgba(45,212,191,0.45)] hover:shadow-[0_0_30px_rgba(45,212,191,0.15)]"
+              aria-label="Read more about our vision"
+            >
               <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-teal/15 text-teal">
                 <Eye size={18} />
               </div>
@@ -67,9 +106,18 @@ export default function AboutDetails() {
                 Become a globally trusted engineering partner known for innovation,
                 quality, and long-term value creation.
               </p>
+              <span className="mission-vision-read-more absolute bottom-4 right-4 text-xs font-semibold text-teal opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                Read More →
+              </span>
             </article>
           </div>
         </div>
+
+        <MissionVisionModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          type={modalType}
+        />
 
         <div className="mt-12">
           <h2 className="text-center font-cormorant text-5xl text-text">Our Core Values</h2>

@@ -1,6 +1,40 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+/* Enroll page & global theme variables — dark = default, light = [data-theme="light"] */
+:root {
+  --bg-primary: #060d1a;
+  --bg-secondary: #080f1e;
+  --bg-card: #0b1520;
+  --bg-section: #080f1e;
+  --border-color: rgba(45, 212, 191, 0.15);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --text-faint: rgba(255, 255, 255, 0.25);
+  --accent: #2dd4bf;
+  --accent-light: rgba(45, 212, 191, 0.1);
+  --accent-border: rgba(45, 212, 191, 0.3);
+  --card-shadow: none;
+  --card-shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-section: #f1f5f9;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  --accent: #0d9488;
+  --accent-light: rgba(13, 148, 136, 0.1);
+  --accent-border: rgba(13, 148, 136, 0.3);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  --card-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.13);
+}
+
 /* Prevent horizontal scroll on all viewports */
 html {
   overflow-x: hidden;
@@ -619,6 +653,41 @@ header::-webkit-scrollbar {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Navbar logo: dark theme = dark logo (black bg), light theme = existing logo */
+.nav-logo-dark {
+  display: block;
+}
+.nav-logo-light {
+  display: none;
+}
+html[data-theme="light"] .nav-logo-dark {
+  display: none;
+}
+html[data-theme="light"] .nav-logo-light {
+  display: block;
+}
+/* When scrolled down: always show logo 2 (dark logo) on navbar */
+header[data-scrolled="true"] .nav-logo-dark {
+  display: block !important;
+}
+header[data-scrolled="true"] .nav-logo-light {
+  display: none !important;
+}
+
+/* Loader / splash logo: dark theme = logo 2, light theme = existing logo */
+.loader-logo-dark {
+  display: block;
+}
+.loader-logo-light {
+  display: none;
+}
+html[data-theme="light"] .loader-logo-dark {
+  display: none;
+}
+html[data-theme="light"] .loader-logo-light {
+  display: block;
+}
+
 .nav-scrolled {
   background: rgba(10, 22, 40, 0.78);
 }
@@ -1075,6 +1144,260 @@ html:not([data-theme="light"]) .newsletter-email-input::placeholder {
 }
 [data-theme="light"] .newsletter-email-input::placeholder {
   color: rgba(11, 25, 41, 0.5) !important;
+}
+
+/* ========== Enroll page — light mode only (dark unchanged) ========== */
+[data-theme="light"] .enroll-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+[data-theme="light"] .enroll-page .enroll-hero {
+  background: linear-gradient(135deg, rgba(13,148,136,0.07) 0%, transparent 60%) !important;
+}
+[data-theme="light"] .enroll-page .enroll-hero .enroll-hero-label {
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-hero .enroll-hero-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-page .enroll-hero .enroll-hero-sub {
+  color: #475569 !important;
+}
+[data-theme="light"] .enroll-page .enroll-hero .enroll-stat-value {
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-hero .enroll-stat-label {
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-page .enroll-hero .enroll-hero-icon {
+  color: #e2e8f0 !important;
+  opacity: 0.5 !important;
+}
+[data-theme="light"] .enroll-page .enroll-tabs-wrap {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+[data-theme="light"] .enroll-page .enroll-tab-active {
+  background: #f0fdfa !important;
+  border: 1px solid #2dd4bf !important;
+  color: #0f766e !important;
+}
+[data-theme="light"] .enroll-page .enroll-tab-inactive {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-page .enroll-tab-inactive:hover {
+  background: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+[data-theme="light"] .enroll-page .enroll-section-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-page .enroll-section-sub {
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-page .enroll-pill-active {
+  background: #f0fdfa !important;
+  border: 1px solid #5eead4 !important;
+  color: #0f766e !important;
+}
+[data-theme="light"] .enroll-page .enroll-pill-inactive {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-page .enroll-pill-inactive:hover {
+  background: #e2e8f0 !important;
+  color: #334155 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card:hover {
+  border-color: #5eead4 !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12) !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-course-price-wrap {
+  border-top: 1px solid #f1f5f9 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-card-cat {
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-card-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-card-meta {
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-card-desc {
+  color: #475569 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-topic-pill {
+  background: rgba(13,148,136,0.08) !important;
+  border: 1px solid rgba(13,148,136,0.25) !important;
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-price-original {
+  color: #94a3b8 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-price-current {
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-course-card .enroll-cert-badge {
+  color: #b45309 !important;
+}
+[data-theme="light"] .enroll-page .enroll-btn-enroll {
+  background: #f8fafc !important;
+  border: 1px solid #5eead4 !important;
+  color: #0f766e !important;
+}
+[data-theme="light"] .enroll-page .enroll-btn-enroll:hover {
+  background: linear-gradient(135deg, #2dd4bf, #0d9488) !important;
+  border-color: transparent !important;
+  color: #000 !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card:hover {
+  border-color: rgba(13,148,136,0.4) !important;
+  box-shadow: 0 0 40px rgba(13,148,136,0.1) !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-intern-icon-wrap {
+  background: rgba(13,148,136,0.1) !important;
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-intern-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-intern-pill {
+  background: #f0fdfa !important;
+  border: 1px solid #5eead4 !important;
+  color: #0f766e !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-intern-pill-type {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-intern-stipend {
+  color: #b45309 !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-intern-desc {
+  color: #475569 !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-skill-pill {
+  background: rgba(13,148,136,0.08) !important;
+  border-color: rgba(13,148,136,0.2) !important;
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-intern-card .enroll-perk-text {
+  color: #334155 !important;
+}
+[data-theme="light"] .enroll-page .enroll-why-section {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+[data-theme="light"] .enroll-page .enroll-why-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06) !important;
+}
+[data-theme="light"] .enroll-page .enroll-why-card:hover {
+  border-color: rgba(13,148,136,0.3) !important;
+  transform: translateY(-4px);
+}
+[data-theme="light"] .enroll-page .enroll-why-card .enroll-why-icon {
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-why-card .enroll-why-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-page .enroll-why-card .enroll-why-desc {
+  color: #475569 !important;
+}
+[data-theme="light"] .enroll-page .enroll-cta-banner {
+  background: linear-gradient(135deg, rgba(13,148,136,0.06), rgba(45,212,191,0.04)) !important;
+  border: 1px solid rgba(13,148,136,0.2) !important;
+}
+[data-theme="light"] .enroll-page .enroll-cta-banner .enroll-cta-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-page .enroll-cta-banner .enroll-cta-sub {
+  color: #475569 !important;
+}
+[data-theme="light"] .enroll-page .enroll-cta-outline {
+  border: 1.5px solid rgba(13,148,136,0.5) !important;
+  color: #0d9488 !important;
+}
+[data-theme="light"] .enroll-page .enroll-cta-outline:hover {
+  background: #f0fdfa !important;
+}
+
+/* Enroll modal — light mode */
+[data-theme="light"] .enroll-modal-overlay {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+[data-theme="light"] .enroll-modal-right {
+  background: #ffffff !important;
+  border-left: 1px solid #e2e8f0 !important;
+}
+[data-theme="light"] .enroll-modal-right .enroll-modal-heading {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-modal-right .enroll-modal-subtext {
+  color: #94a3b8 !important;
+}
+[data-theme="light"] .enroll-modal-right .enroll-modal-label {
+  color: #0f766e !important;
+}
+[data-theme="light"] .enroll-modal-input {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+[data-theme="light"] .enroll-modal-input::placeholder {
+  color: #94a3b8 !important;
+}
+[data-theme="light"] .enroll-modal-input:focus {
+  border-color: rgba(13,148,136,0.7) !important;
+  background: rgba(13,148,136,0.04) !important;
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.1) !important;
+}
+[data-theme="light"] .enroll-modal-input option {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-modal-close {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-modal-close:hover {
+  background: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #ef4444 !important;
+}
+[data-theme="light"] .enroll-modal-right .enroll-success-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-modal-right .enroll-success-p {
+  color: #64748b !important;
+}
+[data-theme="light"] .enroll-modal-right .enroll-mobile-title {
+  color: #0f172a !important;
+}
+[data-theme="light"] .enroll-modal-input:-webkit-autofill,
+[data-theme="light"] .enroll-modal-input:-webkit-autofill:hover,
+[data-theme="light"] .enroll-modal-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #f8fafc inset !important;
+  -webkit-text-fill-color: #0f172a !important;
 }
 
 @keyframes float {

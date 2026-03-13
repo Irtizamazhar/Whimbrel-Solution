@@ -22,6 +22,11 @@ const footerColumns = {
     { label: "AI Chatbot & Automation", href: "/services/ai-solutions" },
     { label: "DevOps", href: "/services/devops" },
   ],
+  academy: [
+    { label: "IT Courses", href: "/enroll?tab=courses" },
+    { label: "Internships", href: "/enroll?tab=internships" },
+    { label: "Enroll Now", href: "/enroll" },
+  ],
   social: [
     { label: "LinkedIn", href: "https://www.linkedin.com" },
     { label: "Instagram", href: "https://www.instagram.com" },
@@ -68,7 +73,7 @@ function NewsletterForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email address"
-        className="newsletter-email-input w-full flex-1 border-b border-navy-4 bg-transparent pb-2 text-text outline-none placeholder:text-text-muted focus:border-teal"
+        className="newsletter-email-input min-h-[44px] w-full min-w-0 flex-1 border-b border-navy-4 bg-transparent px-1 pb-3 pt-2 text-[15px] text-text outline-none placeholder:text-text-muted focus:border-teal sm:min-w-[220px] sm:px-2"
         required
         disabled={loading}
       />
@@ -101,7 +106,7 @@ export default function Footer() {
                 if (isContactPage) window.dispatchEvent(new CustomEvent("focusMap"));
               }}
             >
-              <Image src="/whimbrel-logo.png" alt="Whimbrel logo" width={40} height={40} className="h-10 w-10 sm:h-[50px] sm:w-[50px]" />
+              <Image src="/whimbrel-logo-dark.png" alt="Whimbrel logo" width={100} height={100} className="h-20 w-20 sm:h-[100px] sm:w-[100px]" />
               <div className="min-w-0">
                 <p className="font-cormorant text-xl text-text sm:text-3xl">Whimbrel Solution</p>
                 <p className="text-xs text-text-muted sm:text-sm">
@@ -112,7 +117,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-6 border-b border-navy-4 pb-8 sm:gap-8 sm:pb-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 border-b border-navy-4 pb-8 sm:gap-8 sm:pb-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="w-full">
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Company</p>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
@@ -129,6 +134,18 @@ export default function Footer() {
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Services</p>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
               {footerColumns.services.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-text-muted transition hover:text-text">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="w-full">
+            <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Academy</p>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:gap-2">
+              {footerColumns.academy.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-text-muted transition hover:text-text">
                     {item.label}

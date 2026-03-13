@@ -4,10 +4,11 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ExternalLink, Navigation } from "lucide-react";
 
-const ISLAMABAD: [number, number] = [33.6844, 73.0479];
-const OFFICE_ADDRESS = "Whimbrel Solution, Islamabad, Pakistan";
-const GMAPS_URL = `https://www.google.com/maps?q=${ISLAMABAD[0]},${ISLAMABAD[1]}`;
-const GMAPS_DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${ISLAMABAD[0]},${ISLAMABAD[1]}`;
+// United Plaza, Fazl-e-Haq Road, Blue Area, Islamabad
+const OFFICE_COORDS: [number, number] = [33.7256, 73.0883];
+const OFFICE_ADDRESS = "Office No.09 3rd Floor United Plaza Fazl-e-Haq Road Blue Area Islamabad";
+const GMAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(OFFICE_ADDRESS)}`;
+const GMAPS_DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(OFFICE_ADDRESS)}`;
 
 export default function ContactMap() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,7 +27,7 @@ export default function ContactMap() {
       const map = L.map(containerRef.current, {
         attributionControl: false,
         scrollWheelZoom: false,
-      }).setView(ISLAMABAD, 14);
+      }).setView(OFFICE_COORDS, 15);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
@@ -73,9 +74,9 @@ export default function ContactMap() {
         iconAnchor: [16, 42],
       });
 
-      const officeMarker = L.marker(ISLAMABAD, { icon: officeIcon }).addTo(map);
+      const officeMarker = L.marker(OFFICE_COORDS, { icon: officeIcon }).addTo(map);
       officeMarker.bindPopup(
-        "<strong>Whimbrel Solution</strong><br/>Office — Islamabad, Pakistan",
+        "<strong>Whimbrel Solution</strong><br/>" + OFFICE_ADDRESS.replace(/,/g, ",<br/>"),
         { className: "whimbrel-popup" }
       );
 
@@ -86,7 +87,7 @@ export default function ContactMap() {
       mapRef.current = { map, marker: officeMarker };
 
       if (typeof window !== "undefined" && window.location.hash === "#location-map") {
-        map.panTo(ISLAMABAD);
+        map.panTo(OFFICE_COORDS);
         officeMarker.openPopup();
       }
 
@@ -94,7 +95,7 @@ export default function ContactMap() {
       requestAnimationFrame(() => {
         if (mapRef.current?.map) {
           mapRef.current.map.invalidateSize();
-          mapRef.current.map.panTo(ISLAMABAD);
+          mapRef.current.map.panTo(OFFICE_COORDS);
         }
       });
     };
@@ -118,7 +119,7 @@ export default function ContactMap() {
     const syncMap = () => {
       if (!mapRef.current?.map) return;
       mapRef.current.map.invalidateSize();
-      mapRef.current.map.panTo(ISLAMABAD);
+      mapRef.current.map.panTo(OFFICE_COORDS);
     };
 
     const observer = new IntersectionObserver(
@@ -146,7 +147,7 @@ export default function ContactMap() {
     const focusMap = () => {
       if (!mapRef.current) return;
       mapRef.current.map.invalidateSize();
-      mapRef.current.map.panTo(ISLAMABAD);
+      mapRef.current.map.panTo(OFFICE_COORDS);
       mapRef.current.marker.openPopup();
     };
 
@@ -172,7 +173,7 @@ export default function ContactMap() {
             document.getElementById("location-map")?.scrollIntoView({ behavior: "smooth" });
             setTimeout(() => {
               if (mapRef.current) {
-                mapRef.current.map.panTo(ISLAMABAD);
+                mapRef.current.map.panTo(OFFICE_COORDS);
                 mapRef.current.marker.openPopup();
               }
             }, 400);

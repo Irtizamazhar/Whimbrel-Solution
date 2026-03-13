@@ -12,8 +12,20 @@ import Testimonials from "@/components/sections/Testimonials";
 import Footer from "@/components/sections/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
+function getLoaderLogoSrc(): string {
+  if (typeof document === "undefined") return "/whimbrel-logo-dark.png";
+  return document.documentElement.getAttribute("data-theme") === "light"
+    ? "/whimbrel-logo.png"
+    : "/whimbrel-logo-dark.png";
+}
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [loaderLogo, setLoaderLogo] = useState("/whimbrel-logo-dark.png");
+
+  useEffect(() => {
+    setLoaderLogo(getLoaderLogoSrc());
+  }, []);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 320);
@@ -53,7 +65,7 @@ export default function Home() {
                 transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Image
-                  src="/whimbrel-logo.png"
+                  src={loaderLogo}
                   alt="Whimbrel logo"
                   fill
                   sizes="(max-width: 640px) 112px, 144px"

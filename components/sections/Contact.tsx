@@ -37,12 +37,13 @@ const INFO_CARDS = [
     label: "CALL US",
     value: "+92 336 3893891",
     sub: "Mon–Fri · 9am to 6pm",
+    ptcl: "PTCL: (051-2000109)",
     href: "https://wa.me/923363893891",
   },
   {
     icon: MapPin,
     label: "VISIT US",
-    value: "Islamabad, Pakistan",
+    value: "Office No.09 3rd Floor United Plaza Fazl-e-Haq Road Blue Area Islamabad",
     sub: "Come say hello at our office",
     href: "#location-map",
   },
@@ -380,6 +381,11 @@ export default function Contact() {
                       </p>
                       {valueEl}
                       <p className="contact-card-sub mt-1.5 text-[12px] text-white/40">{card.sub}</p>
+                      {"ptcl" in card && card.ptcl && (
+                        <p className="contact-card-value mt-1.5 text-[13px] font-semibold text-[#2dd4bf] [data-theme='light']:text-[#0d9488]">
+                          {card.ptcl}
+                        </p>
+                      )}
                     </>
                   );
                   const cardClass =
