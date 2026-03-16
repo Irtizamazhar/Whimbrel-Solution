@@ -131,7 +131,7 @@ export default function TeamSection() {
 
                     {/* Social icons: only for Mr. Irtiza Mazhar (index 0), LinkedIn + Email, visible on hover */}
                     {index === 0 && (
-                      <div className="mt-4 flex items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="mt-4 mb-4 flex items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <Link
                           href={member.linkedin || "#"}
                           target="_blank"
