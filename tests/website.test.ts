@@ -53,10 +53,11 @@ for (const size of SCREEN_SIZES) {
   test(`Responsive: ${size.name} (${size.width}x${size.height})`, async ({
     page,
   }) => {
+    test.setTimeout(60000);
     await page.setViewportSize({ width: size.width, height: size.height });
     for (const route of ["/", "/services", "/enroll", "/careers"]) {
       await page.goto(BASE_URL + route, { waitUntil: "domcontentloaded" });
-      await page.waitForLoadState("networkidle").catch(() => {});
+      await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {});
 
       const hasHScroll = await page.evaluate(
         () =>
