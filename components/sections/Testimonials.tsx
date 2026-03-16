@@ -44,7 +44,7 @@ export default function Testimonials() {
   }, []);
 
   // Auto-scroll cards every 2s; last card → first (infinite loop), pause on hover or when tab hidden
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const intervalRef = useRef<number | null>(null);
   const startAutoScroll = useCallback(() => {
     if (intervalRef.current || n === 0) return;
     intervalRef.current = window.setInterval(() => {
