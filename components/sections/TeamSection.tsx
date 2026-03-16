@@ -19,7 +19,7 @@ const getInitials = (name: string) => {
     .slice(0, 2);
 };
 
-const AVATAR_IDS = ["im", "sa", "ah", "zk", "of"] as const;
+const AVATAR_IDS = ["af", "za", "im", "zk", "wa"] as const;
 
 export default function TeamSection() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -129,8 +129,8 @@ export default function TeamSection() {
                       {member.role}
                     </p>
 
-                    {/* Social icons: only for Mr. Irtiza Mazhar (index 0), LinkedIn + Email, visible on hover */}
-                    {index === 0 && (
+                    {/* Social icons: only when showSocials is true (Irtiza Mazhar), LinkedIn + Email, visible on hover */}
+                    {member.showSocials && (
                       <div className="mt-4 mb-4 flex items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <Link
                           href={member.linkedin || "#"}
