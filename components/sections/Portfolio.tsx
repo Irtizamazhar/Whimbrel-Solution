@@ -151,7 +151,7 @@ export default function Portfolio() {
           </div>
 
           {/* CTA — Ready to Start Your Project */}
-          <div className="mt-14 border-t border-navy-4 pt-10 [data-theme='light']:border-[rgba(0,0,0,0.08)] sm:mt-16 sm:pt-12">
+          <div className="mt-20 border-t border-navy-4 pt-14 [data-theme='light']:border-[rgba(0,0,0,0.08)] sm:mt-24 sm:pt-16">
             <h4 className="font-cormorant text-[clamp(1.75rem,3.5vw,2.35rem)] font-bold text-text [data-theme='light']:text-[#111]">
               Ready to Start Your Project?
             </h4>

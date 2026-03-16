@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Linkedin, Instagram, Facebook } from "lucide-react";
 import { toast } from "sonner";
 
@@ -93,6 +93,8 @@ function NewsletterForm() {
 export default function Footer() {
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <footer className="site-footer border-t border-navy-4 bg-navy-2/60 pb-6 pt-10 sm:pb-8 sm:pt-14">
@@ -102,13 +104,13 @@ export default function Footer() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-center sm:mt-8 sm:justify-start sm:gap-4 sm:text-left">
             <Link
               href={isContactPage ? "#location-map" : "/"}
-              className="flex flex-wrap items-center gap-3 transition opacity-90 hover:opacity-100 sm:gap-4"
+              className="flex flex-wrap items-center gap-3 transition hover:opacity-95 sm:gap-4"
               scroll={isContactPage}
               onClick={() => {
                 if (isContactPage) window.dispatchEvent(new CustomEvent("focusMap"));
               }}
             >
-              <Image src="/whimbrel-logo-3.png" alt="Whimbrel logo" width={100} height={100} className="h-20 w-20 sm:h-[100px] sm:w-[100px]" />
+              <Image src="/whimbrel-logo-3.png" alt="Whimbrel logo" width={100} height={100} className="footer-logo-img h-20 w-20 sm:h-[100px] sm:w-[100px]" />
               <div className="min-w-0">
                 <p className="font-cormorant text-xl text-text sm:text-3xl">Whimbrel Solution</p>
                 <p className="text-xs text-text-muted sm:text-sm">
@@ -159,22 +161,31 @@ export default function Footer() {
           <div>
             <p className="mb-4 text-sm uppercase tracking-[0.18em] text-teal">Social</p>
             <ul className="flex flex-wrap items-center gap-3">
-              {footerColumns.social.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/30 bg-teal/5 text-teal transition hover:border-teal/60 hover:bg-teal/15 hover:text-teal"
-                      aria-label={item.label}
-                    >
-                      <Icon size={20} />
-                    </Link>
-                  </li>
-                );
-              })}
+              {mounted
+                ? footerColumns.social.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <li key={item.label}>
+                        <Link
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/30 bg-teal/5 text-teal transition hover:border-teal/60 hover:bg-teal/15 hover:text-teal"
+                          aria-label={item.label}
+                        >
+                          <Icon size={20} />
+                        </Link>
+                      </li>
+                    );
+                  })
+                : footerColumns.social.map((item) => (
+                    <li key={item.label}>
+                      <span
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-teal/30 bg-teal/5 text-teal"
+                        aria-hidden
+                      />
+                    </li>
+                  ))}
             </ul>
           </div>
           <div className="w-full">
