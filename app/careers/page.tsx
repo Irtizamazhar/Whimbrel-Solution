@@ -125,7 +125,7 @@ export default function CareersPage() {
 
       <main className="mx-auto w-full max-w-[1280px] px-4 pb-16 pt-28 sm:px-5 md:px-6 xl:px-10">
         <section className="mb-12 sm:mb-16">
-          <h1 className="font-cormorant text-[clamp(1.9rem,5vw,4rem)] leading-none">
+          <h1 className="font-cormorant text-[clamp(1.775rem,5vw,3.875rem)] leading-none">
             Join Our Team
           </h1>
           <p className="mt-5 max-w-2xl text-base text-text-muted sm:text-lg">Build the future with us</p>
@@ -139,7 +139,7 @@ export default function CareersPage() {
         </section>
 
         <section className="mb-12 sm:mb-16">
-          <h2 className="mb-6 font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)]">Why Join Us</h2>
+          <h2 className="mb-6 font-cormorant text-[clamp(1.375rem,3.5vw,2.675rem)]">Why Join Us</h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {benefits.map((item) => (
               <article
@@ -148,7 +148,7 @@ export default function CareersPage() {
                 data-cursor="view"
               >
                 <item.Icon className="text-teal" size={23} />
-                <h3 className="mt-4 font-cormorant text-3xl leading-tight text-text">{item.title}</h3>
+                <h3 className="mt-4 font-cormorant text-xl leading-tight text-text">{item.title}</h3>
                 <p className="mt-2 text-text-muted">{item.description}</p>
               </article>
             ))}
@@ -156,7 +156,7 @@ export default function CareersPage() {
         </section>
 
         <section className="mb-12 sm:mb-16">
-          <h2 className="text-center font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)]">
+          <h2 className="text-center font-cormorant text-[clamp(1.375rem,3.5vw,2.675rem)]">
             Internship <span className="text-teal">Perks</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-text-muted sm:text-base">
@@ -173,7 +173,7 @@ export default function CareersPage() {
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-teal/12 text-teal">
                   <perk.Icon size={22} />
                 </span>
-                <h3 className="mt-4 font-cormorant text-3xl leading-tight text-text">{perk.title}</h3>
+                <h3 className="mt-4 font-cormorant text-xl leading-tight text-text">{perk.title}</h3>
                 <p className="mt-2 text-text-muted">{perk.description}</p>
               </article>
             ))}

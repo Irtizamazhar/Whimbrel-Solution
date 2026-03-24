@@ -37,7 +37,7 @@ export default function About() {
           className="order-2 space-y-6 md:order-none"
         >
           <SectionTag label="About Us" />
-          <h2 className="font-cormorant text-[clamp(2.2rem,5.8vw,3.7rem)] leading-[1.05] text-text">
+          <h2 className="font-cormorant text-[clamp(2.075rem,5.8vw,3.575rem)] leading-[1.05] text-text">
             About <span className="text-teal">Whimbrel Solution</span>
           </h2>
           <p className="max-w-2xl text-lg leading-relaxed text-text-muted">

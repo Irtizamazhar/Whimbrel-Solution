@@ -21,7 +21,7 @@ export default function BlogPage() {
 
       <main className="mx-auto w-full max-w-[1260px] px-5 pb-16 pt-28 md:px-8">
         <section className="mb-10">
-          <h1 className="font-cormorant text-[clamp(2.6rem,7vw,4.8rem)] leading-none">
+          <h1 className="font-cormorant text-[clamp(2.475rem,7vw,4.675rem)] leading-none">
             Our Blog
           </h1>
           <span className="mt-3 block h-1 w-28 rounded-full bg-teal" />
@@ -67,7 +67,7 @@ export default function BlogPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.17em] text-teal">
                   {post.category}
                 </p>
-                <h3 className="mt-2 font-cormorant text-3xl leading-tight text-text">
+                <h3 className="mt-2 font-cormorant text-xl leading-tight text-text">
                   {post.title}
                 </h3>
                 <p className="mt-2 overflow-hidden text-text-muted [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">

@@ -323,7 +323,7 @@ export default function Contact() {
         {isContactPage && (
         <div className="contact-get-in-touch-banner py-16 text-center sm:py-20">
           <div className="mx-auto max-w-[800px] px-4 sm:px-6">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-[2.75rem]">
+            <h2 className="text-xl font-bold tracking-tight sm:text-2xl md:text-[2.625rem]">
               Get In Touch
             </h2>
             <p className="mt-4 text-base text-white/90 sm:text-lg [data-theme='light']:text-white/95">
@@ -343,7 +343,7 @@ export default function Contact() {
           {isContactPage && (
             <>
               <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 [data-theme='light']:rounded-2xl [data-theme='light']:bg-white [data-theme='light']:py-10 [data-theme='light']:shadow-sm">
-                <h3 className="text-2xl font-bold tracking-tight text-white contact-connect-heading sm:text-3xl [data-theme='light']:text-[#111]">
+                <h3 className="text-lg font-bold tracking-tight text-white contact-connect-heading sm:text-xl [data-theme='light']:text-[#111]">
                   Multiple Ways to{" "}
                   <span className="contact-connect-accent text-[#2dd4bf] [data-theme='light']:text-[#0d9488]">
                     Connect
@@ -414,7 +414,7 @@ export default function Contact() {
           <div className={`grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-14 ${isContactPage ? "mt-16" : "mt-0"}`}>
             {/* LEFT COLUMN — order-2 on mobile so form appears first */}
             <div className="order-2 space-y-6 lg:order-1">
-              <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white contact-left-heading [data-theme='light']:text-[#111111]">
+              <h2 className="font-cormorant text-[clamp(2.075rem,4vw,3.375rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white contact-left-heading [data-theme='light']:text-[#111111]">
                 Let&apos;s Build Something
                 <br />
                 <span className="contact-left-heading-accent bg-gradient-to-r from-[#2dd4bf] to-[#0d9488] bg-clip-text text-transparent [data-theme='light']:bg-none [data-theme='light']:bg-transparent [data-theme='light']:text-[#0d9488]">
@@ -469,7 +469,7 @@ export default function Contact() {
                     size={56}
                     strokeWidth={2}
                   />
-                  <h3 className="mt-6 text-xl font-bold text-white contact-success-title [data-theme='light']:text-[#111]">
+                  <h3 className="mt-6 text-base font-bold text-white contact-success-title [data-theme='light']:text-[#111]">
                     Message Sent! 🎉
                   </h3>
                   <p className="mt-2 text-[15px] text-white/60 contact-success-p [data-theme='light']:text-[rgba(0,0,0,0.6)]">
@@ -481,7 +481,7 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <>
-                  <h3 className="text-xl font-bold text-white contact-form-heading [data-theme='light']:text-[#111111]">
+                  <h3 className="text-base font-bold text-white contact-form-heading [data-theme='light']:text-[#111111]">
                     Send Us a Message
                   </h3>
                   <p className="mt-1 text-[13px] text-white/40 contact-form-sub [data-theme='light']:text-[rgba(0,0,0,0.5)]">

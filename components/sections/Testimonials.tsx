@@ -109,7 +109,7 @@ export default function Testimonials() {
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         <div className="mb-8 space-y-5 sm:mb-10">
           <SectionTag label="Testimonials" />
-          <h2 className="max-w-3xl font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text">
+          <h2 className="max-w-3xl font-cormorant text-[clamp(1.375rem,3.5vw,2.675rem)] leading-[1.02] text-text">
             What Our Clients Say
           </h2>
         </div>

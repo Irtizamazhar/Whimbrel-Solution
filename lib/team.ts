@@ -57,7 +57,7 @@ export const teamMembers: TeamMember[] = [
     initials: "ZK",
     number: "04",
     role: "Mobile Engineer",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+    image: "/team-zk-profile-v1.png",
     linkedin: "https://www.linkedin.com",
     color: "#0ea5e9",
     tags: ["Mobile", "iOS & Android"],

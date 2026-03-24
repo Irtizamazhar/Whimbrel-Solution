@@ -41,7 +41,7 @@ export default function ContactFAQ() {
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
         <div className="mb-10 space-y-4">
           <SectionTag label="FAQ" />
-          <h2 className="max-w-3xl font-cormorant text-[clamp(2.2rem,5.5vw,3.4rem)] leading-[1.05] text-text">
+          <h2 className="max-w-3xl font-cormorant text-[clamp(2.075rem,5.5vw,3.275rem)] leading-[1.05] text-text">
             Frequently Asked{" "}
             <span className="text-teal">Questions</span>
           </h2>
@@ -56,7 +56,7 @@ export default function ContactFAQ() {
               key={index}
               className="rounded-2xl border border-navy-4 bg-navy-2/80 p-6 transition hover:border-teal/30 hover:shadow-[0_0_24px_rgba(59,191,176,0.08)] [data-theme='light']:border-[rgba(0,0,0,0.08)] [data-theme='light']:bg-[#f7f7f7] [data-theme='light']:hover:border-teal/40"
             >
-              <h3 className="text-lg font-bold text-text [data-theme='light']:text-[#111111]">
+              <h3 className="text-sm font-bold text-text [data-theme='light']:text-[#111111]">
                 {item.question}
               </h3>
               <p className="mt-3 leading-relaxed text-text-muted [data-theme='light']:text-[rgba(0,0,0,0.7)]">

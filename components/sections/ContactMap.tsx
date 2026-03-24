@@ -17,7 +17,7 @@ export default function ContactMap() {
       <div className="location-card rounded-2xl border border-navy-4 bg-navy-2/80 p-6 shadow-sm [data-theme='light']:border-[rgba(0,0,0,0.08)] [data-theme='light']:bg-[rgba(0,0,0,0.03)] sm:p-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-4">
-            <h3 className="font-cormorant text-xl font-semibold text-text [data-theme='light']:text-[#111] sm:text-2xl">
+            <h3 className="font-cormorant text-base font-semibold text-text [data-theme='light']:text-[#111] sm:text-lg">
               {BUSINESS_NAME}
             </h3>
 

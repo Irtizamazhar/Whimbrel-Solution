@@ -90,7 +90,7 @@ export default function EnrollPage() {
             <p className="enroll-hero-label text-xs font-semibold uppercase tracking-[0.15em] text-[#2dd4bf]">
               WHIMBREL ACADEMY
             </p>
-            <h1 className="enroll-hero-title mt-4 font-cormorant text-[clamp(2.5rem,6vw,5rem)] font-bold leading-tight text-white">
+            <h1 className="enroll-hero-title mt-4 font-cormorant text-[clamp(2.375rem,6vw,4.875rem)] font-bold leading-tight text-white">
               Learn. Build. Launch.
             </h1>
             <p className="enroll-hero-sub mx-auto mt-5 max-w-[600px] text-base text-text-muted">
@@ -175,7 +175,7 @@ export default function EnrollPage() {
         {activeTab === "courses" && (
           <section id="courses" className="section-spacing scroll-mt-24">
             <div className="mx-auto max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
-              <h2 className="enroll-section-title font-cormorant text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-white">
+              <h2 className="enroll-section-title font-cormorant text-[clamp(1.625rem,4vw,2.375rem)] font-bold text-white">
                 IT Courses
               </h2>
               <p className="enroll-section-sub mt-2 text-sm text-text-muted">
@@ -221,7 +221,7 @@ export default function EnrollPage() {
         {activeTab === "internships" && (
           <section id="internships" className="section-spacing scroll-mt-24">
             <div className="mx-auto max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
-              <h2 className="enroll-section-title font-cormorant text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-white">
+              <h2 className="enroll-section-title font-cormorant text-[clamp(1.625rem,4vw,2.375rem)] font-bold text-white">
                 Internship Programs
               </h2>
               <p className="enroll-section-sub mt-2 text-sm text-text-muted">
@@ -248,7 +248,7 @@ export default function EnrollPage() {
         {/* WHY LEARN WITH US */}
         <section className="enroll-why-section section-spacing border-t border-navy-4/80">
           <div className="mx-auto max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
-            <h2 className="enroll-section-title font-cormorant text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-white">
+            <h2 className="enroll-section-title font-cormorant text-[clamp(1.625rem,4vw,2.375rem)] font-bold text-white">
               Why Learn With Whimbrel?
             </h2>
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
@@ -286,7 +286,7 @@ export default function EnrollPage() {
                   <div className="enroll-why-icon flex h-12 w-12 items-center justify-center rounded-xl bg-[rgba(45,212,191,0.1)] text-[#2dd4bf]">
                     <item.icon size={24} />
                   </div>
-                  <h3 className="enroll-why-title mt-4 text-lg font-bold text-white">{item.title}</h3>
+                  <h3 className="enroll-why-title mt-4 text-sm font-bold text-white">{item.title}</h3>
                   <p className="enroll-why-desc mt-2 text-sm text-text-muted">{item.desc}</p>
                 </div>
               ))}
@@ -303,7 +303,7 @@ export default function EnrollPage() {
                 background: "linear-gradient(135deg, rgba(45,212,191,0.12), transparent)",
               }}
             >
-              <h2 className="enroll-cta-title font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-white">
+              <h2 className="enroll-cta-title font-cormorant text-[clamp(1.375rem,3vw,2.125rem)] font-bold text-white">
                 Not Sure Which Path to Choose?
               </h2>
               <p className="enroll-cta-sub mx-auto mt-3 max-w-xl text-sm text-text-muted">
@@ -370,7 +370,7 @@ function CourseCard({
       <p className="enroll-card-cat text-[10px] font-semibold uppercase tracking-widest text-[#2dd4bf]">
         {course.category}
       </p>
-      <h3 className="enroll-card-title mt-2 text-[17px] font-bold text-white">{course.title}</h3>
+      <h3 className="enroll-card-title mt-2 text-[15px] font-bold text-white">{course.title}</h3>
       <p className="enroll-card-meta mt-2 flex items-center gap-2 text-xs text-text-muted">
         <span>{course.level}</span>
         <span>·</span>
@@ -438,7 +438,7 @@ function InternshipCard({
       <div className="enroll-intern-icon-wrap flex h-12 w-12 items-center justify-center rounded-xl bg-[rgba(45,212,191,0.15)] text-[#2dd4bf]">
         <IconComponent size={24} />
       </div>
-      <h3 className="enroll-intern-title mt-5 text-[20px] font-bold text-white">{internship.title}</h3>
+      <h3 className="enroll-intern-title mt-5 text-[18px] font-bold text-white">{internship.title}</h3>
       <div className="mt-3 flex flex-wrap gap-2">
         <span className="enroll-intern-pill rounded-full border border-[rgba(45,212,191,0.3)] bg-[rgba(45,212,191,0.1)] px-2.5 py-0.5 text-xs text-[#2dd4bf]">
           {internship.duration}

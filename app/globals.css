@@ -556,22 +556,12 @@ html:not([data-theme="light"]) .team-card:hover {
 /* Overlay scroll area: visible scrollbar, mouse/touch scroll */
 .team-member-overlay-scroll {
   -webkit-overflow-scrolling: touch;
-  /* Force scrollbar to show (overflow-y: scroll in component) */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(45, 212, 191, 0.6) rgba(255, 255, 255, 0.06);
+  /* Keep scrolling enabled but hide scrollbar UI */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .team-member-overlay-scroll::-webkit-scrollbar {
-  width: 10px;
-}
-.team-member-overlay-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
-}
-.team-member-overlay-scroll::-webkit-scrollbar-thumb {
-  background: rgba(45, 212, 191, 0.6);
-  border-radius: 5px;
-}
-.team-member-overlay-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(45, 212, 191, 0.8);
+  display: none;
 }
 
 /* Close button hover (inline styles set base, this adds hover) */
@@ -932,6 +922,13 @@ img, video, iframe {
 /* Hero code/terminal block — light mode: remove dark glow, use soft shadow */
 [data-theme="light"] .hero-code-block {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Hero main heading: distinct serif look from global heading style */
+.hero-main-title {
+  font-family: var(--font-cormorant), serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
 }
 
 .particle {

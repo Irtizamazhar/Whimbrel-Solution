@@ -66,7 +66,7 @@ export default function Portfolio() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="max-w-3xl font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text"
+            className="max-w-none whitespace-nowrap font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text"
           >
             Work That Speaks Louder Than Words.
           </motion.h2>
@@ -103,7 +103,7 @@ export default function Portfolio() {
               </span>
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="absolute bottom-0 left-0 right-0 translate-y-3 p-4 transition duration-300 group-hover:translate-y-0 sm:p-6">
-                <h3 className="font-cormorant text-2xl text-text sm:text-3xl">{project.name}</h3>
+                <h3 className="font-cormorant text-lg text-text sm:text-xl">{project.name}</h3>
                 <p className="text-sm uppercase tracking-[0.14em] text-teal">{project.category}</p>
                 <p className="mt-2 max-w-[95%] text-sm text-text-muted line-clamp-4">{project.summary}</p>
                 <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-teal">
@@ -124,7 +124,7 @@ export default function Portfolio() {
           viewport={{ once: true, margin: "-80px" }}
           className="portfolio-stats-section mt-16 rounded-2xl border border-navy-4 bg-navy-2/80 px-6 py-10 text-center [data-theme='light']:border-[rgba(0,0,0,0.08)] [data-theme='light']:bg-[rgba(0,0,0,0.03)] sm:mt-20 sm:px-10 sm:py-14"
         >
-          <h3 className="font-cormorant text-[clamp(2rem,4.5vw,2.75rem)] font-bold leading-tight text-text [data-theme='light']:text-[#111]">
+          <h3 className="font-cormorant text-[clamp(1.875rem,4.5vw,2.625rem)] font-bold leading-tight text-text [data-theme='light']:text-[#111]">
             Project{" "}
             <span className="bg-gradient-to-r from-teal to-teal-light bg-clip-text text-transparent [data-theme='light']:from-[#0d9488] [data-theme='light']:to-[#0f766e]">
               Statistics
@@ -152,7 +152,7 @@ export default function Portfolio() {
 
           {/* CTA — Ready to Start Your Project */}
           <div className="mt-20 border-t border-navy-4 pt-14 [data-theme='light']:border-[rgba(0,0,0,0.08)] sm:mt-24 sm:pt-16">
-            <h4 className="font-cormorant text-[clamp(1.75rem,3.5vw,2.35rem)] font-bold text-text [data-theme='light']:text-[#111]">
+            <h4 className="font-cormorant text-[clamp(1.625rem,3.5vw,2.225rem)] font-bold text-text [data-theme='light']:text-[#111]">
               Ready to Start Your Project?
             </h4>
             <p className="mx-auto mt-3 max-w-xl text-sm text-text-muted [data-theme='light']:text-[rgba(0,0,0,0.65)] sm:text-base">

@@ -60,7 +60,7 @@ export default function Technology() {
           className="mb-10 space-y-4"
         >
           <motion.div variants={fadeUp}>
-            <SectionTag label="Our Stack" />
+            <SectionTag label="Testing & Assessment" />
           </motion.div>
           <motion.h2
             variants={fadeUp}

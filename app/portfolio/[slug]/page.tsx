@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/ui/Navbar";
@@ -34,6 +35,10 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   const { slug } = await params;
   const project = portfolioProjects.find((item) => item.slug === slug);
   if (!project) notFound();
+  const isCtsProject = project.slug === "cts";
+  const isLaundryProject = project.slug === "my-laundry-thai";
+  const isMyCrmSimProject = project.slug === "mycrmsim";
+  const isBarayasProject = project.slug === "barayas-store";
 
   return (
     <div className="min-h-screen bg-navy text-text min-w-0 overflow-x-hidden">
@@ -41,8 +46,56 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
       <main className="pt-28">
         <section className="section-spacing">
           <div className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
+            {isCtsProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/cts-banner-v3.png"
+                  alt="CTS banner"
+                  width={1200}
+                  height={520}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {isLaundryProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/my-laundry-banner-v2.png"
+                  alt="My Laundry banner"
+                  width={1200}
+                  height={520}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {isMyCrmSimProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/mycrmsim-banner-v1.png"
+                  alt="myCRMSIM banner"
+                  width={1200}
+                  height={520}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {isBarayasProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/barayas-banner-v1.png"
+                  alt="Barayas banner"
+                  width={1200}
+                  height={520}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
             <p className="text-xs uppercase tracking-[0.2em] text-teal">{project.category}</p>
-            <h1 className="mt-3 font-cormorant text-[clamp(2.5rem,6vw,4.6rem)] leading-tight">
+            <h1 className="mt-3 font-cormorant text-[clamp(2.375rem,6vw,4.475rem)] leading-tight">
               {project.name}
             </h1>
             <p className="mt-4 max-w-3xl text-lg text-text-muted">{project.summary}</p>

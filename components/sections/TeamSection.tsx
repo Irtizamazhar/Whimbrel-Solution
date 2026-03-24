@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Mail } from "lucide-react";
 import { teamMembers } from "@/lib/team";
 import TeamMemberOverlay from "@/components/sections/TeamMemberOverlay";
@@ -55,13 +56,15 @@ export default function TeamSection() {
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         {/* Section header */}
         <div className="mb-10 space-y-3 sm:mb-14">
-          <span className="team-section-label inline-block text-xs font-semibold uppercase tracking-[0.2em] text-teal [data-theme='light']:text-[#0d9488]">
-            Our Experts
-          </span>
-          <h2 className="team-section-heading relative inline-block font-cormorant text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight text-text [data-theme='light']:text-[#111]">
-            The Minds That Build the Magic.
-            <span className="team-section-underline absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-100 bg-gradient-to-r from-teal to-teal/60 [data-theme='light']:from-[#0d9488] [data-theme='light']:to-[#0d9488]/70" />
-          </h2>
+          <div className="flex flex-wrap items-end gap-3 sm:gap-4">
+            <span className="team-section-label inline-block text-xs font-semibold uppercase tracking-[0.2em] text-teal [data-theme='light']:text-[#0d9488]">
+              Our Experts
+            </span>
+            <h2 className="team-section-heading relative inline-block whitespace-nowrap font-cormorant text-[clamp(1.625rem,4vw,2.875rem)] font-bold leading-tight text-text [data-theme='light']:text-[#111]">
+              The Minds That Build the Magic.
+              <span className="team-section-underline absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-100 bg-gradient-to-r from-teal to-teal/60 [data-theme='light']:from-[#0d9488] [data-theme='light']:to-[#0d9488]/70" />
+            </h2>
+          </div>
           <p className="max-w-2xl text-base text-text-muted [data-theme='light']:text-[rgba(0,0,0,0.65)] sm:text-lg">
             A dedicated team of engineers, designers, and product specialists
             building premium digital products.
@@ -73,6 +76,7 @@ export default function TeamSection() {
           {teamMembers.map((member, index) => {
             const id = AVATAR_IDS[index] ?? "im";
             const initials = member.initials ?? getInitials(member.name);
+            const hasCustomImage = member.initials === "IM" || member.initials === "ZK";
             return (
               <article
                 key={member.name}
@@ -110,9 +114,25 @@ export default function TeamSection() {
                   <div
                     className="team-card-avatar-ring relative z-10 flex h-[100px] w-[100px] flex-shrink-0 items-center justify-center rounded-full border-[3px] border-white/90 text-[28px] font-bold tracking-tight text-white shadow-lg [data-theme='light']:border-white/95"
                     data-avatar={id}
-                    style={{ backgroundColor: member.color }}
+                    style={{ backgroundColor: hasCustomImage ? "transparent" : member.color }}
                   >
-                    {initials}
+                    {member.initials === "IM" ? (
+                      <Image
+                        src="/team-im-profile-v1.png"
+                        alt="Irtiza Mazhar"
+                        width={100}
+                        height={100}
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    ) : member.initials === "ZK" ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    ) : (
+                      initials
+                    )}
                   </div>
                 </div>
 
@@ -122,7 +142,7 @@ export default function TeamSection() {
                 {/* Content: flex-1 + mt-auto on button so all "View Profile" align at bottom */}
                 <div className="team-card-content relative flex flex-1 flex-col border-t border-navy-4/50 p-5">
                   <div className="flex flex-1 flex-col">
-                    <h3 className="team-card-name font-cormorant text-xl font-bold text-text sm:text-[1.35rem]">
+                    <h3 className="team-card-name font-cormorant text-base font-bold text-text sm:text-[1.225rem]">
                       {member.name}
                     </h3>
                     <p className="team-card-role mt-1.5 text-sm font-medium text-teal">

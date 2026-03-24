@@ -55,7 +55,7 @@ export default function IndustriesWeServe() {
               variants={fadeUp}
               className="rounded-2xl border border-navy-4 bg-navy-2/50 p-6 transition-all duration-300 hover:border-teal/30 hover:bg-navy-2/80 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
             >
-              <h3 className="font-cormorant text-xl font-semibold text-text">
+              <h3 className="font-cormorant text-base font-semibold text-text">
                 {industry.name}
               </h3>
               <p className="mt-2 text-sm text-text-muted">

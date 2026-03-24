@@ -165,7 +165,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                   <Icon size={28} color="white" />
                 </div>
               </div>
-              <h1 className="mt-4 font-cormorant text-[clamp(2rem,5vw,3.25rem)] font-bold leading-tight text-[var(--text)]">
+              <h1 className="mt-4 font-cormorant text-[clamp(1.875rem,5vw,3.125rem)] font-bold leading-tight text-[var(--text)]">
                 {service.title}
               </h1>
               <p className="mt-3 text-lg italic text-[var(--teal)]">{service.tagline}</p>
@@ -223,7 +223,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                   <span className="flex h-12 w-12 items-center justify-center text-[var(--teal)] [&>svg]:h-8 [&>svg]:w-8">
                     <CardIcon />
                   </span>
-                  <h3 className="mt-4 font-cormorant text-xl font-bold text-[var(--text)]">
+                  <h3 className="mt-4 font-cormorant text-base font-bold text-[var(--text)]">
                     {card.label}
                   </h3>
                   <p className="mt-1 text-sm text-[var(--text-muted)]">{card.value}</p>
@@ -244,7 +244,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
               >
                 What We Offer
               </p>
-              <h2 className="mt-3 font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-tight text-[var(--text)]">
+              <h2 className="mt-3 font-cormorant text-[clamp(1.375rem,3vw,2.125rem)] font-bold leading-tight text-[var(--text)]">
                 Everything you need, built right.
               </h2>
               <p className="mt-4 text-[var(--text)] opacity-90">
@@ -260,7 +260,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                     className="rounded-xl border-l-[3px] border-[var(--teal)] bg-[var(--navy-2)] p-4 transition-all duration-300 hover:translate-x-1 hover:bg-[var(--navy-3)] hover:shadow-[0_0_24px_rgba(59,191,176,0.12)] sm:p-5"
                   >
                     <FeatureIcon className="h-5 w-5 text-[var(--teal)] sm:h-6 sm:w-6" />
-                    <h3 className="mt-2 font-cormorant text-base font-bold text-[var(--text)] sm:mt-3 sm:text-lg">
+                    <h3 className="mt-2 font-cormorant text-xs font-bold text-[var(--text)] sm:mt-3 sm:text-sm">
                       {f.title}
                     </h3>
                     <p className="mt-1 text-xs text-[var(--text-muted)] sm:text-sm">{f.description}</p>
@@ -275,7 +275,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       {/* SECTION 4 — Our Process */}
       <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <h2 className="text-center font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-[var(--text)]">
+          <h2 className="text-center font-cormorant text-[clamp(1.375rem,3vw,2.125rem)] font-bold text-[var(--text)]">
             How We Work
           </h2>
           <div className="mt-8 flex flex-col gap-6 sm:gap-8 md:mt-10 md:flex-row md:items-start md:justify-between md:gap-4">
@@ -301,7 +301,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                     {i + 1}
                   </span>
                   <div className="mt-4 md:mt-0">
-                    <h3 className="font-cormorant text-lg font-bold text-[var(--text)]">
+                    <h3 className="font-cormorant text-sm font-bold text-[var(--text)]">
                       {step.title}
                     </h3>
                     <p className="mt-2 text-sm text-[var(--text-muted)]">{step.description}</p>
@@ -316,7 +316,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
       {/* SECTION 5 — Tech Stack */}
       <section className="px-4 py-12 sm:px-5 sm:py-16 md:px-6 md:py-20 xl:px-10">
         <div className="mx-auto max-w-[1280px]">
-          <h2 className="font-cormorant text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-[var(--text)]">
+          <h2 className="font-cormorant text-[clamp(1.375rem,3vw,2.125rem)] font-bold text-[var(--text)]">
             Technologies We Use
           </h2>
           <div className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
@@ -346,7 +346,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
               borderColor: `rgba(${TEAL}, 0.2)`,
             }}
           >
-            <h2 className="font-cormorant text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[var(--text)]">
+            <h2 className="font-cormorant text-[clamp(1.625rem,3vw,2.375rem)] font-bold text-[var(--text)]">
               Ready to Start?
             </h2>
             <p className="mt-4 max-w-xl text-[var(--text-muted)]">

@@ -51,7 +51,7 @@ export default function Services() {
           </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="max-w-3xl font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text"
+            className="max-w-none whitespace-nowrap font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)] leading-[1.02] text-text"
           >
             We Don&apos;t Just Code. We Build Businesses.
           </motion.h2>
@@ -98,7 +98,7 @@ export default function Services() {
                 </div>
 
                 {/* 2. Title */}
-                <h3 className="service-card-title mb-2 text-base font-bold sm:mb-2.5 sm:text-[1.2rem]">
+                <h3 className="service-card-title mb-2 text-xs font-bold sm:mb-2.5 sm:text-[1.075rem]">
                   {service.title}
                 </h3>
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { X } from "lucide-react";
 import type { TeamMember } from "@/lib/team";
 
@@ -70,6 +71,7 @@ export default function TeamMemberOverlay({
 
   const hasSkills = member.skills.length > 0;
   const closeStyles = getCloseButtonStyles(isLight);
+  const hasCustomImage = member.initials === "IM" || member.initials === "ZK";
 
   return (
     <div
@@ -132,7 +134,7 @@ export default function TeamMemberOverlay({
           left: 0,
           right: 0,
           bottom: 0,
-          overflowY: "scroll",
+          overflowY: "auto",
           overflowX: "hidden",
           WebkitOverflowScrolling: "touch",
         }}
@@ -160,12 +162,29 @@ export default function TeamMemberOverlay({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: member.color,
+              background: hasCustomImage ? "transparent" : member.color,
               boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
               border: "3px solid rgba(255,255,255,0.12)",
+              overflow: "hidden",
             }}
           >
-            {member.initials}
+            {member.initials === "IM" ? (
+              <Image
+                src="/team-im-profile-v1.png"
+                alt="Irtiza Mazhar"
+                width={110}
+                height={110}
+                className="h-full w-full object-cover"
+              />
+            ) : member.initials === "ZK" ? (
+              <img
+                src={member.image}
+                alt={member.name}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              member.initials
+            )}
           </div>
           <div className="min-w-0 flex-1">
             <span className="team-overlay-badge mb-2.5 inline-block rounded-full border px-3 py-1 text-[11px] font-semibold">
@@ -230,7 +249,7 @@ export default function TeamMemberOverlay({
 
         {/* CTA — borderRadius 16px, padding 32px */}
         <div className="team-overlay-cta rounded-2xl px-8 py-8 text-center">
-          <h3 className="team-overlay-cta-heading text-xl font-bold">
+          <h3 className="team-overlay-cta-heading text-base font-bold">
             Want to work with {member.name}?
           </h3>
           <p className="team-overlay-cta-sub mt-1.5 text-sm">

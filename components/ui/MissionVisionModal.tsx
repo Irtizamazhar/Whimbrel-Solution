@@ -192,7 +192,7 @@ export default function MissionVisionModal({ isOpen, onClose, type }: Props) {
             <span className="mt-4 inline-block rounded-full border border-[rgba(45,212,191,0.4)] bg-[rgba(45,212,191,0.1)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#2dd4bf]">
               {isMission ? "OUR MISSION" : "OUR VISION"}
             </span>
-            <h2 id="mv-modal-title" className="mt-3 text-2xl font-bold text-white sm:text-[28px]">
+            <h2 id="mv-modal-title" className="mt-3 text-lg font-bold text-white sm:text-[26px]">
               {isMission ? "Our Mission" : "Our Vision"}
             </h2>
             <p className="mt-1 text-[15px] italic text-[#2dd4bf]">

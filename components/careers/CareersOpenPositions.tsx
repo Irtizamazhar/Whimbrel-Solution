@@ -28,7 +28,7 @@ export default function CareersOpenPositions({ positions }: { positions: Positio
   return (
     <>
       <section id="positions">
-        <h2 className="mb-6 font-cormorant text-[clamp(1.5rem,3.5vw,2.8rem)]">Open Positions</h2>
+        <h2 className="mb-6 font-cormorant text-[clamp(1.375rem,3.5vw,2.675rem)]">Open Positions</h2>
         <div className="grid grid-cols-1 gap-4">
           {positions.map((job) => (
             <article
@@ -36,7 +36,7 @@ export default function CareersOpenPositions({ positions }: { positions: Positio
               className="rounded-2xl border border-teal/20 bg-navy-2 p-5 transition hover:border-teal/60 sm:p-6"
             >
               <div className="flex flex-wrap items-center gap-3">
-                <h3 className="font-cormorant text-2xl leading-tight text-text sm:text-4xl">{job.title}</h3>
+                <h3 className="font-cormorant text-lg leading-tight text-text sm:text-2xl">{job.title}</h3>
                 <span className="rounded-full bg-teal/15 px-3 py-1 text-xs uppercase tracking-[0.12em] text-teal">
                   {job.department}
                 </span>

@@ -200,7 +200,7 @@ export default function EnrollModal({ isOpen, onClose, item }: Props) {
               {item && (
                 <h2
                   id="enroll-modal-title"
-                  className="mt-2 text-[22px] font-bold leading-tight text-white"
+                  className="mt-2 text-[20px] font-bold leading-tight text-white"
                 >
                   {item.title}
                 </h2>
@@ -252,7 +252,7 @@ export default function EnrollModal({ isOpen, onClose, item }: Props) {
                 >
                   <CheckCircle2 className="text-[#2dd4bf]" size={40} />
                 </div>
-                <h3 className="enroll-success-title mt-5 text-[22px] font-bold text-[var(--text)]">
+                <h3 className="enroll-success-title mt-5 text-[20px] font-bold text-[var(--text)]">
                   Enrollment Submitted! 🎉
                 </h3>
                 <p className="enroll-success-p mt-2 text-[14px] text-[var(--text-muted)]">
@@ -270,7 +270,7 @@ export default function EnrollModal({ isOpen, onClose, item }: Props) {
               <>
                 {item && (
                   <div className="block border-b border-white/10 px-6 pb-4 pt-14 sm:hidden">
-                    <h2 className="enroll-mobile-title text-lg font-bold text-[var(--text)]">{item.title}</h2>
+                    <h2 className="enroll-mobile-title text-sm font-bold text-[var(--text)]">{item.title}</h2>
                     {item.price && (
                       <p className="mt-1 text-sm text-[#2dd4bf]">{item.price}</p>
                     )}
@@ -278,7 +278,7 @@ export default function EnrollModal({ isOpen, onClose, item }: Props) {
                 )}
 
                 <div className="px-6 pb-8 pt-8 sm:px-10 sm:pt-9 sm:pb-10">
-                  <h3 className="enroll-modal-heading text-[20px] font-bold text-[var(--text)]">
+                  <h3 className="enroll-modal-heading text-[18px] font-bold text-[var(--text)]">
                     Complete Your Enrollment
                   </h3>
                   <p className="enroll-modal-subtext mt-1 text-[13px] text-[var(--text-muted)]">

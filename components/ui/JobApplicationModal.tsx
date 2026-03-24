@@ -327,7 +327,7 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
                 <>
                   <h2
                     id="job-modal-title"
-                    className="mt-2 text-[22px] font-bold leading-tight text-white"
+                    className="mt-2 text-[20px] font-bold leading-tight text-white"
                   >
                     {job.title}
                   </h2>
@@ -391,7 +391,7 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
                 >
                   <CheckCircle2 className="text-[#2dd4bf]" size={40} />
                 </div>
-                <h3 className="mt-5 text-[22px] font-bold text-[var(--text)]">
+                <h3 className="mt-5 text-[20px] font-bold text-[var(--text)]">
                   Application Sent! 🎉
                 </h3>
                 <p className="mt-2 text-[14px] text-[var(--text-muted)]">
@@ -414,7 +414,7 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
                 {/* Mobile-only job info */}
                 {job && (
                   <div className="block border-b border-white/10 px-6 pb-4 pt-14 sm:hidden">
-                    <h2 className="text-lg font-bold text-[var(--text)]">
+                    <h2 className="text-sm font-bold text-[var(--text)]">
                       {job.title}
                     </h2>
                     <div className="mt-2 flex flex-wrap gap-1.5">
@@ -432,7 +432,7 @@ export default function JobApplicationModal({ isOpen, onClose, job }: Props) {
                 )}
 
                 <div className="px-6 pb-8 pt-8 sm:px-10 sm:pt-9 sm:pb-10">
-                  <h3 className="text-[20px] font-bold text-[var(--text)] sm:mt-0">
+                  <h3 className="text-[18px] font-bold text-[var(--text)] sm:mt-0">
                     Complete Your Application
                   </h3>
                   <p className="mt-1 text-[13px] text-[var(--text-muted)]">

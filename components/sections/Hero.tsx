@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden pb-8 pt-20 sm:pb-10 sm:pt-24"
+      className="relative flex min-h-[88vh] items-center overflow-hidden pb-4 pt-16 sm:min-h-[90vh] sm:pb-6 sm:pt-20"
     >
       <div className="hero-noise pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_42%,rgba(59,191,176,0.06),transparent_42%)]" />
@@ -52,7 +52,7 @@ export default function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="font-cormorant text-[clamp(1.9rem,7vw,2.8rem)] leading-[1.1] text-text md:text-[clamp(2.5rem,4.5vw,3.5rem)] lg:text-[clamp(3.1rem,9vw,5.5rem)] lg:leading-[0.95]"
+            className="hero-main-title text-[clamp(1.3rem,6.2vw,2.1rem)] leading-[1.08] text-text md:text-[clamp(1.9rem,4.2vw,2.8rem)] lg:text-[clamp(2.4rem,7.5vw,4.5rem)] lg:leading-[0.95]"
           >
             Innovating Digital
             <br />
@@ -137,7 +137,7 @@ export default function Hero() {
               <div className="h-full w-full rounded bg-[linear-gradient(90deg,rgba(59,191,176,0.15),rgba(59,191,176,0.6),rgba(59,191,176,0.15))]" />
             </div>
           </div>
-          <div className="hero-code-block absolute bottom-12 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs">
+          <div className="hero-code-block absolute -bottom-8 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs">
             <div className="mb-2 flex items-center gap-2 sm:mb-3">
               <span className="h-2 w-2 rounded-full bg-red-400/70 sm:h-2.5 sm:w-2.5" />
               <span className="h-2 w-2 rounded-full bg-yellow-400/70 sm:h-2.5 sm:w-2.5" />

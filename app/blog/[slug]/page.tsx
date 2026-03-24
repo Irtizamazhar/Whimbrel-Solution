@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="text-xs font-semibold uppercase tracking-[0.17em] text-teal">
             {post.category}
           </p>
-          <h1 className="mt-2 font-cormorant text-[clamp(2.2rem,5vw,3.5rem)] leading-tight text-text">
+          <h1 className="mt-2 font-cormorant text-[clamp(2.075rem,5vw,3.375rem)] leading-tight text-text">
             {post.title}
           </h1>
           <div className="mt-4 flex items-center gap-4 text-sm text-text-muted">
