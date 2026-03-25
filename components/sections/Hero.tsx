@@ -5,6 +5,17 @@ import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { fadeUp, stagger } from "@/lib/animations";
 
+// Hero-specific variant: keep elements from shifting vertically during initial hydration.
+// This avoids "extra top space" differences between local dev and Netlify production rendering.
+const heroFadeUp = {
+  hidden: { opacity: 0, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
 const particles = Array.from({ length: 15 }, (_, index) => ({
   id: index,
   left: `${(index * 11 + 7) % 100}%`,
@@ -43,7 +54,7 @@ export default function Hero() {
           className="space-y-6 md:space-y-8"
         >
           <motion.div
-            variants={fadeUp}
+            variants={heroFadeUp}
             className="mt-5 inline-flex items-center gap-2 rounded-full border border-teal/25 bg-teal-glow px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-text-muted sm:mt-6 sm:gap-3 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.2em]"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-teal" />
@@ -51,7 +62,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            variants={fadeUp}
+            variants={heroFadeUp}
             className="hero-main-title text-[clamp(1.3rem,6.2vw,2.1rem)] leading-[1.08] text-text md:text-[clamp(1.9rem,4.2vw,2.8rem)] lg:text-[clamp(2.4rem,7.5vw,4.5rem)] lg:leading-[0.95]"
           >
             Innovating Digital
@@ -62,7 +73,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            variants={fadeUp}
+            variants={heroFadeUp}
             className="max-w-xl text-sm leading-[1.7] text-text-muted md:text-[clamp(1rem,2vw,1.15rem)] md:leading-relaxed"
           >
             Whimbrel Solution builds resilient digital products for startups and
@@ -70,7 +81,7 @@ export default function Hero() {
             accelerate growth and create lasting competitive advantage.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:flex-wrap sm:gap-4">
+          <motion.div variants={heroFadeUp} className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button href="#portfolio" className="w-full min-h-[44px] sm:w-auto">View Our Work</Button>
             <Button href="#contact" variant="outline" className="w-full min-h-[44px] sm:w-auto">
               Start a Project →
