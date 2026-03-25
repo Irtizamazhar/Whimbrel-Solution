@@ -905,6 +905,12 @@ img, video, iframe {
   background: linear-gradient(to right, transparent, rgba(59, 191, 176, 0.12), transparent);
 }
 
+/* Tighter top/bottom rhythm for stacked home sections (About → Tech → Portfolio → Testimonials) */
+.section-spacing.is-compact {
+  padding-top: clamp(2rem, 5.5vw, 4rem);
+  padding-bottom: clamp(3rem, 8vw, 5.5rem);
+}
+
 .hero-noise::before {
   content: "";
   position: absolute;
@@ -1506,6 +1512,19 @@ html:not([data-theme="light"]) .newsletter-email-input::placeholder {
 
   .section-spacing {
     padding: 4rem 0;
+  }
+
+  .section-spacing.is-compact {
+    padding-top: 1.375rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Phone-sized viewports: extra-tight vertical rhythm for home “compact” sections */
+@media (max-width: 767px) {
+  .section-spacing.is-compact {
+    padding-top: 1.25rem;
+    padding-bottom: 1.75rem;
   }
 }
 

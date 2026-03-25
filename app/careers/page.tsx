@@ -125,7 +125,7 @@ export default function CareersPage() {
 
       <main className="mx-auto w-full max-w-[1280px] px-4 pb-16 pt-28 sm:px-5 md:px-6 xl:px-10">
         <section className="mb-12 sm:mb-16">
-          <h1 className="font-cormorant text-[clamp(1.775rem,5vw,3.875rem)] leading-none">
+          <h1 className="font-cormorant text-[clamp(1.05rem,3.2vw,2.3rem)] leading-none">
             Join Our Team
           </h1>
           <p className="mt-5 max-w-2xl text-base text-text-muted sm:text-lg">Build the future with us</p>

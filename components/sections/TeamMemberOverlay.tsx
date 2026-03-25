@@ -71,7 +71,7 @@ export default function TeamMemberOverlay({
 
   const hasSkills = member.skills.length > 0;
   const closeStyles = getCloseButtonStyles(isLight);
-  const hasCustomImage = member.initials === "IM" || member.initials === "ZK";
+  const hasCustomImage = member.initials === "IM" || member.initials === "NA" || member.initials === "AF" || member.initials === "WA" || member.initials === "ZA";
 
   return (
     <div
@@ -176,7 +176,7 @@ export default function TeamMemberOverlay({
                 height={110}
                 className="h-full w-full object-cover"
               />
-            ) : member.initials === "ZK" ? (
+            ) : member.initials === "NA" || member.initials === "AF" || member.initials === "WA" || member.initials === "ZA" ? (
               <img
                 src={member.image}
                 alt={member.name}

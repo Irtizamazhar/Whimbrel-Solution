@@ -12,6 +12,7 @@ import {
   Tag,
   MessageSquare,
   BookOpen,
+  House,
 } from "lucide-react";
 import SectionTag from "@/components/ui/SectionTag";
 import { portfolioProjects, stats } from "@/lib/constants";
@@ -26,6 +27,7 @@ const iconMap = {
   Tag,
   MessageSquare,
   BookOpen,
+  House,
 } as const;
 
 function PortfolioCounter({
@@ -52,14 +54,14 @@ function PortfolioCounter({
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="section-spacing">
+    <section id="portfolio" className="section-spacing is-compact">
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-8 space-y-5 sm:mb-12"
+          className="mb-5 space-y-4 sm:mb-12 sm:space-y-5"
         >
           <motion.div variants={fadeUp}>
             <SectionTag label="Portfolio" />

@@ -27,7 +27,7 @@ export default function AboutDetails() {
     <section className="section-spacing">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
         <div className="rounded-3xl border border-teal/20 bg-navy-2 p-8 text-center md:p-12">
-          <h1 className="font-cormorant text-[clamp(2.275rem,6vw,4.075rem)] text-text">About Whimbrel Solution</h1>
+          <h1 className="font-cormorant text-[clamp(2.025rem,5.4vw,3.675rem)] text-text">About Whimbrel Solution</h1>
           <p className="mt-3 text-lg text-text-muted">
             Innovating digital solutions for a smarter future.
           </p>

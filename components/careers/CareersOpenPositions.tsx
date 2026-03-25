@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import JobApplicationModal, { type JobForModal } from "@/components/ui/JobApplicationModal";
+import JobApplicationModal from "@/components/ui/JobApplicationModal";
 
 export type Position = {
   title: string;
@@ -13,7 +13,7 @@ export type Position = {
 
 export default function CareersOpenPositions({ positions }: { positions: Position[] }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedJob, setSelectedJob] = useState<JobForModal | null>(null);
+  const [selectedJob, setSelectedJob] = useState<Position | null>(null);
 
   const openModal = (job: Position) => {
     setSelectedJob({
@@ -61,7 +61,10 @@ export default function CareersOpenPositions({ positions }: { positions: Positio
       <JobApplicationModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        job={selectedJob}
+        jobTitle={selectedJob?.title ?? ""}
+        department={selectedJob?.department ?? ""}
+        location={selectedJob?.location ?? ""}
+        type={selectedJob?.type ?? ""}
       />
     </>
   );

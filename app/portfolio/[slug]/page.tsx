@@ -39,12 +39,28 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   const isLaundryProject = project.slug === "my-laundry-thai";
   const isMyCrmSimProject = project.slug === "mycrmsim";
   const isBarayasProject = project.slug === "barayas-store";
+  const isEleveInteriorProject = project.slug === "eleve-interior";
+  const isOnmartProject = project.slug === "onmart";
+  const isSurahYaseenProject = project.slug === "surah-yaseen";
+  const generatedBannerStyles: Record<string, string> = {
+    "one-dollar-shop":
+      "linear-gradient(135deg, rgba(251,146,60,0.22), rgba(245,158,11,0.1) 45%, rgba(11,30,46,0.95))",
+  };
+  const hasGeneratedBanner = project.slug in generatedBannerStyles;
+  const hasImageBanner =
+    isCtsProject ||
+    isLaundryProject ||
+    isMyCrmSimProject ||
+    isBarayasProject ||
+    isEleveInteriorProject ||
+    isOnmartProject ||
+    isSurahYaseenProject;
 
   return (
     <div className="min-h-screen bg-navy text-text min-w-0 overflow-x-hidden">
       <Navbar />
       <main className="pt-28">
-        <section className="section-spacing">
+        <section className="section-spacing !pt-8">
           <div className="mx-auto w-full max-w-[1100px] px-5 md:px-8">
             {isCtsProject && (
               <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
@@ -92,6 +108,56 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
                   className="h-auto w-full object-cover"
                   priority
                 />
+              </div>
+            )}
+            {isEleveInteriorProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/eleve-interior-banner-v1.png"
+                  alt="Eleve Interior banner"
+                  width={1200}
+                  height={520}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {isOnmartProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/onmart-banner-v1.png"
+                  alt="OnMart Ramadan Bazaar hero banner"
+                  width={1200}
+                  height={560}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {isSurahYaseenProject && (
+              <div className="mb-6 overflow-hidden rounded-2xl border border-teal/20 bg-navy-2">
+                <Image
+                  src="/surah-yaseen-banner-v1.png"
+                  alt="Surah Yaseen app banner"
+                  width={1200}
+                  height={500}
+                  className="h-[clamp(220px,36vw,460px)] w-full object-cover"
+                  priority
+                />
+              </div>
+            )}
+            {!hasImageBanner && hasGeneratedBanner && (
+              <div
+                className="mb-6 overflow-hidden rounded-2xl border border-teal/20 p-8 sm:p-10"
+                style={{ background: generatedBannerStyles[project.slug] }}
+              >
+                <p className="text-xs uppercase tracking-[0.18em] text-teal/90">{project.category}</p>
+                <h2 className="mt-3 font-cormorant text-[clamp(1.6rem,4vw,2.8rem)] leading-tight text-white">
+                  {project.name}
+                </h2>
+                <p className="mt-3 max-w-3xl text-sm text-white/75 sm:text-base">
+                  Premium case study banner crafted for {project.name}.
+                </p>
               </div>
             )}
             <p className="text-xs uppercase tracking-[0.2em] text-teal">{project.category}</p>

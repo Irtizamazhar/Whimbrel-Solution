@@ -21,7 +21,7 @@ export default function BlogPage() {
 
       <main className="mx-auto w-full max-w-[1260px] px-5 pb-16 pt-28 md:px-8">
         <section className="mb-10">
-          <h1 className="font-cormorant text-[clamp(2.475rem,7vw,4.675rem)] leading-none">
+          <h1 className="font-cormorant text-[clamp(1.45rem,4.4vw,2.7rem)] leading-none">
             Our Blog
           </h1>
           <span className="mt-3 block h-1 w-28 rounded-full bg-teal" />

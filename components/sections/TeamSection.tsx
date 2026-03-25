@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Linkedin, Mail } from "lucide-react";
 import { teamMembers } from "@/lib/team";
 import TeamMemberOverlay from "@/components/sections/TeamMemberOverlay";
+import SectionTag from "@/components/ui/SectionTag";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
@@ -56,15 +57,10 @@ export default function TeamSection() {
       <div className="mx-auto w-full max-w-[1280px] px-4 sm:px-5 md:px-6 xl:px-10">
         {/* Section header */}
         <div className="mb-10 space-y-3 sm:mb-14">
-          <div className="flex flex-wrap items-end gap-3 sm:gap-4">
-            <span className="team-section-label inline-block text-xs font-semibold uppercase tracking-[0.2em] text-teal [data-theme='light']:text-[#0d9488]">
-              Our Experts
-            </span>
-            <h2 className="team-section-heading relative inline-block whitespace-nowrap font-cormorant text-[clamp(1.625rem,4vw,2.875rem)] font-bold leading-tight text-text [data-theme='light']:text-[#111]">
-              The Minds That Build the Magic.
-              <span className="team-section-underline absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-100 bg-gradient-to-r from-teal to-teal/60 [data-theme='light']:from-[#0d9488] [data-theme='light']:to-[#0d9488]/70" />
-            </h2>
-          </div>
+          <SectionTag label="Our Experts" />
+          <h2 className="team-section-heading whitespace-nowrap font-cormorant text-[clamp(1.625rem,4vw,2.875rem)] font-bold leading-tight text-text [data-theme='light']:text-[#111]">
+            The Minds That Build the Magic.
+          </h2>
           <p className="max-w-2xl text-base text-text-muted [data-theme='light']:text-[rgba(0,0,0,0.65)] sm:text-lg">
             A dedicated team of engineers, designers, and product specialists
             building premium digital products.
@@ -76,7 +72,7 @@ export default function TeamSection() {
           {teamMembers.map((member, index) => {
             const id = AVATAR_IDS[index] ?? "im";
             const initials = member.initials ?? getInitials(member.name);
-            const hasCustomImage = member.initials === "IM" || member.initials === "ZK";
+            const hasCustomImage = member.initials === "IM" || member.initials === "NA" || member.initials === "AF" || member.initials === "WA" || member.initials === "ZA";
             return (
               <article
                 key={member.name}
@@ -124,11 +120,14 @@ export default function TeamSection() {
                         height={100}
                         className="h-full w-full rounded-full object-cover"
                       />
-                    ) : member.initials === "ZK" ? (
+                    ) : member.initials === "NA" || member.initials === "AF" || member.initials === "WA" || member.initials === "ZA" ? (
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="h-full w-full rounded-full object-cover"
+                        className={cn(
+                          "h-full w-full rounded-full object-cover",
+                          member.initials === "NA" && "object-[center_30%]"
+                        )}
                       />
                     ) : (
                       initials

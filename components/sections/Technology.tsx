@@ -50,14 +50,14 @@ const technologies: Array<{
 
 export default function Technology() {
   return (
-    <section id="technology" className="section-spacing border-t border-navy-4/60">
+    <section id="technology" className="section-spacing is-compact border-t border-navy-4/60">
       <div className="mx-auto w-full max-w-[1260px] px-5 md:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-120px" }}
           variants={stagger}
-          className="mb-10 space-y-4"
+          className="mb-6 space-y-3 sm:mb-10 sm:space-y-4"
         >
           <motion.div variants={fadeUp}>
             <SectionTag label="Testing & Assessment" />
