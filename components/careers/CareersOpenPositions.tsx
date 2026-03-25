@@ -16,12 +16,7 @@ export default function CareersOpenPositions({ positions }: { positions: Positio
   const [selectedJob, setSelectedJob] = useState<Position | null>(null);
 
   const openModal = (job: Position) => {
-    setSelectedJob({
-      title: job.title,
-      department: job.department,
-      location: job.location,
-      type: job.type,
-    });
+    setSelectedJob(job);
     setModalOpen(true);
   };
 
