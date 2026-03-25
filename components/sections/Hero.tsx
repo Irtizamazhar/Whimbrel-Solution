@@ -82,7 +82,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative hidden min-h-[320px] md:min-h-[400px] lg:block lg:min-h-[470px]"
+          className="relative hidden min-h-[320px] md:min-h-[400px] lg:block lg:min-h-[470px] lg:pb-20"
         >
           <div className="hero-bg-w absolute -right-8 top-3 hidden text-[240px] font-cormorant text-white/5 lg:block">
             W
@@ -137,7 +137,7 @@ export default function Hero() {
               <div className="h-full w-full rounded bg-[linear-gradient(90deg,rgba(59,191,176,0.15),rgba(59,191,176,0.6),rgba(59,191,176,0.15))]" />
             </div>
           </div>
-          <div className="hero-code-block absolute -bottom-8 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs">
+          <div className="hero-code-block absolute bottom-5 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs">
             <div className="mb-2 flex items-center gap-2 sm:mb-3">
               <span className="h-2 w-2 rounded-full bg-red-400/70 sm:h-2.5 sm:w-2.5" />
               <span className="h-2 w-2 rounded-full bg-yellow-400/70 sm:h-2.5 sm:w-2.5" />
