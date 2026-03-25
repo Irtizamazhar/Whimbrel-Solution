@@ -83,7 +83,7 @@ export default function About() {
                 src="/team-af-profile-v1.png"
                 alt="Abid Farooq, CEO of Whimbrel Solution"
                 fill
-                className="object-cover object-[center_32%] sm:object-[center_20%]"
+                className="object-cover object-[center_38%] max-[340px]:object-[center_32%] sm:object-[center_20%]"
                 sizes="(max-width: 768px) 100vw, 500px"
                 priority
               />
