@@ -105,7 +105,7 @@ test("Navbar: all links work", async ({ page }) => {
 test("Navbar: Enroll Now button exists", async ({ page }) => {
   await page.goto(BASE_URL);
   await page.waitForLoadState("domcontentloaded");
-  const btn = page.getByRole("link", { name: /enroll now/i });
+  const btn = page.getByRole("navigation").getByRole("link", { name: /enroll now/i });
   await expect(btn).toBeVisible({ timeout: 10000 });
   await btn.click();
   await expect(page).toHaveURL(/enroll/);
@@ -136,10 +136,10 @@ test("Mobile: hamburger menu works", async ({ page }) => {
 test("Contact form: all fields exist", async ({ page }) => {
   await page.goto(BASE_URL + "/contact");
   await page.waitForLoadState("networkidle").catch(() => {});
-  const nameInput = page.locator('input[name="name"], input[placeholder*="Name"], input[placeholder*="name"]').first();
+  const nameInput = page.locator('input[name="name"]').first();
   const emailInput = page.locator('input[type="email"]').first();
-  const messageInput = page.locator("textarea").first();
-  await expect(nameInput.or(emailInput)).toBeVisible({ timeout: 8000 });
+  await expect(nameInput).toBeVisible({ timeout: 8000 });
+  await expect(emailInput).toBeVisible({ timeout: 8000 });
   console.log("✅ Contact form checked");
 });
 
