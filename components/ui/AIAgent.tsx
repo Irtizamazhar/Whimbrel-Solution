@@ -118,7 +118,7 @@ export default function AIAgent() {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="fixed bottom-24 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full border border-teal/70 bg-navy-2 text-teal shadow-[0_0_30px_rgba(59,191,176,0.35)] transition hover:scale-105 md:bottom-28 md:right-8"
+        className="fixed bottom-24 right-5 z-40 inline-flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-teal/70 bg-navy-2 text-teal shadow-[0_0_30px_rgba(59,191,176,0.35)] outline-none transition hover:scale-105 focus-visible:ring-2 focus-visible:ring-teal/60 md:bottom-28 md:right-8"
         aria-label={open ? "Close AI assistant" : "Open AI assistant"}
         data-magnetic="true"
       >
