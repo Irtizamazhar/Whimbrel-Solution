@@ -98,17 +98,17 @@ export default function Hero() {
           <div className="hero-bg-w absolute -right-8 top-3 hidden text-[240px] font-cormorant text-white/5 lg:block">
             W
           </div>
-          <div className="absolute left-8 top-14 h-72 w-72 animate-float rounded-3xl border border-teal/25 bg-navy-2/70 p-5 shadow-[0_0_70px_rgba(59,191,176,0.12)]">
-            <div className="flex items-center justify-between">
+          <div className="hero-dash-main absolute left-8 top-14 h-72 w-72 animate-float rounded-3xl border border-teal/25 bg-navy-2/70 p-5 shadow-[0_0_70px_rgba(59,191,176,0.12)] dark:absolute dark:left-8 dark:top-14 dark:h-72 dark:w-72 dark:p-5">
+            <div className="flex items-center justify-between dark:flex dark:items-center dark:justify-between">
               <p className="text-xs uppercase tracking-[0.16em] text-teal">System Health</p>
               <span className="h-2.5 w-2.5 rounded-full bg-teal" />
             </div>
-            <div className="mt-4 rounded-xl border border-teal/25 bg-navy/55 p-3">
-              <div className="mb-2 flex items-center gap-2">
+            <div className="hero-dash-inner mt-4 rounded-xl border border-teal/25 bg-navy/55 p-3 dark:mt-4 dark:p-3">
+              <div className="mb-2 flex items-center gap-2 dark:mb-2 dark:flex dark:items-center dark:gap-2">
                 <Image src="/whimbrel-logo.png" alt="Whimbrel mark" width={22} height={22} />
                 <span className="text-xs text-text">Whimbrel Solution</span>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 dark:space-y-2">
                 <div className="h-2 rounded-full bg-teal/20">
                   <span className="block h-full w-[78%] rounded-full bg-teal/75" />
                 </div>
@@ -120,41 +120,41 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
-              <div className="rounded-lg border border-teal/20 bg-navy/40 p-2">
+            <div className="hero-dash-grid mt-4 grid grid-cols-2 gap-3 text-xs dark:mt-4 dark:grid dark:grid-cols-2 dark:gap-3">
+              <div className="hero-dash-stat rounded-lg border border-teal/20 bg-navy/40 p-2 dark:p-2">
                 <p className="text-text-muted">Uptime</p>
                 <p className="text-text">99.98%</p>
               </div>
-              <div className="rounded-lg border border-teal/20 bg-navy/40 p-2">
+              <div className="hero-dash-stat rounded-lg border border-teal/20 bg-navy/40 p-2 dark:p-2">
                 <p className="text-text-muted">Latency</p>
                 <p className="text-text">42ms</p>
               </div>
             </div>
           </div>
-          <div className="absolute right-3 top-36 h-48 w-48 animate-float rounded-2xl border border-teal/45 bg-navy-3/70 p-4 [animation-delay:-1.2s]">
+          <div className="hero-dash-pipeline absolute right-3 top-36 h-48 w-48 animate-float rounded-2xl border border-teal/45 bg-navy-3/70 p-4 [animation-delay:-1.2s] dark:absolute dark:right-3 dark:top-36 dark:h-48 dark:w-48 dark:p-4">
             <p className="text-[10px] uppercase tracking-[0.18em] text-teal">Live Pipeline</p>
-            <div className="mt-3 space-y-2">
-              <div className="rounded-md border border-teal/20 bg-navy/45 px-2 py-1 text-[11px] text-text">
+            <div className="mt-3 space-y-2 dark:mt-3 dark:space-y-2">
+              <div className="hero-dash-row rounded-md border border-teal/20 bg-navy/45 px-2 py-1 text-[11px] text-text dark:px-2 dark:py-1">
                 Discovery ✓
               </div>
-              <div className="rounded-md border border-teal/20 bg-navy/45 px-2 py-1 text-[11px] text-text">
+              <div className="hero-dash-row rounded-md border border-teal/20 bg-navy/45 px-2 py-1 text-[11px] text-text dark:px-2 dark:py-1">
                 Design ✓
               </div>
-              <div className="rounded-md border border-teal/35 bg-teal/10 px-2 py-1 text-[11px] text-teal">
+              <div className="hero-dash-row rounded-md border border-teal/35 bg-teal/10 px-2 py-1 text-[11px] text-teal dark:px-2 dark:py-1">
                 Development →
               </div>
             </div>
-            <div className="mt-4 h-16 rounded-lg border border-teal/20 bg-navy/45 p-2">
+            <div className="hero-dash-chart mt-4 h-16 rounded-lg border border-teal/20 bg-navy/45 p-2 dark:mt-4 dark:h-16 dark:p-2">
               <div className="h-full w-full rounded bg-[linear-gradient(90deg,rgba(59,191,176,0.15),rgba(59,191,176,0.6),rgba(59,191,176,0.15))]" />
             </div>
           </div>
-          <div className="hero-code-block absolute bottom-5 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs">
-            <div className="mb-2 flex items-center gap-2 sm:mb-3">
+          <div className="hero-code-block absolute bottom-5 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs dark:absolute dark:bottom-5 dark:left-16 dark:w-[75%] dark:max-w-full dark:overflow-hidden dark:p-3 dark:sm:p-5 dark:leading-relaxed dark:lg:text-xs">
+            <div className="mb-2 flex items-center gap-2 sm:mb-3 dark:mb-2 dark:flex dark:items-center dark:gap-2 dark:sm:mb-3">
               <span className="h-2 w-2 rounded-full bg-red-400/70 sm:h-2.5 sm:w-2.5" />
               <span className="h-2 w-2 rounded-full bg-yellow-400/70 sm:h-2.5 sm:w-2.5" />
               <span className="h-2 w-2 rounded-full bg-green-400/70 sm:h-2.5 sm:w-2.5" />
             </div>
-            <pre className="overflow-hidden">
+            <pre className="overflow-hidden dark:overflow-hidden">
               <code>
                 {`const Product = () => {\n  return <Experience tier="premium" />\n}\n\nship({\n  speed: "fast",\n  quality: "world-class"\n})`}
               </code>

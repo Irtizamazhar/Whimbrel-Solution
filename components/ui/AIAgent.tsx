@@ -23,6 +23,7 @@ const GREETING_EN =
   "Welcome to Whimbrel Solution! I'm Whimbrel AI — your personal tech consultant! Tell me your project idea — Website, App, AI Agent, System, or Store. I'll instantly provide: Completed features list, Exact timeline, Budget estimate. What would you like to build?";
 
 export default function AIAgent() {
+  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,11 @@ export default function AIAgent() {
   ]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     try {
       const saved = localStorage.getItem("whimbrel-agent-lead");
       if (!saved) return;
@@ -45,7 +51,11 @@ export default function AIAgent() {
     } catch {
       // Ignore malformed storage
     }
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   const saveLead = (event: FormEvent) => {
     event.preventDefault();

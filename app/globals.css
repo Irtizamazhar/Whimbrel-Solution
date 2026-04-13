@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+/* Theme: layout toggles `html.light` + data-theme; `dark:` must match both attribute and class. */
+@custom-variant dark (&:where(html:not(.light) &));
+
 /* Enroll page & global theme variables — dark = default, light = [data-theme="light"] */
 :root {
   --bg-primary: #060d1a;
@@ -928,6 +931,124 @@ img, video, iframe {
 /* Hero code/terminal block — light mode: remove dark glow, use soft shadow */
 [data-theme="light"] .hero-code-block {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/*
+ * Hero floating mock cards — dark only: same spacing as light Tailwind (p-5, mt-4, gap-3, …).
+ * Uses html:not(.light) (see layout inline script) + [data-theme="dark"] so padding never “disappears”.
+ * Light mode ([data-theme="light"] / html.light) is untouched.
+ */
+html:not(.light) .hero-dash-main,
+[data-theme="dark"] .hero-dash-main {
+  box-sizing: border-box !important;
+  padding: 1.25rem !important; /* p-5 */
+  box-shadow:
+    0 0 0 1px rgba(45, 212, 191, 0.16),
+    0 0 70px rgba(59, 191, 176, 0.12) !important;
+}
+
+html:not(.light) .hero-dash-inner,
+[data-theme="dark"] .hero-dash-inner {
+  box-sizing: border-box !important;
+  margin-top: 1rem !important; /* mt-4 */
+  padding: 0.75rem !important; /* p-3 */
+  background-color: rgba(10, 22, 40, 0.9) !important;
+  border-color: rgba(45, 212, 191, 0.32) !important;
+}
+
+html:not(.light) .hero-dash-inner > div:first-child,
+[data-theme="dark"] .hero-dash-inner > div:first-child {
+  margin-bottom: 0.5rem !important; /* mb-2 */
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important; /* gap-2 */
+}
+
+html:not(.light) .hero-dash-inner > div.space-y-2 > * + *,
+[data-theme="dark"] .hero-dash-inner > div.space-y-2 > * + * {
+  margin-top: 0.5rem !important; /* space-y-2 */
+}
+
+html:not(.light) .hero-dash-grid,
+[data-theme="dark"] .hero-dash-grid {
+  box-sizing: border-box !important;
+  margin-top: 1rem !important; /* mt-4 */
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0.75rem !important; /* gap-3 */
+}
+
+html:not(.light) .hero-dash-stat,
+[data-theme="dark"] .hero-dash-stat {
+  box-sizing: border-box !important;
+  padding: 0.5rem !important; /* p-2 */
+  background-color: rgba(10, 22, 40, 0.72) !important;
+  border-color: rgba(45, 212, 191, 0.26) !important;
+}
+
+html:not(.light) .hero-dash-pipeline,
+[data-theme="dark"] .hero-dash-pipeline {
+  box-sizing: border-box !important;
+  padding: 1rem !important; /* p-4 */
+  box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.14) !important;
+}
+
+html:not(.light) .hero-dash-pipeline > div:nth-child(2),
+[data-theme="dark"] .hero-dash-pipeline > div:nth-child(2) {
+  margin-top: 0.75rem !important; /* mt-3 */
+}
+
+html:not(.light) .hero-dash-pipeline > div:nth-child(2) > * + *,
+[data-theme="dark"] .hero-dash-pipeline > div:nth-child(2) > * + * {
+  margin-top: 0.5rem !important; /* space-y-2 */
+}
+
+html:not(.light) .hero-dash-row,
+[data-theme="dark"] .hero-dash-row {
+  box-sizing: border-box !important;
+  padding: 0.25rem 0.5rem !important; /* py-1 px-2 */
+  background-color: rgba(10, 22, 40, 0.78) !important;
+  border-color: rgba(45, 212, 191, 0.26) !important;
+}
+
+html:not(.light) .hero-dash-chart,
+[data-theme="dark"] .hero-dash-chart {
+  box-sizing: border-box !important;
+  margin-top: 1rem !important; /* mt-4 */
+  padding: 0.5rem !important; /* p-2 */
+  background-color: rgba(10, 22, 40, 0.78) !important;
+  border-color: rgba(45, 212, 191, 0.26) !important;
+}
+
+html:not(.light) .hero-code-block,
+[data-theme="dark"] .hero-code-block {
+  box-sizing: border-box !important;
+  padding: 0.75rem !important; /* p-3 */
+  box-shadow:
+    0 0 0 1px rgba(45, 212, 191, 0.12),
+    0 25px 90px rgba(0, 0, 0, 0.45) !important;
+}
+
+@media (min-width: 640px) {
+  html:not(.light) .hero-code-block,
+  [data-theme="dark"] .hero-code-block {
+    padding: 1.25rem !important; /* sm:p-5 */
+  }
+}
+
+html:not(.light) .hero-code-block > div:first-child,
+[data-theme="dark"] .hero-code-block > div:first-child {
+  margin-bottom: 0.5rem !important; /* mb-2 */
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important; /* gap-2 */
+}
+
+@media (min-width: 640px) {
+  html:not(.light) .hero-code-block > div:first-child,
+  [data-theme="dark"] .hero-code-block > div:first-child {
+    margin-bottom: 0.75rem !important; /* sm:mb-3 */
+  }
 }
 
 /* Hero main heading: distinct serif look from global heading style */
