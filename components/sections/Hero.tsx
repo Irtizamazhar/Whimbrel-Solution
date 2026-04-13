@@ -148,7 +148,7 @@ export default function Hero() {
               <div className="h-full w-full rounded bg-[linear-gradient(90deg,rgba(59,191,176,0.15),rgba(59,191,176,0.6),rgba(59,191,176,0.15))]" />
             </div>
           </div>
-          <div className="hero-code-block absolute bottom-5 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs dark:absolute dark:bottom-2 dark:translate-y-3 dark:left-16 dark:w-[75%] dark:max-w-full dark:overflow-hidden dark:p-3 dark:sm:p-5 dark:leading-relaxed dark:lg:text-xs">
+          <div className="hero-code-block absolute bottom-5 left-16 w-[75%] max-w-full overflow-hidden rounded-2xl border border-navy-4 bg-navy-2/90 p-3 font-mono text-[11px] leading-relaxed text-text-muted shadow-[0_25px_90px_rgba(0,0,0,0.45)] sm:p-5 lg:text-xs dark:absolute dark:bottom-1 dark:translate-y-4 dark:left-16 dark:w-[75%] dark:max-w-full dark:overflow-hidden dark:p-3 dark:sm:p-5 dark:leading-relaxed dark:lg:text-xs">
             <div className="mb-2 flex items-center gap-2 sm:mb-3 dark:mb-2 dark:flex dark:items-center dark:gap-2 dark:sm:mb-3">
               <span className="h-2 w-2 rounded-full bg-red-400/70 sm:h-2.5 sm:w-2.5" />
               <span className="h-2 w-2 rounded-full bg-yellow-400/70 sm:h-2.5 sm:w-2.5" />
